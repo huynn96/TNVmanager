@@ -14,7 +14,10 @@
 <body>
 	<div id="wrapper">
         <div id="header">
-            HEADER
+			<div class="head_top">
+				<a href="http://www.nidqc.org.vn" title="Viện Kiểm nghiệm thuốc Trung ương">
+					<embed type="application/x-shockwave-flash" width="1024" height="160" src="http://www.nidqc.org.vn/wp-content/themes/nidqc/images/banner.swf" quality="high" name="banner-thuoc" pluginspage="http://www.macromedia.com/go/getflashplayer" style="border-style: solid !important;"/>
+			</div>
         </div>
         <div id="wp_content" class="clearfix">
             <div id="content">
