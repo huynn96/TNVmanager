@@ -1,0 +1,145 @@
+/*==Reset CSS==*/
+* {
+    margin: 0;
+    padding: 0;
+}
+a{
+    text-decoration: none;
+}
+body{
+    background: #E5E5E5;
+    color: #fff;
+}
+.clearfix:after{
+    clear:both;
+    content: "";
+    display: block;
+    width: 0px;
+    height: 0px;
+}
+#wrapper{ 
+    width: 1024px; 
+    margin: 0px auto;
+}
+#header, #footer {
+    min-height: 150px; 
+    text-align: center;
+}
+#content{ 
+    width: 70%; 
+    float: right; 
+    min-height: 500px; 
+    margin: 20px 0px;   
+}
+#sidebar{ 
+    width: 29.5%; 
+    float: left;
+    margin: 20px 0px; 
+    min-height: 500px; 
+    border: 1px solid black;
+    background: white;
+}
+#sidebar ul{
+    list-style: none;
+    padding-left: 10px;
+}
+
+
+#header, #footer{ 
+    background:#000; 
+}
+#content{   
+    background: #44C52C;
+}
+/*Ipad ngang(1024 x 768)*/
+@media screen and (max-width: 1024px){
+    #wrapper{ width: 100%;}
+}
+/*Ipad dọc(768 x 1024)*/
+@media screen and (max-width: 768px){
+    #content{ width: 100%; float: none;}
+    #sidebar { width: 100%;float: none; padding-left: 0px;}
+}
+/*Tablet nhỏ(480 x 640)*/
+@media screen and (max-width: 480px){
+    
+}
+/*Iphone(480 x 640)*/
+@media screen and (max-width: 320px){
+    
+}
+/*Smart phone nhỏ*/
+@media screen and (max-width: 240px){
+    
+}
+@media screen and (max-width: 768px){
+    #content{ width: 100%; float: none;}
+    #sidebar { width: 100%;float: none; padding-left: 0px;}
+}
+/*Tablet nhỏ(480 x 640)*/
+.tree, .tree ul {
+    margin:0;   
+padding:0;  
+list-style:none
+}
+ 
+.tree ul {  
+margin-left:1em;    
+position:relative
+}
+ 
+.tree ul ul {   
+margin-left:.5em
+}
+.tree ul:before {   
+content:&amp;amp;amp;amp;quot;&amp;amp;amp;amp;quot;;   
+display:block;  
+width:0;    
+position:absolute;  
+top:0;  
+bottom:0;   
+left:0; 
+border-left:1px solid
+}
+.tree li {  
+margin:0;   
+padding:0 1em;  
+line-height:2em;    
+color:#369; 
+font-weight:700;    
+position:relative
+}
+.tree ul li:before {    
+content:&amp;amp;amp;amp;quot;&amp;amp;amp;amp;quot;;   
+display:block;  
+width:10px; 
+height:0;   
+border-top:1px solid;   
+margin-top:-1px;    
+position:absolute;  
+top:1em;    left:0
+}
+ 
+.tree ul li:last-child:before {
+    background:#fff;    
+height:auto;    
+top:1em;    
+bottom:0
+}
+ 
+.indicator {    
+    margin-right:5px;
+}
+ 
+.tree li a {    
+    text-decoration: none;  
+    color:#369;
+}
+.tree li button, .tree li button:active, .tree li button:focus { 
+   text-decoration: none;  
+   color:#369; border:none;    
+   background:transparent; 
+   margin:0px 0px 0px 0px; 
+   padding:0px 0px 0px 0px;    
+   outline: 0;
+}
