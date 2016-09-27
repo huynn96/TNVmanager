@@ -27,7 +27,12 @@
           			<ul>
             			<li>2014          
               			<ul>
-                			<li>DW CS3</li>
+                			<li>DW CS3
+                            <ul>
+                                <li>Ds chính thức</li>
+                                <li>Ds dự bị</li>
+                            </ul>
+                            </li>
                 			<li>DW CS4</li>
                 			<li>DW CS5</li>
                 			<li>DW CS6</li>
@@ -105,7 +110,7 @@ $.fn.extend({
     }
 });
 
-$('#tree1').treed();
+$('#tree1').treed({openedClass:'glyphicon-folder-open', closedClass:'glyphicon-folder-close'});
  
 </script>
 </body>
