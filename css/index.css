@@ -29,7 +29,8 @@ body{
     width: 70%; 
     float: right; 
     min-height: 500px; 
-    margin: 20px 0px;   
+    margin: 20px 0px;
+    border: 1px solid black;
 }
 #sidebar{ 
     width: 29.5%; 
@@ -44,13 +45,6 @@ body{
     padding-left: 10px;
 }
 
-
-#header, #footer{ 
-    background:#000; 
-}
-#content{   
-    background: #44C52C;
-}
 /*Ipad ngang(1024 x 768)*/
 @media screen and (max-width: 1024px){
     #wrapper{ width: 100%;}

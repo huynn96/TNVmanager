@@ -9,23 +9,41 @@
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
+	<?php
+	error_reporting(0);
+	switch ($_GET["page"]){
+		case "tnv": "<link rel='stylesheet' type='text/css' href='css/tnv.css'>";
+		break;
+
+	}
+	?>
 </head>
 
 <body>
 	<div id="wrapper">
         <div id="header">
 			<div class="head_top">
-				<a href="http://www.nidqc.org.vn" title="Viện Kiểm nghiệm thuốc Trung ương">
-					<embed type="application/x-shockwave-flash" width="1024" height="160" src="http://www.nidqc.org.vn/wp-content/themes/nidqc/images/banner.swf" quality="high" name="banner-thuoc" pluginspage="http://www.macromedia.com/go/getflashplayer" style="border-style: solid !important;"/>
+
+<!--				<a  title="Viện Kiểm nghiệm thuốc Trung ương">-->
+<!--					<embed type="application/x-shockwave-flash" width="1024" height="160"-->
+<!--						   src="http://www.nidqc.org.vn/wp-content/themes/nidqc/images/banner.swf" quality="high"-->
+<!--						   name="banner-thuoc" pluginspage="http://www.macromedia.com/go/getflashplayer" style="border-style: solid !important;"/>-->
+				<embed type="application/x-shockwave-flash" width="1024" height="160" src="http://www.nidqc.org.vn/wp-content/themes/nidqc/images/banner.swf" quality="high" name="banner-thuoc" pluginspage="http://www.macromedia.com/go/getflashplayer"/>
 			</div>
         </div>
         <div id="wp_content" class="clearfix">
             <div id="content">
-                CONTENT
+                <?php
+					switch ($_GET["page"]){
+						case "tnv": include_once("tnv.php");
+						break;
+
+					}
+				?>
             </div>
         	<div id="sidebar">
             	<ul id="tree1">
-            		<li><a href="#">Quản lý tình nguyện viên</a></li>
+            		<li><a href="index.php?page=tnv">Quản lý tình nguyện viên</a></li>
         			<li><a href="">Quản lý nghiên cứu</a>
           			<ul>
             			<li>2014          
