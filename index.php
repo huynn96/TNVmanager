@@ -24,18 +24,17 @@
         <div id="header">
 			<div class="head_top">
 
-<!--				<a  title="Viện Kiểm nghiệm thuốc Trung ương">-->
-<!--					<embed type="application/x-shockwave-flash" width="1024" height="160"-->
-<!--						   src="http://www.nidqc.org.vn/wp-content/themes/nidqc/images/banner.swf" quality="high"-->
-<!--						   name="banner-thuoc" pluginspage="http://www.macromedia.com/go/getflashplayer" style="border-style: solid !important;"/>-->
-				<embed type="application/x-shockwave-flash" width="1024" height="160" src="http://www.nidqc.org.vn/wp-content/themes/nidqc/images/banner.swf" quality="high" name="banner-thuoc" pluginspage="http://www.macromedia.com/go/getflashplayer"/>
+				<a  title="Viện Kiểm nghiệm thuốc Trung ương">
+					<embed type="application/x-shockwave-flash" width="1024" height="160"
+						   src="http://www.nidqc.org.vn/wp-content/themes/nidqc/images/banner.swf" quality="high"
+						   name="banner-thuoc" pluginspage="http://www.macromedia.com/go/getflashplayer" style="border-style: solid !important;"/>
 			</div>
         </div>
         <div id="wp_content" class="clearfix">
             <div id="content">
                 <?php
 					switch ($_GET["page"]){
-						case "tnv": include_once("tnv.php");
+						case "tnv": include_once("tnv_search.php");
 						break;
 
 					}
@@ -72,8 +71,16 @@
         	</div>
         </div>
         <div id="footer">
-            FOOTER
-        </div> 
+            <div class="bottom_content">
+                <p/>
+                Địa chỉ: Cơ sở 1: 48 Hai Bà Trưng, Hoàn Kiếm, Hà Nội - Cơ sở 2: Tựu Liệt, Tam Hiệp, Thanh Trì, Hà Nội.
+                <p/>
+                <p/>
+                Liên hệ: Tel: (84-4) 38252791; (84-4) 38255341 - Fax: (84-4) 38256911 - Email: khth@nidqc.org.vn
+                <p/>
+            </div>
+        </div>
+
     </div>
 
 <script type="text/javascript">
@@ -132,7 +139,7 @@ $.fn.extend({
 });
 
 $('#tree1').treed({openedClass:'glyphicon-folder-open', closedClass:'glyphicon-folder-close'});
- 
+
 </script>
 </body>
 </html>

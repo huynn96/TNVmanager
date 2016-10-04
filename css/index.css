@@ -25,6 +25,11 @@ body{
     min-height: 150px; 
     text-align: center;
 }
+div.bottom_content {
+    color: #faf7fa;
+    background-color: #16128a;
+}
+
 #content{ 
     width: 70%; 
     float: right; 
