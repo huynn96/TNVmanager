@@ -6,15 +6,18 @@
 <title>Trang chủ</title>
 <link rel="stylesheet" type="text/css" href="css/index.css">
 <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
-<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="library/bootstrap.min.js"></script>
+<script src="library/jquery.min.js"></script>
 
 	<?php
 	error_reporting(0);
 	switch ($_GET["page"]){
-		case "tnv": "<link rel='stylesheet' type='text/css' href='css/tnv.css'>";
+        case "add_nc": echo "<link rel='stylesheet' type='text/css' href='css/add_nc.css'/>";
+        break;
+		case "tnv": echo "<link rel='stylesheet' type='text/css' href='css/tnv.css'/>";
 		break;
-
+        default: echo "<link rel='stylesheet' type='text/css' href='css/tnv_search.css'/>";
+        break;
 	}
 	?>
 </head>
@@ -27,22 +30,27 @@
 				<a  title="Viện Kiểm nghiệm thuốc Trung ương">
 					<embed type="application/x-shockwave-flash" width="1024" height="160"
 						   src="http://www.nidqc.org.vn/wp-content/themes/nidqc/images/banner.swf" quality="high"
-						   name="banner-thuoc" pluginspage="http://www.macromedia.com/go/getflashplayer" style="border-style: solid !important;"/>
+						   name="banner-thuoc" pluginspage="http://www.macromedia.com/go/getflashplayer"/>
+                </a>
 			</div>
         </div>
         <div id="wp_content" class="clearfix">
             <div id="content">
                 <?php
 					switch ($_GET["page"]){
-						case "tnv": include_once("tnv_search.php");
+                        case "add_nc": include_once("add_nc.php");
+                        break;
+						case "tnv": include_once("tnv.php");
 						break;
-
+                        default: include_once("tnv_search.php");
+                        break;
 					}
 				?>
             </div>
         	<div id="sidebar">
             	<ul id="tree1">
-            		<li><a href="index.php?page=tnv">Quản lý tình nguyện viên</a></li>
+            		<li><a href="index.php?page=tnv_search">Quản lý tình nguyện viên</a></li>
+                    <li><a href="index.php?page=add_nc"><i class="glyphicon glyphicon-plus-sign"></i> Thêm nghiên cứu mới</a></li>
         			<li><a href="">Quản lý nghiên cứu</a>
           			<ul>
             			<li>2014          

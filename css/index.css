@@ -24,26 +24,46 @@ body{
 #header, #footer {
     min-height: 150px; 
     text-align: center;
+    box-shadow:0 4px 9px rgba(0,0,0,.37);
+  -moz-box-shadow:0 4px 9px rgba(0,0,0,.37);
+  -webkit-box-shadow:0 4px 9px rgba(0,0,0,.37);
+  border-radius: 10px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
 }
 div.bottom_content {
     color: #faf7fa;
     background-color: #16128a;
+    padding: 10px;
+    padding-top: 20px;
 }
 
 #content{ 
+    position: relative;
     width: 70%; 
     float: right; 
     min-height: 500px; 
     margin: 20px 0px;
-    border: 1px solid black;
+      box-shadow:0 4px 9px rgba(0,0,0,.37);
+  -moz-box-shadow:0 4px 9px rgba(0,0,0,.37);
+  -webkit-box-shadow:0 4px 9px rgba(0,0,0,.37);
+  border-radius: 10px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
 }
 #sidebar{ 
+    position: relative;
     width: 29.5%; 
     float: left;
     margin: 20px 0px; 
     min-height: 500px; 
-    border: 1px solid black;
     background: white;
+      box-shadow:0 4px 9px rgba(0,0,0,.37);
+  -moz-box-shadow:0 4px 9px rgba(0,0,0,.37);
+  -webkit-box-shadow:0 4px 9px rgba(0,0,0,.37);
+  border-radius: 10px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px
 }
 #sidebar ul{
     list-style: none;
