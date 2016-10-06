@@ -42,6 +42,8 @@
                         break;
 						case "tnv": include_once("tnv.php");
 						break;
+						case "ds_ct": include_once("ds_ct.php");
+							break;
                         default: include_once("tnv_search.php");
                         break;
 					}
@@ -57,7 +59,7 @@
               			<ul>
                 			<li>DW CS3
                             <ul>
-                                <li>Ds chính thức</li>
+								<li><a href="index.php?page=ds_ct">Danh sách người tình nguyện chính thức</a></li>
                                 <li>Ds dự bị</li>
                             </ul>
                             </li>
