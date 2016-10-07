@@ -47,6 +47,7 @@ a,a:visited {
     float: left
 }
 .searchform input {
+    height: 36px;
     background:#fefefe;
     border: none;
     font:12px/12px 'HelveticaNeue', Helvetica, Arial, sans-serif;

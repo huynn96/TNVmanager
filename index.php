@@ -10,16 +10,16 @@
 <script src="library/jquery.min.js"></script>
 
 	<?php
-	error_reporting(0);
-	switch ($_GET["page"]){
+    error_reporting(0);
+    switch ($_GET["page"]){
         case "add_nc": echo "<link rel='stylesheet' type='text/css' href='css/add_nc.css'/>";
         break;
-		case "tnv": echo "<link rel='stylesheet' type='text/css' href='css/tnv.css'/>";
-		break;
+        case "tnv": echo "<link rel='stylesheet' type='text/css' href='css/tnv.css'/>";
+        break;
         default: echo "<link rel='stylesheet' type='text/css' href='css/tnv_search.css'/>";
         break;
-	}
-	?>
+    }
+    ?>
 </head>
 
 <body>
@@ -36,47 +36,54 @@
         </div>
         <div id="wp_content" class="clearfix">
             <div id="content">
-                <?php
-					switch ($_GET["page"]){
+                 <?php
+                    switch ($_GET["page"]){
                         case "add_nc": include_once("add_nc.php");
                         break;
-						case "tnv": include_once("tnv.php");
-						break;
-						case "ds_ct": include_once("ds_ct.php");
-							break;
+                        case "tnv": include_once("tnv.php");
+                        break;
                         default: include_once("tnv_search.php");
                         break;
-					}
-				?>
+                    }
+                ?>
+    
             </div>
         	<div id="sidebar">
             	<ul id="tree1">
             		<li><a href="index.php?page=tnv_search">Quản lý tình nguyện viên</a></li>
                     <li><a href="index.php?page=add_nc"><i class="glyphicon glyphicon-plus-sign"></i> Thêm nghiên cứu mới</a></li>
-        			<li><a href="">Quản lý nghiên cứu</a>
-          			<ul>
-            			<li>2014          
-              			<ul>
-                			<li>DW CS3
-                            <ul>
-								<li><a href="index.php?page=ds_ct">Danh sách người tình nguyện chính thức</a></li>
-                                <li>Ds dự bị</li>
-                            </ul>
-                            </li>
-                			<li>DW CS4</li>
-                			<li>DW CS5</li>
-                			<li>DW CS6</li>
-                			<li>DW CC</li>
-              			</ul>
-            			</li>
-            			<li>2015
-						<ul>
-							<li>Abcxyz</li>
-							<li>xyzabc</li>
-						</ul>
-            			</li>
-          			</ul>
-       				</li>
+        			<li id="loadjQuery">Quản lý nghiên cứu
+                        <ul><ul>
+            			<?php
+                            include_once("connect_db.php");
+
+                            $sql = "SELECT id, date_year FROM nghien_cuu ORDER BY date_year DESC";
+                            $query = mysql_query($sql);
+                            $year=0;
+                            
+                            while ($row = mysql_fetch_array($query)) {
+                                $year1=date('Y',strtotime($row["date_year"]));
+                                
+                                if ($year1 != $year){
+                                    echo "</ul> </ul> 
+                                            <ul>".
+                                                "<li>".
+                                                    $year1.
+                                                    "<ul>".
+                                                        "<li><a href='sua_nghien_cuu.php?id_nc=".$row["id"]."'>".
+                                                            $row["id"].
+                                                            "</a><ul> <li> <a href='ds_ct.php?id_nc=".$row["id"]."'>Ds chính thức</a></li></ul>".
+                                                        "</li>";
+                                    $year = $year1;
+                                }
+                                else{
+                                    echo "<li><a href='sua_nghien_cuu.php?id_nc=".$row["id"]."'>".$row["id"]."</a><ul> <li> <a href='ds_ct.php?id_nc=".$row["id"]."'>Ds chính thức</a></li></ul></li>";
+                                }
+                                
+                            }
+
+                        ?>
+      				</li>
        			</ul>
         	</div>
         </div>
@@ -92,6 +99,17 @@
         </div>
 
     </div>
+
+<script type="text/javascript">
+    $('#loadjQuery a').click(function (e) {
+        e.preventDefault();
+        var link=e.target;
+        var next=link.getAttribute("href");
+        console.log(next);        
+        $('#content').load(next);
+    });
+
+</script>
 
 <script type="text/javascript">
 $.fn.extend({
@@ -126,16 +144,16 @@ $.fn.extend({
             branch.children().children().toggle();
         });
         //fire event from the dynamically added icon
-      tree.find('.branch .indicator').each(function(){
-        $(this).on('click', function () {
-            $(this).closest('li').click();
+        tree.find('.branch .indicator').each(function(){
+            $(this).on('click', function () {
+                $(this).closest('li').click();
+            });
         });
-      });
         //fire event to open branch if the li contains an anchor instead of text
         tree.find('.branch>a').each(function () {
             $(this).on('click', function (e) {
                 $(this).closest('li').click();
-                e.preventDefault();
+                //e.preventDefault();
             });
         });
         //fire event to open branch if the li contains a button instead of text
