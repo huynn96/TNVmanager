@@ -1,4 +1,3 @@
-
 <head>
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <link rel='stylesheet' type='text/css' href='css/add_nc.css'/>
@@ -64,11 +63,8 @@
                 //echo "<script type='text/javascript'>alert('$date2');</script>";
                 $sql = "INSERT INTO tinh_nguyen_vien($field[0],$field[1],$field[2],$field[3],$field[4],$field[5],$field[6]) VALUES ('$value[0]','$value[1]','$value[2]','$value[3]','$value[4]','$date2','$value[6]')";
                 $query = mysql_query($sql);
-                if ($i<10){
-                    $ma_so = "H0".$i;
-                }
-                else $ma_so = "H".$i;
-                $sql = "INSERT INTO tnv_nghien_cuu(id, so_cmt, ma_so) VALUES ('$ma_nc', '$value[0]','$ma_so')";
+                
+                $sql = "INSERT INTO tnv_nghien_cuu(id, so_cmt) VALUES ('$ma_nc', '$value[0]')";
                 $query = mysql_query($sql);
             }   
         }

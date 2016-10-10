@@ -1,3 +1,9 @@
+<?php
+    session_start();
+    if (isset($_GET["tnv"]))
+        $_SESSION["tnv"] = $_GET["tnv"];
+?>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -6,12 +12,18 @@
 <title>Trang chủ</title>
 <link rel="stylesheet" type="text/css" href="css/index.css">
 <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
-<script src="library/bootstrap.min.js"></script>
 <script src="library/jquery.min.js"></script>
+<script src="library/bootstrap.min.js"></script>
+
 
 	<?php
     error_reporting(0);
+    
     switch ($_GET["page"]){
+        case "ds_ct": echo "<link rel='stylesheet' type='text/css' href='css/ds_ct.css'/>";
+        break;
+        case "edit_tnv": echo "<link rel='stylesheet' type='text/css' href='css/sua_profile.css'/>";
+        break;
         case "add_nc": echo "<link rel='stylesheet' type='text/css' href='css/add_nc.css'/>";
         break;
         case "tnv": echo "<link rel='stylesheet' type='text/css' href='css/tnv.css'/>";
@@ -28,9 +40,7 @@
 			<div class="head_top">
 
 				<a  title="Viện Kiểm nghiệm thuốc Trung ương">
-					<embed type="application/x-shockwave-flash" width="1024" height="160"
-						   src="http://www.nidqc.org.vn/wp-content/themes/nidqc/images/banner.swf" quality="high"
-						   name="banner-thuoc" pluginspage="http://www.macromedia.com/go/getflashplayer"/>
+					<img src="img/New Bitmap Image.bmp" width=100% height=100%>
                 </a>
 			</div>
         </div>
@@ -38,6 +48,10 @@
             <div id="content">
                  <?php
                     switch ($_GET["page"]){
+                        case "ds_ct": include("ds_ct.php");
+                        break;  
+                        case "edit_tnv": include_once("sua_profile.php");
+                        break;
                         case "add_nc": include_once("add_nc.php");
                         break;
                         case "tnv": include_once("tnv.php");
@@ -101,11 +115,12 @@
     </div>
 
 <script type="text/javascript">
+    
     $('#loadjQuery a').click(function (e) {
         e.preventDefault();
         var link=e.target;
         var next=link.getAttribute("href");
-        console.log(next);        
+        //console.log(next);        
         $('#content').load(next);
     });
 

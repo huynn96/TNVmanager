@@ -1,21 +1,38 @@
 <?php
 	include_once("connect_db.php");
-	$search = $_POST["search"];
+  if (isset($_GET["search"])){
+     $search = $_GET["search"];
+  }
+  else
+	if (isset($_POST["search"])){
+    $search = $_POST["search"];
+  }
+  else $search = $_SESSION["tnv"];
 	if ('0' <= $search[0] && $search[0]<= '9')
 		$cmt = $search;
 	else $ten = $search;
-
+  
 	$sql = "SELECT * FROM tinh_nguyen_vien WHERE tinh_nguyen_vien.so_cmt='$cmt' OR tinh_nguyen_vien.ho_ten='$ten' ";
 	$query = mysql_query($sql);
 	$num_rows = mysql_num_rows($query);
-	
+	if ($num_rows == 0)
+    echo "Tình nguyện viên không có trong dữ liệu!";
 	while ($row = mysql_fetch_array($query)) {
-		
+  $cmtnd = $row['so_cmt'];
+	$sql2 = "SELECT * FROM tnv_nghien_cuu WHERE tnv_nghien_cuu.so_cmt='$cmtnd'";
+  $query2 = mysql_query($sql2);
+  echo "<script type='text/javascript'>
+      function ConfirmDelete()
+      {
+            if (confirm('Chắc chắn xoá tình nguyện viên?'))
+                location.href='delete_tnv.php?tnv=".$cmtnd."';                             
+      }
+  </script>";
 	echo "
 		<div class='container'>
       <div class='row'>
     
-        <div  >
+        <div>
    
    
           <div class='panel panel-info'>
@@ -26,8 +43,8 @@
               <div class='row'>
              	 <div class='panel-footer'>
                         <span class='pull-right'>
-                            <a href='edit_tnv.php' data-original-title='Edit this user' data-toggle='tooltip' type='button' class='btn btn-sm btn-warning'><i class='glyphicon glyphicon-edit'></i></a>
-                            <a href='delete_tnv.php' data-original-title='Remove this user' data-toggle='tooltip' type='button' class='btn btn-sm btn-danger'><i class='glyphicon glyphicon-remove'></i></a>
+                            <a href='index.php?page=edit_tnv&tnv=".$row["so_cmt"]."' data-original-title='Edit this user' data-toggle='tooltip' type='button' class='btn btn-sm btn-warning'><i class='glyphicon glyphicon-edit'></i></a>
+                            <a onclick='ConfirmDelete()' data-original-title='Remove this user' data-toggle='tooltip' type='button' class='btn btn-sm btn-danger'><i class='glyphicon glyphicon-remove'></i></a>
                         </span>
                     </div>
 
@@ -61,8 +78,15 @@
                         <td>".$row["ngay_cap_cmt"]."</td>
                       </tr>
                         <td>Nơi cấp CMT:</td>
-                        <td>".$row["ngay_cap_cmt"]."</td>
+                        <td>".$row["noi_cap_cmt"]."</td>
                            
+                      </tr>
+                      <tr>
+                        <td>Các nghiên cứu:</td>
+                        <td>";
+                        while ($row2 = mysql_fetch_array($query2)) 
+                          echo $row2["id"].", ";
+                        echo "</td>
                       </tr>
                        </tbody>
                   </table>
