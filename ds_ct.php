@@ -38,7 +38,7 @@
 ?>
 <head>
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-      <script src="library/jquery-1.12.4.js"></script>
+    <script src="library/jquery-1.12.4.js"></script>
   <script src="library/jquery-ui.js"></script>
   <style>
     table {
@@ -80,6 +80,23 @@
             font-size: 14px; 
             font-weight: 700;
         }
+        #abox{
+            position: absolute;
+            background: white;
+            display: none;
+            width: 90%;
+            padding: 1px;
+            /*height: 100px;*/
+            left: 5%;
+            top: 35%;
+            border: 9px outset #4581e5;
+            box-shadow:0 4px 40px rgba(0,0,0,.9);
+            -moz-box-shadow:0 4px 40px rgba(0,0,0,.9);
+            -webkit-box-shadow:0 4px 40px rgba(0,0,0,.9);
+            border-radius: 10px 10px;
+            -moz-border-radius: 10px 10px;
+            -webkit-border-radius: 10px 10px;
+        }
   </style>
     <script>
         $(function() {
@@ -92,7 +109,11 @@
 
 <table style="width:100%">
     <?php
+    $sql2 = "SELECT * FROM nghien_cuu WHERE id='$ma_nc'";
+    $query2 = mysql_query($sql2);
+    $row2 = mysql_fetch_array($query2);
     echo "<a id='add' href='index.php?page=ds_ct&id_nc=".$ma_nc."&add=1'><i class='glyphicon glyphicon-plus'></i>Thêm mới tình nguyện viên vào danh sách</a>";
+    echo "<p style='font-weight: bold'>Mã nghiên cứu: ".$ma_nc."</p><p style='font-weight: bold'>Tên nghiên cứu: ".$row2["ten_nc"]."</p>";
     ?>
     <tr>
             <th class="stt">STT</th>
@@ -104,7 +125,6 @@
             <th class="cmt">Số CMT</th>
             <th class="date">Ngày cấp CMT</th>
             <th class="noi_cap">Nơi cấp CMT</th>
-            <!--<th class="sua">Sửa</th>-->
             <th class="xoa">Xoá</th>
           </tr>
     
@@ -115,29 +135,30 @@
             <tr>
                 <td></td>
                 <td></td>
-                <td><input type='text' name='ho_ten' size=15 required></td>
-                <td><input type='text' name='year' size=2 required></td>
-                <td><textarea rows='3' cols='15' name='address' required></textarea></td>
-                <td><input type='text' name='phone' size=8 required></td>
-                <td><input type='text' name='cmt' size=8 required></td>
-                <td><input type='text' name='ngay_cap_cmt' id='date' size=8 required></td>
-                <td><input type='text' name='noi_cap_cmt' size=8 required></td>
+                <td><input type='text' name='ho_ten' size=15></td>
+                <td><input type='text' name='year' size=2></td>
+                <td><textarea rows='3' cols='15' name='address'></textarea></td>
+                <td><input type='text' name='phone' size=8></td>
+                <td><input type='text' name='cmt' size=8></td>
+                <td><input type='text' name='ngay_cap_cmt' id='date' size=8></td>
+                <td><input type='text' name='noi_cap_cmt' size=8></td>
                 <td colspan=2><input type='submit' name='submit' value='Cập nhật' id='submit'></td>
-            </tr></form>";
+            </tr>
+            </form>";
     }
+?>
+<div id="abox">
+
+</div>
+
+<?php
 
     $i=1;
         while ( $rows = mysql_fetch_array($query)){
             if ($i<10)
                 $ma = "H0".$i;
             else $ma = "H".$i;
-            // echo"<script type='text/javascript'>
-            //         function ConfirmDelete(cmt,id)
-            //         {
-            //             if (confirm('Chắc chắn xoá tình nguyện viên khỏi danh sách chính thức?'))
-            //                 location.href='ds_ct.php?cmtdel=' + cmt +'&id_nc=' + id;                             
-            //         } 
-            //     </script>";
+    
             echo "
             <tr>
                 <td>".$i."</td>
@@ -157,3 +178,18 @@
 ?>
     
 </table>
+<script type="text/javascript">
+    $("[name='ho_ten']").click(function () {
+        $('body').on("click",nameClick);
+    });
+    function nameClick(e) {
+        if(e.target.name != "ho_ten"){
+            var ten = $("[name='ho_ten']").val();
+            $('#abox').show();
+            ten = ten.replace(/ /g,"+");
+            $('#abox').load("ds_search.php?ten="+ten);
+            $('body').off("click",nameClick);
+        }
+    }
+
+</script>
