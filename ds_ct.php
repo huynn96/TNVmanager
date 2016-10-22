@@ -18,8 +18,6 @@
         $date = $_POST["ngay_cap_cmt"];
         $date=date('Y-m-d',strtotime($date));
         $noi_cap_cmt = $_POST["noi_cap_cmt"];
-
-        echo $cmt;
         
         $sql = "INSERT INTO tinh_nguyen_vien(so_cmt, ho_ten, year, address, phone, ngay_cap_cmt, noi_cap_cmt) VALUES ('$cmt', '$ho_ten', '$year', '$address', '$phone', '$date', '$noi_cap_cmt') ";
         $query = mysql_query($sql);
@@ -38,11 +36,14 @@
 ?>
 <head>
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <script src="library/jquery-1.12.4.js"></script>
     <script src="library/jquery-ui.js"></script>
 
     <style>
-        table {
+        #wrapabox{
+            position: relative;
+        }
+        #table1 {
+            position: relative;
             font-size: 13px;
             font-family: arial, sans-serif;
             border-collapse: collapse;
@@ -92,14 +93,12 @@
             position: absolute;
             background: white;
             display: none;
+            z-index: 2;
             width: 90%;
             padding: 1px;
             left: 5%;
-            top: 40%;
-            border: 9px outset #a9a9a9;
-            box-shadow:0 4px 30px rgba(0,0,0,.9);
-            -moz-box-shadow:0 4px 30px rgba(0,0,0,.9);
-            -webkit-box-shadow:0 4px 30px rgba(0,0,0,.9);
+            top: 136px;
+            border: 3px outset #a9a9a9;
             border-radius: 10px 10px;
             -moz-border-radius: 10px 10px;
             -webkit-border-radius: 10px 10px;
@@ -114,7 +113,8 @@
     </script>
 </head>
 
-<table style="width:100%" class="table-striped table-hover">
+
+
     <?php
     $sql2 = "SELECT * FROM nghien_cuu WHERE id='$ma_nc'";
     $query2 = mysql_query($sql2);
@@ -122,6 +122,10 @@
     echo "<a id='add' href='index.php?page=ds_ct&id_nc=".$ma_nc."&add=1'><i class='glyphicon glyphicon-plus'></i>Thêm mới tình nguyện viên vào danh sách</a>";
     echo "<p style='font-weight: bold'>Mã nghiên cứu: ".$ma_nc."</p><p style='font-weight: bold'>Tên nghiên cứu: ".$row2["ten_nc"]."</p>";
     ?>
+<div id="wrapabox">
+<div id='abox'></div>
+<table id="table1" style="width:100%" class="table-striped table-hover">
+    
     <tr>
             <th class="stt">STT</th>
             <th class="ma_tnv">Mã TNV</th>
@@ -133,7 +137,8 @@
             <th class="date">Ngày cấp CMT</th>
             <th class="noi_cap">Nơi cấp CMT</th>
             <th class="xoa">Xoá</th>
-          </tr>
+            
+    </tr>
     
 <?php
     if (isset($_GET["add"])){
@@ -142,7 +147,7 @@
             <tr>
                 <td></td>
                 <td></td>
-                <td><input type='text' name='ho_ten' size=15 required></td>
+                <td><input type='text' name='ho_ten' size=15 required ></td>
                 <td><input type='text' name='year' size=2 required></td>
                 <td><textarea rows='3' cols='15' name='address' required></textarea></td>
                 <td><input type='text' name='phone' size=8 required></td>
@@ -150,13 +155,12 @@
                 <td><input type='text' name='ngay_cap_cmt' id='date' size=8 required></td>
                 <td><input type='text' name='noi_cap_cmt' size=8 required></td>
                 <td colspan=2><input type='submit' name='submit' value='Cập nhật' id='submit' required></td>
+
             </tr>
-            </form>";
+            </form>
+            ";
     }
 ?>
-<div id="abox" class="panel">
-
-</div>
 
 <?php
 
@@ -187,24 +191,25 @@
 ?>
     
 </table>
+</div>
 <script type="text/javascript">
     $(document).ready(function() {
-        
         $("[type='text']").focus(function () {
             if (this.getAttribute('name') != 'ho_ten')
                 $('#abox').hide();
-        })
+        });
 
         $("[name='address']").focus(function () {
             $('#abox').hide();
-        })
+        });
 
         $("[name='ho_ten']").keypress(function () {
             var ten = $("[name='ho_ten']").val();
             $('#abox').show();
+            
             ten = ten.replace(/ /g,"+");
             $('#abox').load("ds_search.php?ten="+ten);
-        })
+        });
 
         $('.xoa a').click(function (e) {
             e.preventDefault();
@@ -219,7 +224,7 @@
                 location.href=b;
             }
         });
-    })
+    });
   
 
 </script>
