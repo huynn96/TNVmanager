@@ -1,103 +1,103 @@
 /*==Reset CSS==*/
 * {
-    margin: 0;
-    padding: 0;
+		margin: 0;
+		padding: 0;
 }
 a{
-    text-decoration: none;
+		text-decoration: none;
 }
 body{
-    background: #E5E5E5;
-    color: #fff;
+		background: #E5E5E5;
+		color: #fff;
 }
 .clearfix:after{
-    clear:both;
-    content: "";
-    display: block;
-    width: 0px;
-    height: 0px;
+		clear:both;
+		content: "";
+		display: block;
+		width: 0px;
+		height: 0px;
 }
 #wrapper{ 
-    width: 1200px; 
-    margin: 0px auto;
+		width: 1200px; 
+		margin: 0px auto;
 }
 #header, #footer {
-    min-height: 150px; 
-    text-align: center;
-    box-shadow:0 4px 9px rgba(0,0,0,.37);
-  -moz-box-shadow:0 4px 9px rgba(0,0,0,.37);
-  -webkit-box-shadow:0 4px 9px rgba(0,0,0,.37);
-  border-radius: 10px;
-  -moz-border-radius: 10px;
-  -webkit-border-radius: 10px;
+		min-height: 150px; 
+		text-align: center;
+		box-shadow:0 4px 9px rgba(0,0,0,.37);
+	-moz-box-shadow:0 4px 9px rgba(0,0,0,.37);
+	-webkit-box-shadow:0 4px 9px rgba(0,0,0,.37);
+	border-radius: 10px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
 }
 div.bottom_content {
-    color: #faf7fa;
-    background-color: #16128a;
-    padding: 10px;
-    padding-top: 20px;
+		color: #faf7fa;
+		background-color: #16128a;
+		padding: 10px;
+		padding-top: 20px;
 }
 
 #content{ 
-    position: relative;
-    width: 70%; 
-    float: right; 
-    min-height: 500px; 
-    margin: 20px 0px;
-      box-shadow:0 4px 9px rgba(0,0,0,.37);
-  -moz-box-shadow:0 4px 9px rgba(0,0,0,.37);
-  -webkit-box-shadow:0 4px 9px rgba(0,0,0,.37);
-  border-radius: 10px;
-  -moz-border-radius: 10px;
-  -webkit-border-radius: 10px;
+		position: relative;
+		width: 70%; 
+		float: right; 
+		min-height: 500px; 
+		margin: 20px 0px;
+			box-shadow:0 4px 9px rgba(0,0,0,.37);
+	-moz-box-shadow:0 4px 9px rgba(0,0,0,.37);
+	-webkit-box-shadow:0 4px 9px rgba(0,0,0,.37);
+	border-radius: 10px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
 }
 #sidebar{ 
-    position: relative;
-    width: 29.5%; 
-    float: left;
-    margin: 20px 0px; 
-    min-height: 500px; 
-    background: white;
-      box-shadow:0 4px 9px rgba(0,0,0,.37);
-  -moz-box-shadow:0 4px 9px rgba(0,0,0,.37);
-  -webkit-box-shadow:0 4px 9px rgba(0,0,0,.37);
-  border-radius: 10px;
-  -moz-border-radius: 10px;
-  -webkit-border-radius: 10px
+		position: relative;
+		width: 29.5%; 
+		float: left;
+		margin: 20px 0px; 
+		min-height: 500px; 
+		background: white;
+			box-shadow:0 4px 9px rgba(0,0,0,.37);
+	-moz-box-shadow:0 4px 9px rgba(0,0,0,.37);
+	-webkit-box-shadow:0 4px 9px rgba(0,0,0,.37);
+	border-radius: 10px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
 }
 #sidebar ul{
-    list-style: none;
-    padding-left: 10px;
+		list-style: none;
+		padding-left: 10px;
 }
 
 /*Ipad ngang(1024 x 768)*/
 @media screen and (max-width: 1024px){
-    #wrapper{ width: 100%;}
+		#wrapper{ width: 100%;}
 }
 /*Ipad dọc(768 x 1024)*/
 @media screen and (max-width: 768px){
-    #content{ width: 100%; float: none;}
-    #sidebar { width: 100%;float: none; padding-left: 0px;}
+		#content{ width: 100%; float: none;}
+		#sidebar { width: 100%;float: none; padding-left: 0px;}
 }
 /*Tablet nhỏ(480 x 640)*/
 @media screen and (max-width: 480px){
-    
+		
 }
 /*Iphone(480 x 640)*/
 @media screen and (max-width: 320px){
-    
+		
 }
 /*Smart phone nhỏ*/
 @media screen and (max-width: 240px){
-    
+		
 }
 @media screen and (max-width: 768px){
-    #content{ width: 100%; float: none;}
-    #sidebar { width: 100%;float: none; padding-left: 0px;}
+		#content{ width: 100%; float: none;}
+		#sidebar { width: 100%;float: none; padding-left: 0px;}
 }
 /*Tablet nhỏ(480 x 640)*/
 .tree, .tree ul {
-    margin:0;   
+		margin:0;   
 padding:0;  
 list-style:none
 }
@@ -140,25 +140,25 @@ top:1em;    left:0
 }
  
 .tree ul li:last-child:before {
-    background:#fff;    
+		background:#fff;    
 height:auto;    
 top:1em;    
 bottom:0
 }
  
 .indicator {    
-    margin-right:5px;
+		margin-right:5px;
 }
  
 .tree li a {    
-    text-decoration: none;  
-    color:#369;
+		text-decoration: none;  
+		color:#369;
 }
 .tree li button, .tree li button:active, .tree li button:focus { 
-   text-decoration: none;  
-   color:#369; border:none;    
-   background:transparent; 
-   margin:0px 0px 0px 0px; 
-   padding:0px 0px 0px 0px;    
-   outline: 0;
+	 text-decoration: none;  
+	 color:#369; border:none;    
+	 background:transparent; 
+	 margin:0px 0px 0px 0px; 
+	 padding:0px 0px 0px 0px;    
+	 outline: 0;
 }

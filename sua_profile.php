@@ -9,6 +9,7 @@
     $address = $_POST["address"];
     $phone = $_POST["phone"];
     $date = $_POST["ngay_cap_cmt"];
+    $date=date('Y-m-d',strtotime($date));
     $noi_cap_cmt = $_POST["noi_cap_cmt"];
 
     $sql = "UPDATE tinh_nguyen_vien SET so_cmt='$so_cmt', ho_ten='$ho_ten', year='$year', address='$address', phone='$phone', ngay_cap_cmt='$date', noi_cap_cmt='$noi_cap_cmt' WHERE so_cmt = '$cmt'";
@@ -21,19 +22,18 @@
     header("location: index.php?page=tnv&tnv=$so_cmt");
   }else{
 
-	include_once("connect_db.php");
-	
-
-	$sql = "SELECT * FROM tinh_nguyen_vien WHERE tinh_nguyen_vien.so_cmt='$cmt'";
-	$query = mysql_query($sql);
-	$num_rows = mysql_num_rows($query);
-	
-	while ($row = mysql_fetch_array($query)) {
-		
-	echo "
-		<div class='container'>
-      <div class='row'>
+    include_once("connect_db.php");
     
+
+    $sql = "SELECT * FROM tinh_nguyen_vien WHERE tinh_nguyen_vien.so_cmt='$cmt'";
+    $query = mysql_query($sql);
+    $num_rows = mysql_num_rows($query);
+    
+    while ($row = mysql_fetch_array($query)) {
+        $row["ngay_cap_cmt"]=date('d-m-Y',strtotime($row["ngay_cap_cmt"]));
+    echo "
+        <div class='container'>
+      <div class='row'>
         <div  >
    
           <div class='panel panel-info'>
@@ -70,7 +70,7 @@
                       </tr>
                       <tr>
                         <td>Ngày cấp CMT:</td>
-                        <td><input type='text' name='ngay_cap_cmt' value='".$row["ngay_cap_cmt"]."'class='txt'></td>
+                        <td><input type='text' name='ngay_cap_cmt' value='".$row["ngay_cap_cmt"]."'class='txt' id='date'></td>
                       </tr>
                         <td>Nơi cấp CMT:</td>
                         <td><input type='text' name='noi_cap_cmt' value='".$row["noi_cap_cmt"]."'class='txt'></td>
@@ -96,5 +96,14 @@
         }
             }
 ?>
-                     
-                   
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="library/jquery-1.12.4.js"></script>
+    <script src="library/jquery-ui.js"></script>
+<script type="text/javascript">
+        $(function() {
+           $('#date').datepicker({
+                dateFormat: 'd-m-yy'
+            }); 
+        });
+ 
+</script>

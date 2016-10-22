@@ -2,64 +2,111 @@
     $sql = "SELECT tinh_nguyen_vien.ho_ten, tinh_nguyen_vien.year, tinh_nguyen_vien.address, tinh_nguyen_vien.phone, tinh_nguyen_vien.so_cmt, 
             tinh_nguyen_vien.ngay_cap_cmt, tinh_nguyen_vien.noi_cap_cmt FROM tinh_nguyen_vien INNER JOIN tnv_nghien_cuu ON tinh_nguyen_vien.so_cmt=tnv_nghien_cuu.so_cmt AND tnv_nghien_cuu.id='$ma_nc' ORDER BY tinh_nguyen_vien.so_cmt";
     $query = mysql_query($sql);
+    $sql2 = "SELECT ten_nc FROM nghien_cuu WHERE id='$ma_nc'";
+    $query2 = mysql_query($sql2);
+    $ten_nc = mysql_fetch_array($query2);
 ?>
 
-<head>
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-      <script src="library/jquery-1.12.4.js"></script>
-  <script src="library/jquery-ui.js"></script>
-  <style>
-        table {
-            font-size: 13px;
-            font-family: arial, sans-serif;
-            border-collapse: collapse;
-            width: 100%;
-            line-height: 20px;
-            border: 1px solid black;
-        }
-
-        .noi_o{
-            width: 20%;
-        }
-        .phone, .so_cmt, .date, .noi_cap{
-            width: 10%;
-        }
-        .ma_tnv,.stt{
-            width: 3px;
-        }
-        .year{
-            width: 4px;
-        }
-        
-        td, th {
-            border: 1px solid black;
-            text-align: center;
-            padding: 3px;
-        }
-
-        tr:nth-child(even) {
-            background-color: #dddddd;
-        }
-        #dsct{
-            /*display: none;*/
-        }
-    </style>
-</head>
-
+    <head>
+        <style>
+            table {
+                font-size: 13px;
+                font-family: arial, sans-serif;
+                border-collapse: collapse;
+                width: 100%;
+                line-height: 20px;
+                border: 1px solid black;
+            }
+            
+            .noi_o {
+                width: 20%;
+            }
+            
+            .phone,
+            .so_cmt,
+            .date,
+            .noi_cap {
+                width: 10%;
+            }
+            
+            .ma_tnv,
+            .stt {
+                width: 3px;
+            }
+            
+            .year {
+                width: 4px;
+            }
+            
+            td,
+            th {
+                border: 1px solid black;
+                text-align: center;
+                padding: 3px;
+            }
+            
+            tr:nth-child(even) {
+                background-color: #dddddd;
+            }
+            
+            #dsct {
+                display: none;
+            }
+            
+            #p1 {
+                display: inline-block;
+                margin-left: 14%;
+                font-weight: bold;
+            }
+            
+            #p2 {
+                display: inline;
+                float: right;
+                margin-right: 14%;
+                font-weight: bold;
+                font-style: italic;
+            }
+            
+            h3 {
+                text-align: center;
+            }
+            
+            p {
+                margin-left: 14%;
+                font-weight: bold;
+            }
+            
+            span {
+                font-weight: normal;
+            }
+        </style>
+    </head>
+    <p id="p1">BE Center-NIDQC</p>
+    <p id="p2">Danh sách NTN chính thức và dự bị</p>
+    <h3>DANH SÁCH NGƯỜI TÌNH NGUYỆN CHÍNH THỨC VÀ DỰ BỊ</h3>
+    <p>Tên nghiên cứu:
+        <?php echo $ten_nc["ten_nc"]; ?>
+    </p>
+    <p>Nghiên cứu số:
+        <?php echo $ma_nc; ?>
+    </p>
     <table style="width:100%">
-    <tr>
-            <th class="stt">STT</th>
+        <tr>
+        
+            <th class="stt">STT</th>
             <th class="ma_tnv">Mã TNV</th>
-            <th class="ho_ten">Họ và tên</th>
-            <th class="year">Năm sinh</th>
+        
+            <th class="ho_ten">Họ và tên</th>
+        
+            <th class="year">Năm sinh</th>
             <th class="noi_o">Nơi ở hiện tại</th>
             <th class="phone">Điện thoại</th>
             <th class="cmt">Số CMT</th>
             <th class="date">Ngày cấp CMT</th>
             <th class="noi_cap">Nơi cấp CMT</th>
-          </tr>
-    
-<?php
+            </tr>
+
+        <?php
 
        $i=1;
         while ( $rows = mysql_fetch_array($query)){
@@ -83,5 +130,10 @@
         }
     
 ?>
-    
+
     </table>
+    <p style="text-align:right;margin-right: 14%;font-weight: normal;margin-top: 5%">Ngày&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; tháng &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;năm&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</p>
+    <p id="p1">Phụ trách lâm sàng
+        <br><span>(Ký, ghi rõ họ tên)</span></p>
+    <p id="p2" style="font-style: normal;margin-right:19%">Người lập bảng
+        <br><span>(Ký, ghi rõ họ tên)</span></p>

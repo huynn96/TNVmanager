@@ -8,5 +8,5 @@
 
 	$sql = "DELETE FROM tnv_nghien_cuu WHERE so_cmt = '$cmt'";
 	$query = mysql_query($sql);
-	header("location: index.php");
+	header("location: index.php?page=tnv&tnv=$cmt");
 ?>

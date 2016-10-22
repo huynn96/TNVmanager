@@ -4,19 +4,19 @@
         $_SESSION["tnv"] = $_GET["tnv"];
 ?>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Trang chủ</title>
-<link rel="stylesheet" type="text/css" href="css/index.css">
-<link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
-<script src="library/jquery.min.js"></script>
-<script src="library/bootstrap.min.js"></script>
+    <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    <html xmlns="http://www.w3.org/1999/xhtml">
 
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>Trang chủ</title>
+        <link rel="stylesheet" type="text/css" href="css/index.css">
+        <link rel="stylesheet" type="text/css" href="library/css/bootstrap.css">
+        <script src="library/jquery.min.js"></script>
+        <script src="library/bootstrap.min.js"></script>
 
-	<?php
+        <?php
     error_reporting(0);
     
     switch ($_GET["page"]){
@@ -32,21 +32,21 @@
         break;
     }
     ?>
-</head>
+    </head>
 
-<body>
-	<div id="wrapper">
-        <div id="header">
-			<div class="head_top">
+    <body>
+        <div id="wrapper">
+            <div id="header">
+                <div class="head_top">
 
-				<a  title="Viện Kiểm nghiệm thuốc Trung ương">
-					<img src="img/New Bitmap Image.bmp" width=100% height=100%>
-                </a>
-			</div>
-        </div>
-        <div id="wp_content" class="clearfix">
-            <div id="content">
-                 <?php
+                    <a title="Viện Kiểm nghiệm thuốc Trung ương">
+                        <img src="img/New Bitmap Image.bmp" width=100% height=100%>
+                    </a>
+                </div>
+            </div>
+            <div id="wp_content" class="clearfix">
+                <div id="content">
+                    <?php
                     switch ($_GET["page"]){
                         case "ds_ct": include("ds_ct.php");
                         break;  
@@ -60,15 +60,16 @@
                         break;
                     }
                 ?>
-    
-            </div>
-        	<div id="sidebar">
-            	<ul id="tree1">
-            		<li><a href="index.php?page=tnv_search">Quản lý tình nguyện viên</a></li>
-                    <li><a href="index.php?page=add_nc"><i class="glyphicon glyphicon-plus-sign"></i> Thêm nghiên cứu mới</a></li>
-        			<li id="loadjQuery">Quản lý nghiên cứu
-                        <ul><ul>
-            			<?php
+
+                </div>
+                <div id="sidebar">
+                    <ul id="tree1">
+                        <li><a href="index.php?page=tnv_search">Quản lý tình nguyện viên</a></li>
+                        <li><a href="index.php?page=add_nc"><i class="glyphicon glyphicon-plus-sign"></i> Thêm nghiên cứu mới</a></li>
+                        <li id="loadjQuery">Quản lý nghiên cứu
+                            <ul>
+                                <ul>
+                                    <?php
                             include_once("connect_db.php");
 
                             $sql = "SELECT id, date_year FROM nghien_cuu ORDER BY date_year DESC";
@@ -97,92 +98,91 @@
                             }
 
                         ?>
-      				</li>
-       			</ul>
-        	</div>
-        </div>
-        <div id="footer">
-            <div class="bottom_content">
-                <p/>
-                Địa chỉ: Cơ sở 1: 48 Hai Bà Trưng, Hoàn Kiếm, Hà Nội - Cơ sở 2: Tựu Liệt, Tam Hiệp, Thanh Trì, Hà Nội.
-                <p/>
-                <p/>
-                Liên hệ: Tel: (84-4) 38252791; (84-4) 38255341 - Fax: (84-4) 38256911 - Email: khth@nidqc.org.vn
-                <p/>
+                        </li>
+                        </ul>
+                </div>
             </div>
+            <div id="footer">
+                <div class="bottom_content">
+                    <p/> Địa chỉ: Cơ sở 1: 48 Hai Bà Trưng, Hoàn Kiếm, Hà Nội - Cơ sở 2: Tựu Liệt, Tam Hiệp, Thanh Trì, Hà Nội.
+                    <p/>
+                    <p/> Liên hệ: Tel: (84-4) 38252791; (84-4) 38255341 - Fax: (84-4) 38256911 - Email: khth@nidqc.org.vn
+                    <p/>
+                </div>
+            </div>
+
         </div>
 
-    </div>
-
-<script type="text/javascript">
-    
-    $('#loadjQuery a').click(function (e) {
-        e.preventDefault();
-        var link=e.target;
-        var next=link.getAttribute("href");
-        //console.log(next);        
-        $('#content').load(next);
-    });
-
-</script>
-
-<script type="text/javascript">
-$.fn.extend({
-    treed: function (o) {
-      
-      var openedClass = 'glyphicon-minus-sign';
-      var closedClass = 'glyphicon-plus-sign';
-      
-      if (typeof o != 'undefined'){
-        if (typeof o.openedClass != 'undefined'){
-        openedClass = o.openedClass;
-        }
-        if (typeof o.closedClass != 'undefined'){
-        closedClass = o.closedClass;
-        }
-      };
-      
-        //initialize each of the top levels
-        var tree = $(this);
-        tree.addClass("tree");
-        tree.find('li').has("ul").each(function () {
-            var branch = $(this); //li with children ul
-            branch.prepend("<i class='indicator glyphicon " + closedClass + "'></i>");
-            branch.addClass('branch');
-            branch.on('click', function (e) {
-                if (this == e.target) {
-                    var icon = $(this).children('i:first');
-                    icon.toggleClass(openedClass + " " + closedClass);
-                    $(this).children().children().toggle();
-                }
-            })
-            branch.children().children().toggle();
-        });
-        //fire event from the dynamically added icon
-        tree.find('.branch .indicator').each(function(){
-            $(this).on('click', function () {
-                $(this).closest('li').click();
-            });
-        });
-        //fire event to open branch if the li contains an anchor instead of text
-        tree.find('.branch>a').each(function () {
-            $(this).on('click', function (e) {
-                $(this).closest('li').click();
-                //e.preventDefault();
-            });
-        });
-        //fire event to open branch if the li contains a button instead of text
-        tree.find('.branch>button').each(function () {
-            $(this).on('click', function (e) {
-                $(this).closest('li').click();
+        <script type="text/javascript">
+            $('#loadjQuery a').click(function (e) {
                 e.preventDefault();
+                var link = e.target;
+                var next = link.getAttribute("href");
+                //console.log(next);        
+                $('#content').load(next);
             });
-        });
-    }
-});
+        </script>
 
-$('#tree1').treed({openedClass:'glyphicon-folder-open', closedClass:'glyphicon-folder-close'});
+        <script type="text/javascript">
+            $.fn.extend({
+                treed: function (o) {
 
-</script>
-</body>
-</html>
+                    var openedClass = 'glyphicon-minus-sign';
+                    var closedClass = 'glyphicon-plus-sign';
+
+                    if (typeof o != 'undefined') {
+                        if (typeof o.openedClass != 'undefined') {
+                            openedClass = o.openedClass;
+                        }
+                        if (typeof o.closedClass != 'undefined') {
+                            closedClass = o.closedClass;
+                        }
+                    };
+
+                    //initialize each of the top levels
+                    var tree = $(this);
+                    tree.addClass("tree");
+                    tree.find('li').has("ul").each(function () {
+                        var branch = $(this); //li with children ul
+                        branch.prepend("<i class='indicator glyphicon " + closedClass + "'></i>");
+                        branch.addClass('branch');
+                        branch.on('click', function (e) {
+                            if (this == e.target) {
+                                var icon = $(this).children('i:first');
+                                icon.toggleClass(openedClass + " " + closedClass);
+                                $(this).children().children().toggle();
+                            }
+                        })
+                        branch.children().children().toggle();
+                    });
+                    //fire event from the dynamically added icon
+                    tree.find('.branch .indicator').each(function () {
+                        $(this).on('click', function () {
+                            $(this).closest('li').click();
+                        });
+                    });
+                    //fire event to open branch if the li contains an anchor instead of text
+                    tree.find('.branch>a').each(function () {
+                        $(this).on('click', function (e) {
+                            $(this).closest('li').click();
+                            //e.preventDefault();
+                        });
+                    });
+                    //fire event to open branch if the li contains a button instead of text
+                    tree.find('.branch>button').each(function () {
+                        $(this).on('click', function (e) {
+                            $(this).closest('li').click();
+                            e.preventDefault();
+                        });
+                    });
+                }
+            });
+
+            $('#tree1').treed({
+                openedClass: 'glyphicon-folder-open',
+                closedClass: 'glyphicon-folder-close'
+            });
+        </script>
+    </body>
+
+    </html>

@@ -39,9 +39,10 @@
 <head>
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <script src="library/jquery-1.12.4.js"></script>
-  <script src="library/jquery-ui.js"></script>
-  <style>
-    table {
+    <script src="library/jquery-ui.js"></script>
+
+    <style>
+        table {
             font-size: 13px;
             font-family: arial, sans-serif;
             border-collapse: collapse;
@@ -68,8 +69,14 @@
             padding: 3px;
         }
 
-        tr:nth-child(even) {
-            background-color: #dddddd;
+        .table-striped > tbody > tr:nth-child(odd) > td,
+        .table-striped > tbody > tr:nth-child(odd) > th {
+            background-color: #d9d9d9;
+        }
+
+        .table-hover > tbody > tr:hover > td,
+        .table-hover > tbody > tr:hover > th {
+            background-color: #c9c9c9;
         }
         #add{
             float: right;
@@ -80,19 +87,19 @@
             font-size: 14px; 
             font-weight: 700;
         }
+
         #abox{
             position: absolute;
             background: white;
             display: none;
             width: 90%;
             padding: 1px;
-            /*height: 100px;*/
             left: 5%;
-            top: 35%;
-            border: 9px outset #4581e5;
-            box-shadow:0 4px 40px rgba(0,0,0,.9);
-            -moz-box-shadow:0 4px 40px rgba(0,0,0,.9);
-            -webkit-box-shadow:0 4px 40px rgba(0,0,0,.9);
+            top: 40%;
+            border: 9px outset #a9a9a9;
+            box-shadow:0 4px 30px rgba(0,0,0,.9);
+            -moz-box-shadow:0 4px 30px rgba(0,0,0,.9);
+            -webkit-box-shadow:0 4px 30px rgba(0,0,0,.9);
             border-radius: 10px 10px;
             -moz-border-radius: 10px 10px;
             -webkit-border-radius: 10px 10px;
@@ -101,13 +108,13 @@
     <script>
         $(function() {
            $('#date').datepicker({
-                dateFormat: 'd-m-yy'}
-            ); 
+                dateFormat: 'd-m-yy'
+            }); 
         });
     </script>
 </head>
 
-<table style="width:100%">
+<table style="width:100%" class="table-striped table-hover">
     <?php
     $sql2 = "SELECT * FROM nghien_cuu WHERE id='$ma_nc'";
     $query2 = mysql_query($sql2);
@@ -135,19 +142,19 @@
             <tr>
                 <td></td>
                 <td></td>
-                <td><input type='text' name='ho_ten' size=15></td>
-                <td><input type='text' name='year' size=2></td>
-                <td><textarea rows='3' cols='15' name='address'></textarea></td>
-                <td><input type='text' name='phone' size=8></td>
-                <td><input type='text' name='cmt' size=8></td>
-                <td><input type='text' name='ngay_cap_cmt' id='date' size=8></td>
-                <td><input type='text' name='noi_cap_cmt' size=8></td>
-                <td colspan=2><input type='submit' name='submit' value='Cập nhật' id='submit'></td>
+                <td><input type='text' name='ho_ten' size=15 required></td>
+                <td><input type='text' name='year' size=2 required></td>
+                <td><textarea rows='3' cols='15' name='address' required></textarea></td>
+                <td><input type='text' name='phone' size=8 required></td>
+                <td><input type='text' name='cmt' size=8 required></td>
+                <td><input type='text' name='ngay_cap_cmt' id='date' size=8 required></td>
+                <td><input type='text' name='noi_cap_cmt' size=8 required></td>
+                <td colspan=2><input type='submit' name='submit' value='Cập nhật' id='submit' required></td>
             </tr>
             </form>";
     }
 ?>
-<div id="abox">
+<div id="abox" class="panel">
 
 </div>
 
@@ -158,7 +165,7 @@
             if ($i<10)
                 $ma = "H0".$i;
             else $ma = "H".$i;
-    
+            $rows["ngay_cap_cmt"]=date('d-m-Y',strtotime($rows["ngay_cap_cmt"]));
             echo "
             <tr>
                 <td>".$i."</td>
@@ -170,7 +177,9 @@
                 <td>".$rows["so_cmt"]."</td>
                 <td>".$rows["ngay_cap_cmt"]."</td>
                 <td>".$rows["noi_cap_cmt"]."</td>
-                <td><a href='ds_ct.php?cmtdel=".$rows["so_cmt"]."&id_nc=".$ma_nc."' type='button' class='btn btn-sm btn-danger'><i class='glyphicon glyphicon-remove'></i></a></td>
+                <td class='xoa'>
+                    <a href='ds_ct.php?cmtdel=".$rows["so_cmt"]."&id_nc=".$ma_nc."' type='button' class='btn btn-sm btn-danger'><i class='glyphicon glyphicon-remove'></i></a>
+                </td>
             </tr>";
             $i++;
         }
@@ -179,17 +188,38 @@
     
 </table>
 <script type="text/javascript">
-    $("[name='ho_ten']").click(function () {
-        $('body').on("click",nameClick);
-    });
-    function nameClick(e) {
-        if(e.target.name != "ho_ten"){
+    $(document).ready(function() {
+        
+        $("[type='text']").focus(function () {
+            if (this.getAttribute('name') != 'ho_ten')
+                $('#abox').hide();
+        })
+
+        $("[name='address']").focus(function () {
+            $('#abox').hide();
+        })
+
+        $("[name='ho_ten']").keypress(function () {
             var ten = $("[name='ho_ten']").val();
             $('#abox').show();
             ten = ten.replace(/ /g,"+");
             $('#abox').load("ds_search.php?ten="+ten);
-            $('body').off("click",nameClick);
-        }
-    }
+        })
+
+        $('.xoa a').click(function (e) {
+            e.preventDefault();
+            var b=e.target.getAttribute("href");
+            if (e.target.type != 'button'){
+                b=$(e.target).parent();
+                    
+                b=$(b).attr("href");
+            }
+            
+            if (confirm('Chắc chắn xoá tình nguyện viên?')){
+                location.href=b;
+            }
+        });
+    })
+  
 
 </script>

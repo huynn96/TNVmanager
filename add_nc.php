@@ -1,13 +1,13 @@
 <head>
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <link rel='stylesheet' type='text/css' href='css/add_nc.css'/>
-  <script src="library/jquery-1.12.4.js"></script>
-  <script src="library/jquery-ui.js"></script>
-      <script>
-        $(function() {
-           $('#date').datepicker({
-                dateFormat: 'd-m-yy'}
-            ); 
+    <link rel='stylesheet' type='text/css' href='css/add_nc.css' />
+    <script src="library/jquery-1.12.4.js"></script>
+    <script src="library/jquery-ui.js"></script>
+    <script>
+        $(function () {
+            $('#date').datepicker({
+                dateFormat: 'd-m-yy'
+            });
         });
     </script>
 </head>
@@ -20,7 +20,7 @@
         $date=date('Y-m-d',strtotime($date));
         
         for ($i=0;$i<strlen($ma_nc);$i++)
-            if ($ma_nc[$i]==' ')
+            if ($ma_nc[$i] ==' ')
                 $bao_loi = "Mã nghiên cứu không được có dấu cách";
         if ($bao_loi){
             echo "<script>alert(\"$bao_loi\")</script>";
@@ -73,28 +73,28 @@
      
 ?>
 
-<h1>THÊM NGHIÊN CỨU MỚI</h1>
-<form id="contactform" name="contact" method="post" action="" enctype="multipart/form-data">
-    <p class="note"><span class="req">*</span> Bắt buộc phải điền</p>
-    <div class="row">
-        <label for="ma_nc">Mã nghiên cứu <span class="req">*</span></label>
-        <input type="text" name="ma_nc" id="name" class="txt" tabindex="1" placeholder="Mã nghiên cứu" required>
-    </div>
+    <h1>THÊM NGHIÊN CỨU MỚI</h1>
+    <form id="contactform" name="contact" method="post" action="" enctype="multipart/form-data">
+        <p class="note"><span class="req">*</span> Bắt buộc phải điền</p>
+        <div class="row">
+            <label for="ma_nc">Mã nghiên cứu <span class="req">*</span></label>
+            <input type="text" name="ma_nc" id="name" class="txt" tabindex="1" placeholder="Mã nghiên cứu" required>
+        </div>
 
-    <div class="row">
-        <label for="message">Tên nghiên cứu <span class="req">*</span></label>
-        <textarea name="message" id="message" class="txtarea" tabindex="4" required></textarea>
-    </div>
+        <div class="row">
+            <label for="message">Tên nghiên cứu <span class="req">*</span></label>
+            <textarea name="message" id="message" class="txtarea" tabindex="4" required></textarea>
+        </div>
 
-    <div class="row">
-        <label for="date">Ngày nghiên cứu <span class="req">*</span></label>
-        <input type="text" name="date" id="date" class="txt" tabindex="3" placeholder="" required>
-    </div>
+        <div class="row">
+            <label for="date">Ngày nghiên cứu <span class="req">*</span></label>
+            <input type="text" name="date" id="date" class="txt" tabindex="3" placeholder="" required>
+        </div>
 
-    <label for="ExampleInputFile">Upload ds <span class="req">*</span></label>
-    <input type="file" name="file" id="file">    
+        <label for="ExampleInputFile">Upload ds <span class="req">*</span></label>
+        <input type="file" name="file" id="file">
 
-    <div class="center">
-        <input type="submit" id="submitbtn" name="submitbtn" tabindex="5" value="Submit">
-    </div>
-</form>
+        <div class="center">
+            <input type="submit" id="submitbtn" name="submitbtn" tabindex="5" value="Submit">
+        </div>
+    </form>
