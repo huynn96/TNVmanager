@@ -1,4 +1,3 @@
-
 <?php
   $search = $_SESSION["tnv"];
   $cmt = $search;
@@ -118,7 +117,7 @@
         }
             }
 ?>
-<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="library/jquery-ui.css">
     <script src="library/jquery-1.12.4.js"></script>
     <script src="library/jquery-ui.js"></script>
 <script type="text/javascript">

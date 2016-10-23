@@ -1,6 +1,6 @@
 <head>
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <link rel='stylesheet' type='text/css' href='css/add_nc.css' />
+    <link rel="stylesheet" href="library/jquery-ui.css">
     <script src="library/jquery-1.12.4.js"></script>
     <script src="library/jquery-ui.js"></script>
     <script>
@@ -60,7 +60,6 @@
 
                 $date2=date('Y-m-d',$value[5]);
 
-                //echo "<script type='text/javascript'>alert('$date2');</script>";
                 $sql = "INSERT INTO tinh_nguyen_vien($field[0],$field[1],$field[2],$field[3],$field[4],$field[5],$field[6]) VALUES ('$value[0]','$value[1]','$value[2]','$value[3]','$value[4]','$date2','$value[6]')";
                 $query = mysql_query($sql);
                 

@@ -1,7 +1,10 @@
 <?php
+    error_reporting(0);
     session_start();
     if (isset($_GET["tnv"]))
         $_SESSION["tnv"] = $_GET["tnv"];
+
+    $ma_nc = $_GET["id_nc"];
 ?>
 
     <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -14,7 +17,7 @@
         <link rel="stylesheet" type="text/css" href="css/index.css">
         <link rel="stylesheet" type="text/css" href="library/css/bootstrap.css">
         <script src="library/jquery.min.js"></script>
-        <script src="library/bootstrap.min.js"></script>
+        <script src="library/js/bootstrap.js"></script>
 
         <?php
     error_reporting(0);
@@ -66,7 +69,7 @@
                     <ul id="tree1">
                         <li><a href="index.php?page=tnv_search">Quản lý tình nguyện viên</a></li>
                         <li><a href="index.php?page=add_nc"><i class="glyphicon glyphicon-plus-sign"></i> Thêm nghiên cứu mới</a></li>
-                        <li id="loadjQuery">Quản lý nghiên cứu
+                        <li id="loadjQuery"><a href="search_nc.php">Quản lý nghiên cứu</a>
                             <ul>
                                 <ul>
                                     <?php
@@ -121,6 +124,7 @@
                 //console.log(next);        
                 $('#content').load(next);
             });
+
         </script>
 
         <script type="text/javascript">
@@ -145,6 +149,7 @@
                     tree.find('li').has("ul").each(function () {
                         var branch = $(this); //li with children ul
                         branch.prepend("<i class='indicator glyphicon " + closedClass + "'></i>");
+
                         branch.addClass('branch');
                         branch.on('click', function (e) {
                             if (this == e.target) {
@@ -153,6 +158,7 @@
                                 $(this).children().children().toggle();
                             }
                         })
+                        //console.log(branch.children().children().text());
                         branch.children().children().toggle();
                     });
                     //fire event from the dynamically added icon
@@ -182,7 +188,24 @@
                 openedClass: 'glyphicon-folder-open',
                 closedClass: 'glyphicon-folder-close'
             });
+
+            $("#loadjQuery").children().children().toggle();
+            var icon = $("#loadjQuery").children('i:first');
+            icon.toggleClass("glyphicon-folder-open" + " " + "glyphicon-folder-close");
+
+            var p = $("[href='sua_nghien_cuu.php?id_nc=<?php echo $ma_nc; ?>']");
+            p=p.parent();
+           
+
+            p.parent().parent().children().children().toggle();
+            var icon = p.parent().parent().children('i:first');
+            icon.toggleClass("glyphicon-folder-open" + " " + "glyphicon-folder-close");
+
+            p.children().children().toggle();
+            var icon = p.children('i:first');
+            icon.toggleClass("glyphicon-folder-open" + " " + "glyphicon-folder-close");
         </script>
+
     </body>
 
     </html>
