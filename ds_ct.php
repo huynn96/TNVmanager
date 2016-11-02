@@ -51,8 +51,11 @@
         .noi_o{
             width: 20%;
         }
-        .phone, .so_cmt, .date, .noi_cap{
+        .so_cmt, .date, .noi_cap{
             width: 10%;
+        }
+        .phone{
+            width: 11%;
         }
         .ma_tnv,.stt{
             width: 3px;
@@ -198,10 +201,11 @@
             $('#abox').hide();
         });
 
-        $("[name='ho_ten']").keypress(function () {
+        $("[name='ho_ten']").keypress(function (e) {
             var ten = $("[name='ho_ten']").val();
             $('#abox').show();
-            
+            key = String.fromCharCode(e.keyCode);
+            ten = ten + key;
             ten = ten.replace(/ /g,"+");
             $('#abox').load("ds_search.php?ten="+ten);
         });

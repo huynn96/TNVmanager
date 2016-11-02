@@ -18,29 +18,11 @@
         $date2 = $_POST["date2"];
         $date2=date('Y-m-d',strtotime($date2));
         
-        for ($i=0;$i<strlen($ma_nc);$i++)
-            if ($ma_nc[$i] ==' ')
-                $bao_loi = "Mã nghiên cứu không được có dấu cách";
-        if ($bao_loi){
-            echo "<script>alert(\"$bao_loi\")</script>";
-            echo "<meta http-equiv=\"refresh\" content=\"0;url=index.php?page=add_nc\">";
-        }
-        else{
-
         include("connect_db.php");
 
-        $sql = "SELECT * FROM nghien_cuu WHERE id='$ma_nc'";
+        $sql = "INSERT INTO nghien_cuu(id, ten_nc, date_year, date_year_end) VALUES ('$ma_nc', '$ten_nc', '$date', '$date2')";
         $query = mysql_query($sql);
-
-        $num_rows = mysql_num_rows($query);
-        if ($num_rows>0){
-            echo "<script type='text/javascript'>alert('Cập nhật danh sách nghiên cứu');</script>";
-        }
-        else{
-            $sql = "INSERT INTO nghien_cuu(id, ten_nc, date_year, date_year_end) VALUES ('$ma_nc', '$ten_nc', '$date', '$date2')";
-            $query = mysql_query($sql);
-            echo "<script type='text/javascript'>alert('Thêm nghiên cứu thành công!');</script>";
-        }
+        
         require_once 'xlsx/simplexlsx.class.php';   
         $filename = $_FILES["file"]["tmp_name"];
 
@@ -53,27 +35,31 @@
             $data = new SimpleXLSX($filename);
             $field = $data->rows()[0];
             for ($i=1; $i < $data->dimension()[1]; $i++){
-                $value = $data->rows()[$i];               
+                $value = $data->rows()[$i];  
+                if ($value[4]==null && $value[3]==null)
+                    continue;             
                 if ($value[4]==null)
                     $value[4]=$value[3];
+                echo $value[4]."<br>";
+
                 if ($value[5]!=null){
                     $value[5] = DayToSecond($value[5]);
-                    $date2=date('Y-m-d',$value[5]); 
-                    $sql = "INSERT INTO tinh_nguyen_vien($field[0],$field[1],$field[2],$field[3],$field[4],$field[5],$field[6]) VALUES ('$value[0]','$value[1]','$value[2]','$value[3]','$value[4]','$date2','$value[6]')";
-                    $query = mysql_query($sql); 
+                    $date2=date('Y-m-d',$value[5]);   
                 }
-                else{
-                    $sql = "INSERT INTO tinh_nguyen_vien($field[0],$field[1],$field[2],$field[3],$field[4],$field[5],$field[6]) VALUES ('$value[0]','$value[1]','$value[2]','$value[3]','$value[4]','NULL','$value[6]')";
-                    $query = mysql_query($sql);
-                    $sql="UPDATE `tinh_nguyen_vien` SET `ngay_cap_cmt` = NULL WHERE `so_cmt` = '$value[4]'";
+                else $date2=null;
+                $sql = "INSERT INTO tinh_nguyen_vien($field[0],$field[1],$field[2],$field[3],$field[4],$field[5],$field[6]) VALUES ('$value[0]','$value[1]','$value[2]','$value[3]','$value[4]','$date2','$value[6]')";
+                $query = mysql_query($sql); 
+                if ($date2==null){
+                    $sql = "UPDATE tinh_nguyen_vien SET ngay_cap_cmt = NULL WHERE so_cmt='$value[4]'";
                     $query = mysql_query($sql);
                 }
                                 
                 $sql = "INSERT INTO tnv_nghien_cuu(id, so_cmt) VALUES ('$ma_nc', '$value[4]')";
                 $query = mysql_query($sql);
             }   
+            echo 1;
         }
-        }
+        
         header("location: index.php?page=ds_ct&id_nc=$ma_nc");
     }
      

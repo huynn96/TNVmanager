@@ -42,7 +42,8 @@
     $num_rows = mysql_num_rows($query);
     
     while ($row = mysql_fetch_array($query)) {
-        $row["ngay_cap_cmt"]=date('d-m-Y',strtotime($row["ngay_cap_cmt"]));
+        if ($row["ngay_cap_cmt"]!=null)
+           $row["ngay_cap_cmt"]=date('d-m-Y',strtotime($row["ngay_cap_cmt"]));
         $cmtnd = $row['so_cmt'];
         $sql2 = "SELECT * FROM tnv_nghien_cuu WHERE tnv_nghien_cuu.so_cmt='$cmtnd'";
         $query2 = mysql_query($sql2);
