@@ -1,8 +1,5 @@
 <head>
     <link rel='stylesheet' type='text/css' href='css/add_nc.css' />
-    <link rel="stylesheet" href="library/jquery-ui.css">
-    <script src="library/jquery-1.12.4.js"></script>
-    <script src="library/jquery-ui.js"></script>
     <script>
         $(function () {
             $('.date').datepicker({
@@ -32,7 +29,7 @@
 
         include("connect_db.php");
 
-        $sql = "SELECT * FROM nghien_cuu WHERE ID='$ma_nc'";
+        $sql = "SELECT * FROM nghien_cuu WHERE id='$ma_nc'";
         $query = mysql_query($sql);
 
         $num_rows = mysql_num_rows($query);
@@ -43,7 +40,6 @@
             $sql = "INSERT INTO nghien_cuu(id, ten_nc, date_year, date_year_end) VALUES ('$ma_nc', '$ten_nc', '$date', '$date2')";
             $query = mysql_query($sql);
             echo "<script type='text/javascript'>alert('Thêm nghiên cứu thành công!');</script>";
-            //header("Location: index.php");
         }
         require_once 'xlsx/simplexlsx.class.php';   
         $filename = $_FILES["file"]["tmp_name"];
@@ -57,25 +53,35 @@
             $data = new SimpleXLSX($filename);
             $field = $data->rows()[0];
             for ($i=1; $i < $data->dimension()[1]; $i++){
-                $value = $data->rows()[$i];
-                $value[5] = DayToSecond($value[5]);
-
-                $date2=date('Y-m-d',$value[5]);
-
-                $sql = "INSERT INTO tinh_nguyen_vien($field[0],$field[1],$field[2],$field[3],$field[4],$field[5],$field[6]) VALUES ('$value[0]','$value[1]','$value[2]','$value[3]','$value[4]','$date2','$value[6]')";
-                $query = mysql_query($sql);
-                
-                $sql = "INSERT INTO tnv_nghien_cuu(id, so_cmt) VALUES ('$ma_nc', '$value[0]')";
+                $value = $data->rows()[$i];               
+                if ($value[4]==null)
+                    $value[4]=$value[3];
+                if ($value[5]!=null){
+                    $value[5] = DayToSecond($value[5]);
+                    $date2=date('Y-m-d',$value[5]); 
+                    $sql = "INSERT INTO tinh_nguyen_vien($field[0],$field[1],$field[2],$field[3],$field[4],$field[5],$field[6]) VALUES ('$value[0]','$value[1]','$value[2]','$value[3]','$value[4]','$date2','$value[6]')";
+                    $query = mysql_query($sql); 
+                }
+                else{
+                    $sql = "INSERT INTO tinh_nguyen_vien($field[0],$field[1],$field[2],$field[3],$field[4],$field[5],$field[6]) VALUES ('$value[0]','$value[1]','$value[2]','$value[3]','$value[4]','NULL','$value[6]')";
+                    $query = mysql_query($sql);
+                    $sql="UPDATE `tinh_nguyen_vien` SET `ngay_cap_cmt` = NULL WHERE `so_cmt` = '$value[4]'";
+                    $query = mysql_query($sql);
+                }
+                                
+                $sql = "INSERT INTO tnv_nghien_cuu(id, so_cmt) VALUES ('$ma_nc', '$value[4]')";
                 $query = mysql_query($sql);
             }   
         }
-        }      
+        }
+        header("location: index.php?page=ds_ct&id_nc=$ma_nc");
     }
      
 ?>
 
-    <h1>THÊM NGHIÊN CỨU MỚI</h1>
-    <form id="contactform" name="contact" method="post" action="" enctype="multipart/form-data">
+
+
+    <form id="contactform" name="contact" method="post" action="add_nc.php" enctype="multipart/form-data">
         <p class="note"><span class="req">*</span> Bắt buộc phải điền</p>
         <div class="row">
             <label for="ma_nc">Mã nghiên cứu <span class="req">*</span></label>

@@ -2,8 +2,8 @@ CREATE DATABASE IF NOT EXISTS tnv_manager;
 USE tnv_manager;
 CREATE TABLE IF NOT EXISTS nghien_cuu(
 	id VARCHAR(10) NOT NULL,
-	ten_nc VARCHAR(400) NOT NULL,
-	date_year DATE,
+	ten_nc VARCHAR(400),
+	date_year DATE NOT NULL,
 	date_year_end DATE,
 	PRIMARY KEY (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

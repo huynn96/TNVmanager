@@ -120,9 +120,6 @@
         }
             }
 ?>
-<link rel="stylesheet" href="library/jquery-ui.css">
-    <script src="library/jquery-1.12.4.js"></script>
-    <script src="library/jquery-ui.js"></script>
 <script type="text/javascript">
         $(function() {
            $('#date').datepicker({

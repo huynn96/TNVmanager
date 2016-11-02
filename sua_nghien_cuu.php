@@ -104,8 +104,8 @@
 
                 <div class="row">
                     <label for="date">Ngày nghiên cứu <span class="req">*</span></label>
-                    <input type="text" name="date" id="date" class="txt" value="<?php echo $date; ?>" tabindex="3" placeholder="" required>
-                    <input type="text" name="date2" class="txt" value="<?php echo $date2; ?>" tabindex="3" placeholder="" required>
+                    <input type="text" name="date" class="txt date" value="<?php echo $date; ?>" tabindex="3" placeholder="" required>
+                    <input type="text" name="date2" class="txt date" value="<?php echo $date2; ?>" tabindex="3" placeholder="" required>
                 </div>
 
                 <div class="center">
@@ -143,6 +143,10 @@
                 location.href=b;
             }
         });
+
+        $('.date').datepicker({
+            dateFormat: 'd-m-yy'
+        }); 
 
 </script>
 <?php

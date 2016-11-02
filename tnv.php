@@ -1,8 +1,4 @@
-<head>
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <script src="library/jquery-1.12.4.js"></script>
-    <script src="library/jquery-ui.js"></script>
-    
+<head>    
     <script type='text/javascript'>
     $(document).ready(function() {
        $('.xoa a').click(function (e) {
@@ -40,7 +36,8 @@
   $query = mysql_query($sql);
   $num_rows = mysql_num_rows($query);
   if ($num_rows == 0)
-    echo "Tình nguyện viên không có trong dữ liệu!";
+    include_once("add_tnv.php");
+
   while ($row = mysql_fetch_array($query)) {
 
   $row["ngay_cap_cmt"]=date('d-m-Y',strtotime($row["ngay_cap_cmt"]));

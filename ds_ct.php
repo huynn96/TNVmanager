@@ -35,9 +35,6 @@
                 
 ?>
 <head>
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <script src="library/jquery-ui.js"></script>
-
     <style>
         #wrapabox{
             position: relative;
@@ -112,15 +109,12 @@
         });
     </script>
 </head>
-
-
-
     <?php
-    $sql2 = "SELECT * FROM nghien_cuu WHERE id='$ma_nc'";
-    $query2 = mysql_query($sql2);
-    $row2 = mysql_fetch_array($query2);
-    echo "<a id='add' href='index.php?page=ds_ct&id_nc=".$ma_nc."&add=1'><i class='glyphicon glyphicon-plus'></i>Thêm mới tình nguyện viên vào danh sách</a>";
-    echo "<p style='font-weight: bold'>Mã nghiên cứu: ".$ma_nc."</p><p style='font-weight: bold'>Tên nghiên cứu: ".$row2["ten_nc"]."</p>";
+        $sql2 = "SELECT * FROM nghien_cuu WHERE id='$ma_nc'";
+        $query2 = mysql_query($sql2);
+        $row2 = mysql_fetch_array($query2);
+        echo "<a id='add' href='index.php?page=ds_ct&id_nc=".$ma_nc."&add=1'><i class='glyphicon glyphicon-plus'></i>Thêm mới tình nguyện viên vào danh sách</a>";
+        echo "<p style='font-weight: bold'>Mã nghiên cứu: ".$ma_nc."</p><p style='font-weight: bold'>Tên nghiên cứu: ".$row2["ten_nc"]."</p>";
     ?>
 <div id="wrapabox">
 <div id='abox'></div>
@@ -169,7 +163,8 @@
             if ($i<10)
                 $ma = "H0".$i;
             else $ma = "H".$i;
-            $rows["ngay_cap_cmt"]=date('d-m-Y',strtotime($rows["ngay_cap_cmt"]));
+            if($rows["ngay_cap_cmt"]!=null)
+                $rows["ngay_cap_cmt"]=date('d-m-Y',strtotime($rows["ngay_cap_cmt"]));
             echo "
             <tr>
                 <td>".$i."</td>
