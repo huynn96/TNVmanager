@@ -43,7 +43,7 @@
                 <div class="head_top">
 
                     <a title="Viện Kiểm nghiệm thuốc Trung ương">
-                        <img src="img/New Bitmap Image.bmp" width=100% height=100%>
+                        <img src="./img/New Bitmap Image.bmp" width=100% height=100%>
                     </a>
                 </div>
             </div>
@@ -68,7 +68,7 @@
                 <div id="sidebar">
                     <ul id="tree1">
                         <li><a href="index.php?page=tnv_search">Quản lý tình nguyện viên</a></li>
-                        <li><a href="index.php?page=add_nc"><i class="glyphicon glyphicon-plus-sign"></i> Thêm nghiên cứu mới</a></li>
+
                         <li id="loadjQuery"><a href="search_nc.php">Quản lý nghiên cứu</a>
                             <ul>
                                 <ul>

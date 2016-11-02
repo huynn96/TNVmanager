@@ -5,7 +5,7 @@
     <script src="library/jquery-ui.js"></script>
     <script>
         $(function () {
-            $('#date').datepicker({
+            $('.date').datepicker({
                 dateFormat: 'd-m-yy'
             });
         });
@@ -18,6 +18,8 @@
         $ten_nc = $_POST["message"];
         $date = $_POST["date"];
         $date=date('Y-m-d',strtotime($date));
+        $date2 = $_POST["date2"];
+        $date2=date('Y-m-d',strtotime($date2));
         
         for ($i=0;$i<strlen($ma_nc);$i++)
             if ($ma_nc[$i] ==' ')
@@ -38,7 +40,7 @@
             echo "<script type='text/javascript'>alert('Cập nhật danh sách nghiên cứu');</script>";
         }
         else{
-            $sql = "INSERT INTO nghien_cuu(id, ten_nc, date_year) VALUES ('$ma_nc', '$ten_nc', '$date')";
+            $sql = "INSERT INTO nghien_cuu(id, ten_nc, date_year, date_year_end) VALUES ('$ma_nc', '$ten_nc', '$date', '$date2')";
             $query = mysql_query($sql);
             echo "<script type='text/javascript'>alert('Thêm nghiên cứu thành công!');</script>";
             //header("Location: index.php");
@@ -87,7 +89,8 @@
 
         <div class="row">
             <label for="date">Ngày nghiên cứu <span class="req">*</span></label>
-            <input type="text" name="date" id="date" class="txt" tabindex="3" placeholder="" required>
+            <input type="text" name="date" class="txt date" tabindex="3" placeholder="" required>
+            <input type="text" name="date2" class="txt date" tabindex="3" placeholder="" required>
         </div>
 
         <label for="ExampleInputFile">Upload ds <span class="req">*</span></label>

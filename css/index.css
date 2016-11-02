@@ -18,8 +18,8 @@ body{
 		height: 0px;
 }
 #wrapper{ 
-		width: 1200px; 
-		margin: 0px auto;
+	width: 1300px;
+	margin: 0 auto;
 }
 #header, #footer {
 		min-height: 150px; 

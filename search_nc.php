@@ -25,3 +25,12 @@
   	<button type="submit">Tìm kiếm</button>
 </form>
 
+<button id="button" name="add" type="button" class="btn btn-primary" style="display: block;margin:130px 0 0 20px;">Thêm nghiên cứu mới</button>
+
+<script type="text/javascript">
+	$('#button').click(function () {
+		location.href= 'index.php?page=add_nc';
+	})
+
+</script>
+

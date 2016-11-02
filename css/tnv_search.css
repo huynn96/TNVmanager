@@ -1,4 +1,4 @@
-*,*:after,*:before {
+/**,*:after,*:before {
   box-sizing:border-box;
   -moz-box-sizing:border-box;
   -webkit-box-sizing:border-box;
@@ -16,11 +16,11 @@
 #content {
   background: white;
   color: #000;
-  font:12px/18px 'HelveticaNeue', Helvetica, Arial, sans-serif;
+ 
 }
 a,a:visited {
   color:#000;
-}
+}*/
  
 /*--------------------------------------------------------------
 2.0 - SEARCH FORM
@@ -50,7 +50,7 @@ a,a:visited {
     height: 36px;
     background:#fefefe;
     border: none;
-    font:12px/12px 'HelveticaNeue', Helvetica, Arial, sans-serif;
+    /*font:12px/12px 'HelveticaNeue', Helvetica, Arial, sans-serif;*/
     margin-right: 5px;
     padding: 10px;
     width: 216px;
@@ -89,7 +89,7 @@ a,a:visited {
     border: none;
     color:#fff;
     cursor: pointer;
-    font: 13px/13px 'HelveticaNeue', Helvetica, Arial, sans-serif;
+    /*font: 13px/13px 'HelveticaNeue', Helvetica, Arial, sans-serif;*/
     padding: 10px;
     width:106px;
     box-shadow: 0 0 2px #2692dd inset;
