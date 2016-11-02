@@ -16,7 +16,9 @@
         <title>Trang chủ</title>
         <link rel="stylesheet" type="text/css" href="css/index.css">
         <link rel="stylesheet" type="text/css" href="library/css/bootstrap.css">
-        <script src="library/jquery.min.js"></script>
+        <link rel="stylesheet" href="library/jquery-ui-1.12.1/jquery-ui.css">
+        <script src="library/jquery-1.12.4.js"></script>
+        <script src="library/jquery-ui.js"></script>
         <script src="library/js/bootstrap.js"></script>
 
         <?php
@@ -121,7 +123,7 @@
                 e.preventDefault();
                 var link = e.target;
                 var next = link.getAttribute("href");
-                //console.log(next);        
+      
                 $('#content').load(next);
             });
 
