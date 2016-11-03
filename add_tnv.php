@@ -16,11 +16,20 @@
 		$address = $_POST["address"];
 		$phone = $_POST["phone"];
     	$date = $_POST["ngay_cap_cmt"];
-    	$date=date('Y-m-d',strtotime($date));
+        if ($date != null)
+    	   $date=date('Y-m-d',strtotime($date));
     	$noi_cap_cmt = $_POST["noi_cap_cmt"];
 
-    	$sql = "INSERT INTO tinh_nguyen_vien(so_cmt, ho_ten, year, address, phone, ngay_cap_cmt, noi_cap_cmt) VALUES ('$so_cmt', '$ho_ten', '$year', '$address', '$phone', '$date', '$noi_cap_cmt')";
-    	$query = mysql_query($sql);
+        if ($so_cmt==null && $phone!=null){
+            $so_cmt = $phone;
+            $so_cmt = str_replace(' ','',$so_cmt);
+            $so_cmt .= "(DT)";
+        }
+
+        if ($so_cmt!=null && $phone!=null){
+        	$sql = "INSERT INTO tinh_nguyen_vien(so_cmt, ho_ten, year, address, phone, ngay_cap_cmt, noi_cap_cmt) VALUES ('$so_cmt', '$ho_ten', '$year', '$address', '$phone', '$date', '$noi_cap_cmt')";
+        	$query = mysql_query($sql);
+        }
     	header("location: index.php?page=tnv&tnv=$so_cmt");
 	}
 ?>

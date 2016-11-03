@@ -60,7 +60,7 @@
 <table id="table" class="table-striped table-hover">
     <?php
     $ten = $_GET["ten"];
-
+    echo "Search for: ".$ten." <br>";
     include_once("connect_db.php");
     $sql = "SELECT * FROM tinh_nguyen_vien WHERE ho_ten LIKE '%$ten%'";
     $query = mysql_query($sql);

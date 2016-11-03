@@ -38,9 +38,11 @@
                 $value = $data->rows()[$i];  
                 if ($value[4]==null && $value[3]==null)
                     continue;             
-                if ($value[4]==null)
-                    $value[4]=$value[3];
-                echo $value[4]."<br>";
+                if ($value[4]==null){
+                    $value[4] = $value[3];
+                    $value[4] = str_replace(' ','',$value[4]);
+                    $value[4] .= "(DT)";
+                }
 
                 if ($value[5]!=null){
                     $value[5] = DayToSecond($value[5]);
@@ -57,7 +59,6 @@
                 $sql = "INSERT INTO tnv_nghien_cuu(id, so_cmt) VALUES ('$ma_nc', '$value[4]')";
                 $query = mysql_query($sql);
             }   
-            echo 1;
         }
         
         header("location: index.php?page=ds_ct&id_nc=$ma_nc");

@@ -37,3 +37,25 @@
 .toppad
 {margin-top:20px;
 }
+
+.test + .tooltip > .tooltip-inner {
+        background: linear-gradient(top,#F6FB7D,#F8FFA6);
+        background: -moz-linear-gradient(bottom,#F6FB7D,#F8FFA6);
+        color: #000000; 
+        padding: 15px;
+        padding-bottom: 2px;
+        font-size: 15px;
+        max-width: 350px;
+    }
+    /* Tooltip on bottom */
+    .test + .tooltip.bottom > .tooltip-arrow {
+        border-bottom: 5px solid #F6FB7D;
+    }
+
+    #note{
+        background: none;
+        border: none;
+        min-height: 100px;
+        width: 335px;
+        overflow: hidden;
+    }

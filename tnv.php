@@ -39,8 +39,8 @@
     include_once("add_tnv.php");
 
   while ($row = mysql_fetch_array($query)) {
-
-  $row["ngay_cap_cmt"]=date('d-m-Y',strtotime($row["ngay_cap_cmt"]));
+  if ($row["ngay_cap_cmt"]!=null)
+    $row["ngay_cap_cmt"]=date('d-m-Y',strtotime($row["ngay_cap_cmt"]));
   $cmtnd = $row['so_cmt'];
   $sql2 = "SELECT * FROM tnv_nghien_cuu WHERE tnv_nghien_cuu.so_cmt='$cmtnd'";
   $query2 = mysql_query($sql2);
@@ -104,7 +104,7 @@
                         <td>Các nghiên cứu:</td>
                         <td>";
                         while ($row2 = mysql_fetch_array($query2)) 
-                          echo $row2["id"].", ";
+                          echo "<button id='".$row2["id"]."' class='test btn btn-primary' data-toggle='tooltip' name='".$cmtnd."'>".$row2["id"];
                         echo "</td>
                       </tr>
                        </tbody>
@@ -122,3 +122,29 @@
     </div>";
         }
 ?>
+
+<script>
+$(document).ready(function(){
+    
+    $('[data-toggle="tooltip"]').tooltip({title: "<textarea id='note'></textarea>", html: true, placement: "bottom", trigger: "click"}); 
+    $('[data-toggle="tooltip"]').click(function (e) {
+        $.post('editNote.php',{id: $(e.target).attr('id'),so_cmt: $(e.target).attr('name')},function (data) {
+            note=data;
+            $('#note').val(note); 
+            var elem=$('#note');
+            while(elem.height() < elem[0].scrollHeight) {elem.height(elem.height()+10);} 
+        }); 
+        $('#note').focusout(function () {
+            note = $('#note').val();
+           
+            $.post('editNote.php',{notes: note,id: $(e.target).attr('id'),so_cmt: $(e.target).attr('name')}); 
+            $('#note').val(note); 
+        })
+        $('#note').keyup(function () {
+            var elem=$('#note');
+            while(elem.height() < elem[0].scrollHeight) {elem.height(elem.height()+10);}
+        })
+        
+    });
+});
+</script>
