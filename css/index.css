@@ -40,7 +40,7 @@ div.bottom_content {
 
 #content{ 
 		position: relative;
-		width: 70%; 
+		width: 74.5%; 
 		float: right; 
 		min-height: 500px; 
 		margin: 20px 0px;
@@ -53,7 +53,7 @@ div.bottom_content {
 }
 #sidebar{ 
 		position: relative;
-		width: 29.5%; 
+		width: 25%; 
 		float: left;
 		margin: 20px 0px; 
 		min-height: 500px; 

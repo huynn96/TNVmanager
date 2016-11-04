@@ -1,27 +1,104 @@
-        #submit{
-            cursor: pointer;
-  font-family: 'Oxygen', Arial, sans-serif;
-  font-size: 1.2em;
-  color: #0a528f;
-  text-shadow: 1px 1px 0 rgba(255,255,255,0.65);
-  border-width: 1px;
-  border-style: solid;
-  border-color: #317bd6 #3784e3 #2d74d5 #3774e3;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
-  background-color: #4581e5;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#6faefd), to(#4581e5));
-  background-image: -webkit-linear-gradient(top, #6faefd, #4581e5);
-  background-image: -moz-linear-gradient(top, #6faefd, #4581e5);
-  background-image: -ms-linear-gradient(top, #6faefd, #4581e5);
-  background-image: -o-linear-gradient(top, #6faefd, #4581e5);
-  background-image: linear-gradient(top, #6faefd, #4581e5);
-  -moz-box-shadow: 1px 1px 3px rgba(0,0,0,0.4), 0 1px 0 rgba(255, 255, 255, 0.5) inset;
-  -webkit-box-shadow: 1px 1px 3px rgba(0,0,0,0.4), 0 1px 0 rgba(255, 255, 255, 0.5) inset;
-  box-shadow: 1px 1px 3px rgba(0,0,0,0.4), 0 1px 0 rgba(255, 255, 255, 0.5) inset;
-  -webkit-transition: all 0.3s linear;
-  -moz-transition: all 0.3s linear;
-  transition: all 0.3s linear;
-
-        }
+        #submit {                                                                                                                                                                                  
+            cursor: pointer;                                                                                                                                                            
+            font-family: 'Oxygen', Arial, sans-serif;                                                                                                          
+            font-size: 1.2em;                                                                                                                                                          
+            color: #0a528f;                                                                                                                                                              
+            text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.65);                                                                                          
+            border-width: 1px;                                                                                                                                                        
+            border-style: solid;                                                                                                                                                    
+            border-color: #317bd6 #3784e3 #2d74d5 #3774e3;                                                                                                
+            -webkit-border-radius: 3px;                                                                                                                                      
+            -moz-border-radius: 3px;                                                                                                                                            
+            border-radius: 3px;                                                                                                                                                      
+            background-color: #4581e5;                                                                                                                                        
+            background-image: -webkit-gradient(linear, left top, left bottom, from(#6faefd), to(#4581e5));
+            background-image: -webkit-linear-gradient(top, #6faefd, #4581e5);                                                          
+            background-image: -moz-linear-gradient(top, #6faefd, #4581e5);                                                                
+            background-image: -ms-linear-gradient(top, #6faefd, #4581e5);                                                                  
+            background-image: -o-linear-gradient(top, #6faefd, #4581e5);                                                                    
+            background-image: linear-gradient(top, #6faefd, #4581e5);                                                                          
+            -moz-box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4), 0 1px 0 rgba(255, 255, 255, 0.5) inset;            
+            -webkit-box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4), 0 1px 0 rgba(255, 255, 255, 0.5) inset;      
+            box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4), 0 1px 0 rgba(255, 255, 255, 0.5) inset;                      
+            -webkit-transition: all 0.3s linear;                                                                                                                    
+            -moz-transition: all 0.3s linear;                                                                                                                          
+            transition: all 0.3s linear;                                                                                                                                    
+        }                                                                                                                                                                                                  
+                                                                                                                                                                                                            
+        #wrapabox {                                                                                                                                                                              
+            position: relative;                                                                                                                                                      
+        }                                                                                                                                                                                                  
+                                                                                                                                                                                                            
+        #table1 {                                                                                                                                                                                  
+            position: relative;                                                                                                                                                      
+            font-size: 13px;                                                                                                                                                            
+            font-family: arial, sans-serif;                                                                                                                              
+            border-collapse: collapse;                                                                                                                                        
+            width: 100%;                                                                                                                                                                    
+            line-height: 20px;                                                                                                                                                        
+        }                                                                                                                                                                                                  
+                                                                                                                                                                                                            
+        .noi_o {                                                                                                                                                                                    
+            width: 20%;                                                                                                                                                                      
+        }                                                                                                                                                                                                  
+                                                                                                                                                                                                            
+        .so_cmt,                                                                                                                                                                                    
+        .date,                                                                                                                                                                                        
+        .noi_cap {                                                                                                                                                                                
+            width: 10%;                                                                                                                                                                      
+        }                                                                                                                                                                                                  
+                                                                                                                                                                                                            
+        .phone {                                                                                                                                                                                    
+            width: 11%;                                                                                                                                                                      
+        }                                                                                                                                                                                                  
+                                                                                                                                                                                                            
+        .ma_tnv,                                                                                                                                                                                    
+        .stt {                                                                                                                                                                                        
+            width: 3px;                                                                                                                                                                      
+        }                                                                                                                                                                                                  
+                                                                                                                                                                                                            
+        .year {                                                                                                                                                                                      
+            width: 4px;                                                                                                                                                                      
+        }                                                                                                                                                                                                  
+                                                                                                                                                                                                            
+        td,                                                                                                                                                                                              
+        th {                                                                                                                                                                                            
+            border: 1px solid black;                                                                                                                                            
+            text-align: center;                                                                                                                                                      
+            padding: 3px;                                                                                                                                                                  
+        }                                                                                                                                                                                                  
+                                                                                                                                                                                                            
+        .table-striped > tbody > tr:nth-child(odd) > td,                                                                                                    
+        .table-striped > tbody > tr:nth-child(odd) > th {                                                                                                  
+            background-color: #d9d9d9;                                                                                                                                        
+        }                                                                                                                                                                                                  
+                                                                                                                                                                                                            
+        .table-hover > tbody > tr:hover > td,                                                                                                                          
+        .table-hover > tbody > tr:hover > th {                                                                                                                        
+            background-color: #c9c9c9;                                                                                                                                        
+        }                                                                                                                                                                                                  
+                                                                                                                                                                                                            
+        #add {                                                                                                                                                                                        
+            float: right;                                                                                                                                                                  
+            margin: 5px 5px 10px 0;                                                                                                                                              
+            color: #369;                                                                                                                                                                    
+            text-decoration: none;                                                                                                                                                
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;                                                                    
+            font-size: 14px;                                                                                                                                                            
+            font-weight: 700;                                                                                                                                                          
+        }                                                                                                                                                                                                  
+                                                                                                                                                                                                            
+        #abox {                                                                                                                                                                                      
+            position: absolute;                                                                                                                                                      
+            background: white;                                                                                                                                                        
+            display: none;                                                                                                                                                                
+            z-index: 2;                                                                                                                                                                      
+            width: 90%;                                                                                                                                                                      
+            padding: 1px;                                                                                                                                                                  
+            left: 5%;                                                                                                                                                                          
+            top: 136px;                                                                                                                                                                      
+            border: 3px outset #a9a9a9;                                                                                                                                      
+            border-radius: 10px 10px;                                                                                                                                          
+            -moz-border-radius: 10px 10px;                                                                                                                                
+            -webkit-border-radius: 10px 10px;                                                                                                                          
+        }                                                                                                                                                                                                  

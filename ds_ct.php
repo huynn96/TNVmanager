@@ -1,5 +1,13 @@
 <?php
     include_once("connect_db.php");
+    if (isset($_POST["check"])){
+        $cmt = $_POST["cmt"];
+        $ma_nc = $_POST["id"];
+        $check = $_POST["check"];
+        $sql = "UPDATE tnv_nghien_cuu SET ct='$check' WHERE so_cmt='$cmt' AND id='$ma_nc'";
+        $query = mysql_query($sql);
+    }
+
     if (isset($_GET["cmtdel"])){
         $cmt = $_GET["cmtdel"];
         $ma_nc = $_GET["id_nc"];
@@ -28,8 +36,7 @@
     else{
     $ma_nc = $_GET["id_nc"];
 
-    $sql = "SELECT tinh_nguyen_vien.ho_ten, tinh_nguyen_vien.year, tinh_nguyen_vien.address, tinh_nguyen_vien.phone, tinh_nguyen_vien.so_cmt, 
-            tinh_nguyen_vien.ngay_cap_cmt, tinh_nguyen_vien.noi_cap_cmt FROM tinh_nguyen_vien INNER JOIN tnv_nghien_cuu ON tinh_nguyen_vien.so_cmt=tnv_nghien_cuu.so_cmt AND tnv_nghien_cuu.id='$ma_nc' ORDER BY tinh_nguyen_vien.so_cmt";
+    $sql = "SELECT tinh_nguyen_vien.ho_ten, tinh_nguyen_vien.year, tinh_nguyen_vien.address, tinh_nguyen_vien.phone, tinh_nguyen_vien.so_cmt, tinh_nguyen_vien.ngay_cap_cmt, tinh_nguyen_vien.noi_cap_cmt, tnv_nghien_cuu.ct FROM tinh_nguyen_vien INNER JOIN tnv_nghien_cuu ON tinh_nguyen_vien.so_cmt=tnv_nghien_cuu.so_cmt AND tnv_nghien_cuu.id='$ma_nc' ORDER BY tinh_nguyen_vien.ho_ten DESC";
     $query = mysql_query($sql);
 
                 
@@ -51,8 +58,11 @@
         .noi_o{
             width: 20%;
         }
-        .so_cmt, .date, .noi_cap{
+        .date, .noi_cap{
             width: 10%;
+        }
+        .so_cmt{
+             width: 8%;
         }
         .phone{
             width: 11%;
@@ -125,7 +135,7 @@
     
     <tr>
             <th class="stt">STT</th>
-            <th class="ma_tnv">Mã TNV</th>
+            <th class="ct">CT</th>
             <th class="ho_ten">Họ và tên</th>
             <th class="year">Năm sinh</th>
             <th class="noi_o">Nơi ở hiện tại</th>
@@ -163,15 +173,16 @@
 
     $i=1;
         while ( $rows = mysql_fetch_array($query)){
-            if ($i<10)
-                $ma = "H0".$i;
-            else $ma = "H".$i;
             if($rows["ngay_cap_cmt"]!=null)
                 $rows["ngay_cap_cmt"]=date('d-m-Y',strtotime($rows["ngay_cap_cmt"]));
             echo "
             <tr>
                 <td>".$i."</td>
-                <td>".$ma."</td>
+                <td>";
+            if ($rows["ct"] ==1)
+                echo "<input type='checkbox' value='".$rows["so_cmt"]."' checked>";
+            else echo "<input type='checkbox' value='".$rows["so_cmt"]."'>";
+             echo"</td>
                 <td><a href='index.php?page=tnv&search=".$rows["so_cmt"]."'>".$rows["ho_ten"]."</a></td>
                 <td>".$rows["year"]."</td>
                 <td>".$rows["address"]."</td>
@@ -184,8 +195,9 @@
                 </td>
             </tr>";
             $i++;
+
         }
-    }
+   
 ?>
     
 </table>
@@ -223,7 +235,17 @@
                 location.href=b;
             }
         });
+
+        $("[type='checkbox']").click(function (e) {
+            check=0
+            if ($(e.target).is(":checked"))
+                check=1;
+            $.post("ds_ct.php",{check: check, id: <?php echo $ma_nc; ?>, cmt: $(e.target).val()});
+
+        });
     });
   
 
 </script>
+
+<?php } ?>

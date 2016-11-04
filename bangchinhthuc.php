@@ -1,6 +1,6 @@
 <?php
     $sql = "SELECT tinh_nguyen_vien.ho_ten, tinh_nguyen_vien.year, tinh_nguyen_vien.address, tinh_nguyen_vien.phone, tinh_nguyen_vien.so_cmt, 
-            tinh_nguyen_vien.ngay_cap_cmt, tinh_nguyen_vien.noi_cap_cmt FROM tinh_nguyen_vien INNER JOIN tnv_nghien_cuu ON tinh_nguyen_vien.so_cmt=tnv_nghien_cuu.so_cmt AND tnv_nghien_cuu.id='$ma_nc' ORDER BY tinh_nguyen_vien.so_cmt";
+            tinh_nguyen_vien.ngay_cap_cmt, tinh_nguyen_vien.noi_cap_cmt FROM tinh_nguyen_vien INNER JOIN tnv_nghien_cuu ON tinh_nguyen_vien.so_cmt=tnv_nghien_cuu.so_cmt AND tnv_nghien_cuu.id='$ma_nc' AND tnv_nghien_cuu.ct='1' ORDER BY tinh_nguyen_vien.ho_ten DESC";
     $query = mysql_query($sql);
     $sql2 = "SELECT ten_nc FROM nghien_cuu WHERE id='$ma_nc'";
     $query2 = mysql_query($sql2);
@@ -83,7 +83,7 @@
     </head>
     <p id="p1">BE Center-NIDQC</p>
     <p id="p2">Danh sách NTN chính thức và dự bị</p>
-    <h3>DANH SÁCH NGƯỜI TÌNH NGUYỆN CHÍNH THỨC VÀ DỰ BỊ</h3>
+    <h3>DANH SÁCH NGƯỜI TÌNH NGUYỆN CHÍNH THỨC</h3>
     <p>Tên nghiên cứu:
         <?php echo $ten_nc["ten_nc"]; ?>
     </p>
