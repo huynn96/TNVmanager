@@ -240,7 +240,7 @@
             check=0
             if ($(e.target).is(":checked"))
                 check=1;
-            $.post("ds_ct.php",{check: check, id: <?php echo $ma_nc; ?>, cmt: $(e.target).val()});
+            $.post("ds_ct.php",{check: check, id: <?php echo "'".$ma_nc."'"; ?>, cmt: $(e.target).val()});
 
         });
     });
