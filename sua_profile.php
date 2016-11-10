@@ -12,9 +12,6 @@
     $date=date('Y-m-d',strtotime($date));
     $noi_cap_cmt = $_POST["noi_cap_cmt"];
 
-    $sql = "DELETE FROM tnv_nghien_cuu WHERE so_cmt='$so_cmt'";
-    $query = mysql_query($sql);
-
     $nghien_cuu = $_POST["nghien_cuu"];
     $tok = strtok($nghien_cuu, ", ");
 

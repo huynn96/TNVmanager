@@ -56,7 +56,7 @@
                     $query = mysql_query($sql);
                 }
                                 
-                $sql = "INSERT INTO tnv_nghien_cuu(id, so_cmt) VALUES ('$ma_nc', '$value[4]')";
+                $sql = "INSERT INTO tnv_nghien_cuu(id, so_cmt, ct) VALUES ('$ma_nc', '$value[4]', '1')";
                 $query = mysql_query($sql);
             }   
         }
