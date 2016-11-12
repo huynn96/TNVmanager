@@ -82,7 +82,6 @@
         </style>
     </head>
     <p id="p1">BE Center-NIDQC</p>
-    <p id="p2">Danh sách NTN chính thức và dự bị</p>
     <h3>DANH SÁCH NGƯỜI TÌNH NGUYỆN CHÍNH THỨC</h3>
     <p>Tên nghiên cứu:
         <?php echo $ten_nc["ten_nc"]; ?>

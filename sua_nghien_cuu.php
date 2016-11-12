@@ -60,6 +60,14 @@
         $date=date('d-m-Y',strtotime($date));  
         $date2 = $row["date_year_end"];
         $date2=date('d-m-Y',strtotime($date2));
+        function convert($h,$m)
+        {
+            while ($m >= 60) {
+                $h++;
+                $m = $m - 60;
+            }
+            return array($h,$m);
+        }
 ?>
         <div id="dsct">
         <?php
@@ -82,9 +90,13 @@
             <option value="uong_thuoc">Bảng theo dõi uống thuốc</option>
         </select>
 
-        <button class="btn btn-default btn-md" style="display: inline-block"onclick="print_table()"><i class="glyphicon glyphicon-print"></i></button>
+        <button class="btn btn-default btn-md" style="display: inline-block" onclick="print_table()"><i class="glyphicon glyphicon-print"></i></button>
+
+        <button class="btn btn-default btn-md" style="display: inline-block" onclick="word_table()"><i class="glyphicon glyphicon-download-alt"></i></button>
+
         <div style="display: block"></div>
         <button name="sua" type="button" class="btn btn-primary" style="display: inline;margin:20px 0 0 20px;">Chỉnh sửa thông tin nghiên cứu</button>
+
         <?php echo "<div class='xoa' style='display: inline;margin:20px 0 0 20px;''>
                     <a href='sua_nghien_cuu.php?del=".$ma_nc."' type='button' class='btn btn-sm btn-danger' data-toggle='tooltip' title='Xoá nghiên cứu'><i class='glyphicon glyphicon-remove'></i></a>
                 </div>" ?>
@@ -114,6 +126,9 @@
             </form>
         </div>
 
+<script src="library/word/FileSaver.js"></script>
+<script src="library/word/jquery.wordexport.js"></script>
+
 <script type="text/javascript"> 
         function print_table() {
             var table = document.getElementById('select').value;
@@ -126,6 +141,13 @@
 
             window.location = "index.php";
         }
+
+        function word_table() {
+            table = $('#select').val();
+            table = "#" + table;
+            $(table).wordExport();
+        }
+
         $("[name='sua']").click(function() {
             $('#sua').toggle();
         });

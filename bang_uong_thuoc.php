@@ -28,6 +28,10 @@
         p {
                 margin-left: 14%;
             }
+
+        .note{
+            width: 30%;
+        }
     </style>
 </head>
 <p id="p1">BE Center-NIDQC</p>
@@ -44,9 +48,9 @@ echo "<p style='font-weight: bold'>Tên nghiên cứu: " . $row2["ten_nc"] . "</
         <tr>
             <th class="stt" rowspan="2">STT</th>
             <th class="ma_tnv" rowspan="2">Mã số</th>
-            <th class="ho_ten" colspan="2">Giờ uống thuốc</th>
-            <th rowspan="2">Họ và tên</th>
-            <th rowspan="2">Ghi chú</th>
+            <th colspan="2">Giờ uống thuốc</th>
+            <th class="note" rowspan="2">Họ và tên</th>
+            <th class="note" rowspan="2">Ghi chú</th>
         </tr>
         <tr>
             <td>Dự kiến</td>
@@ -59,12 +63,14 @@ echo "<p style='font-weight: bold'>Tên nghiên cứu: " . $row2["ten_nc"] . "</
             if ($i < 10)
                 $ma = "H0" . $i;
             else $ma = "H" . $i;
-
+            list($h,$m) = convert(7, $i+29);
+            if ($m < 10)
+                $m = "0".$m;
             echo "
             <tr>
                 <td>" . $i . "</td>
-                <td>" . $ma . "</td>
-                <td>7<sup>".($i+29)."</sup></td>
+                <td style='font-weight:bold'>" . $ma . "</td>
+                <td style='font-weight:bold'>".$h."<sup>".$m."</sup></td>
                 <td></td>
                 <td>" . $rows["ho_ten"] . "</td>
                 <td></td>
