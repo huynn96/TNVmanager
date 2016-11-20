@@ -89,6 +89,7 @@
     <p>Nghiên cứu số:
         <?php echo $ma_nc; ?>
     </p>
+    <p class="gd" style="font-weight: normal;"></p>
     <table style="width:100%">
         <tr>
         

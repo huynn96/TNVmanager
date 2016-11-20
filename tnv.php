@@ -100,6 +100,11 @@
                         <td>".$row["noi_cap_cmt"]."</td>
                            
                       </tr>
+                      </tr>
+                        <td>Ghi chú:</td>
+                        <td>".$row["ghi_chu"]."</td>
+                           
+                      </tr>
                       <tr>
                         <td>Các nghiên cứu:</td>
                         <td>";
@@ -109,7 +114,6 @@
                       </tr>
                        </tbody>
                   </table>
-                  
                 
                 </div>
               </div>
@@ -130,6 +134,7 @@ $(document).ready(function(){
     $('[data-toggle="tooltip"]').click(function (e) {
         $.post('editNote.php',{id: $(e.target).attr('id'),so_cmt: $(e.target).attr('name')},function (data) {
             note=data;
+            // console.log(note);
             $('#note').val(note); 
             var elem=$('#note');
             while(elem.height() < elem[0].scrollHeight) {elem.height(elem.height()+10);} 

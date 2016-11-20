@@ -15,11 +15,13 @@ CREATE TABLE IF NOT EXISTS tinh_nguyen_vien(
 	phone VARCHAR(15) NOT NULL,
 	ngay_cap_cmt DATE,
 	noi_cap_cmt VARCHAR(100),
+	ghi_chu VARCHAR(500),
 	PRIMARY KEY (so_cmt)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 CREATE TABLE IF NOT EXISTS tnv_nghien_cuu(
 	id VARCHAR(20) NOT NULL,
 	so_cmt VARCHAR(20) NOT NULL,
+	ma_tnv VARCHAR(10),
 	note VARCHAR(500),
 	ct INT(1) NOT NULL,
 	PRIMARY KEY (id, so_cmt)

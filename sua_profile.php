@@ -9,6 +9,7 @@
     $address = $_POST["address"];
     $phone = $_POST["phone"];
     $date = $_POST["ngay_cap_cmt"];
+    $ghi_chu = $_POST["ghi_chu"];
     $date=date('Y-m-d',strtotime($date));
     $noi_cap_cmt = $_POST["noi_cap_cmt"];
 
@@ -21,7 +22,7 @@
       $tok = strtok(", ");
     }
 
-    $sql = "UPDATE tinh_nguyen_vien SET so_cmt='$so_cmt', ho_ten='$ho_ten', year='$year', address='$address', phone='$phone', ngay_cap_cmt='$date', noi_cap_cmt='$noi_cap_cmt' WHERE so_cmt = '$cmt'";
+    $sql = "UPDATE tinh_nguyen_vien SET so_cmt='$so_cmt', ho_ten='$ho_ten', year='$year', address='$address', phone='$phone', ngay_cap_cmt='$date', noi_cap_cmt='$noi_cap_cmt',ghi_chu='$ghi_chu' WHERE so_cmt = '$cmt'";
     $query = mysql_query($sql);
 
     if ($so_cmt != $cmt){
@@ -88,6 +89,11 @@
                       <tr>
                         <td>Nơi cấp CMT:</td>
                         <td><input type='text' name='noi_cap_cmt' value='".$row["noi_cap_cmt"]."'class='txt'></td>
+                           
+                      </tr>
+                      <tr>
+                        <td>Ghi chú:</td>
+                        <td><input type='text' name='ghi_chu' value='".$row["ghi_chu"]."'class='txt'></td>
                            
                       </tr>
                       <tr>

@@ -42,6 +42,7 @@ $query2 = mysql_query($sql2);
 $row2 = mysql_fetch_array($query2);
 echo "<p style='font-weight: bold'>Tên nghiên cứu: " . $row2["ten_nc"] . "</p><p style='font-weight: bold'>Mã nghiên cứu: " . $ma_nc . "</p>";
 ?>
+<p class="gd"></p>
 <div id="wrapbox">
     <!--    <h2>Bảng theo dõi TNV uống thuốc</h2>-->
     <table id="table1" style="width:100%" class="table-striped table-hover">

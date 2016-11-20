@@ -84,6 +84,14 @@
             include_once("bang_lay_mau_mau.php");
         ?>
         </div>
+        <select id="select_gd" class="form-control" style="display:inline-block;margin:20px 0 0 20px; width: 150px;">
+            <option value="Giai đoạn I">Giai đoạn I</option>
+            <option value="Giai đoạn II">Giai đoạn II</option>
+            <option value="Giai đoạn III">Giai đoạn III</option>
+        </select>
+        <input type="text" class="form-control date" name="begin" placeholder="Ngày bắt đầu" style="width: 150px;">
+        <input type="text" class="form-control date" name="end" placeholder="Ngày kết thúc" style="width: 150px;">
+        <div style="display: block;"></div>
         <select id="select" class="form-control" style="margin:20px 0 0 20px">
             <option value="dsct">Danh sách chính thức</option>
             <option value="mau_mau">Bảng theo dõi mẫu máu</option>
@@ -131,6 +139,7 @@
 
 <script type="text/javascript"> 
         function print_table() {
+            $('.gd').text($('#select_gd').val() + ", " + $("[name='begin']").val() + " - " + $("[name='end']").val());
             var table = document.getElementById('select').value;
 
             var printContents = document.getElementById(table).innerHTML;
@@ -143,6 +152,7 @@
         }
 
         function word_table() {
+            $('.gd').text($('#select_gd').val() + ", " + $("[name='begin']").val() + " - " + $("[name='end']").val());
             table = $('#select').val();
             table = "#" + table;
             $(table).wordExport();
@@ -167,9 +177,8 @@
         });
 
         $('.date').datepicker({
-            dateFormat: 'd-m-yy'
+            dateFormat: 'd/m/yy'
         }); 
-
 </script>
 <?php
 }
