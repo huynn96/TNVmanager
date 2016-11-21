@@ -74,6 +74,11 @@
             include_once("bangchinhthuc.php");
         ?>
         </div>
+        <div id="dsdb">
+            <?php
+            include_once("bangdubi.php");
+            ?>
+        </div>
         <div id="uong_thuoc">
         <?php
             include_once("bang_uong_thuoc.php");
@@ -94,6 +99,7 @@
         <div style="display: block;"></div>
         <select id="select" class="form-control" style="margin:20px 0 0 20px">
             <option value="dsct">Danh sách chính thức</option>
+            <option value="dsdb">Danh sách dự bị</option>
             <option value="mau_mau">Bảng theo dõi mẫu máu</option>
             <option value="uong_thuoc">Bảng theo dõi uống thuốc</option>
         </select>
