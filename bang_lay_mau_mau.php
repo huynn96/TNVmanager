@@ -2,7 +2,7 @@
     include_once("connect_db.php");
     $ma_nc = $_GET["id_nc"];
 
-    $sql = "SELECT tinh_nguyen_vien.ho_ten FROM tinh_nguyen_vien INNER JOIN tnv_nghien_cuu ON tinh_nguyen_vien.so_cmt=tnv_nghien_cuu.so_cmt AND tnv_nghien_cuu.id='$ma_nc' AND tnv_nghien_cuu.ct='1' ORDER BY tinh_nguyen_vien.ho_ten DESC";
+    $sql = "SELECT tinh_nguyen_vien.ho_ten, tnv_nghien_cuu.ma_tnv FROM tinh_nguyen_vien INNER JOIN tnv_nghien_cuu ON tinh_nguyen_vien.so_cmt=tnv_nghien_cuu.so_cmt AND tnv_nghien_cuu.id='$ma_nc' AND tnv_nghien_cuu.ct='1' ORDER BY tinh_nguyen_vien.ho_ten DESC";
     $query = mysql_query($sql);
 ?>
 <head>
@@ -78,14 +78,10 @@ echo "<p style='font-weight: bold'>Tên nghiên cứu: " . $row2["ten_nc"] . "</
     <?php
         $i = 1;
         while ($rows = mysql_fetch_array($query)) {
-            if ($i < 10)
-                $ma = "H0" . $i;
-            else $ma = "H" . $i;
-
             echo "
             <tr>
                 <td>" . $i . "</td>
-                <td style='font-weight:bold'>" . $ma . "</td>
+                <td style='font-weight:bold'>" . $rows["ma_tnv"] . "</td>
                 <td>" . $rows["ho_ten"] . "</td>";
             list($h,$m) = convert(7, $i+29);
             if ($m < 10)

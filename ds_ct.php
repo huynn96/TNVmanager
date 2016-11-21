@@ -7,7 +7,14 @@
         $sql = "UPDATE tnv_nghien_cuu SET ct='$check' WHERE so_cmt='$cmt' AND id='$ma_nc'";
         $query = mysql_query($sql);
     }
-
+    if (isset($_POST["ma"])){
+        $cmt = $_POST["cmt"];
+        $ma_nc = $_POST["id_nc"];
+        $ma_tnv = $_POST["matnv"];
+        $sql = "UPDATE tnv_nghien_cuu SET ma_tnv='$ma_tnv' WHERE so_cmt='$cmt' AND id='$ma_nc'";
+        $query = mysql_query($sql);
+    }
+    else 
     if (isset($_GET["cmtdel"])){
         $cmt = $_GET["cmtdel"];
         $ma_nc = $_GET["id_nc"];
@@ -18,6 +25,7 @@
     else 
     if(isset($_POST["submit"])){
         $ma_nc = $_GET["id_nc"];
+        $ma_tnv = $_POST["ma_tnv"];
         $ho_ten = $_POST["ho_ten"];
         $year = $_POST["year"];
         $address = $_POST["address"];
@@ -29,14 +37,14 @@
         
         $sql = "INSERT INTO tinh_nguyen_vien(so_cmt, ho_ten, year, address, phone, ngay_cap_cmt, noi_cap_cmt) VALUES ('$cmt', '$ho_ten', '$year', '$address', '$phone', '$date', '$noi_cap_cmt') ";
         $query = mysql_query($sql);
-        $sql = "INSERT INTO tnv_nghien_cuu(so_cmt, id) VALUES ('$cmt', '$ma_nc') ";
+        $sql = "INSERT INTO tnv_nghien_cuu(so_cmt, id, ma_tnv) VALUES ('$cmt', '$ma_nc', '$ma_tnv') ";
         $query = mysql_query($sql);
         header("location:index.php?page=ds_ct&id_nc=$ma_nc");
     }
     else{
     $ma_nc = $_GET["id_nc"];
 
-    $sql = "SELECT tinh_nguyen_vien.ho_ten, tinh_nguyen_vien.year, tinh_nguyen_vien.address, tinh_nguyen_vien.phone, tinh_nguyen_vien.so_cmt, tinh_nguyen_vien.ngay_cap_cmt, tinh_nguyen_vien.noi_cap_cmt, tnv_nghien_cuu.ct FROM tinh_nguyen_vien INNER JOIN tnv_nghien_cuu ON tinh_nguyen_vien.so_cmt=tnv_nghien_cuu.so_cmt AND tnv_nghien_cuu.id='$ma_nc' ORDER BY tinh_nguyen_vien.ho_ten DESC";
+    $sql = "SELECT tinh_nguyen_vien.ho_ten, tinh_nguyen_vien.year, tinh_nguyen_vien.address, tinh_nguyen_vien.phone, tinh_nguyen_vien.so_cmt, tinh_nguyen_vien.ngay_cap_cmt, tinh_nguyen_vien.noi_cap_cmt, tnv_nghien_cuu.ct, tnv_nghien_cuu.ma_tnv FROM tinh_nguyen_vien INNER JOIN tnv_nghien_cuu ON tinh_nguyen_vien.so_cmt=tnv_nghien_cuu.so_cmt AND tnv_nghien_cuu.id='$ma_nc' ORDER BY tinh_nguyen_vien.ho_ten DESC";
     $query = mysql_query($sql);
 
                 
@@ -136,6 +144,7 @@
     <tr>
             <th class="stt">STT</th>
             <th class="ct">CT</th>
+            <th class="year">Mã TNV</th>
             <th class="ho_ten">Họ và tên</th>
             <th class="year">Năm sinh</th>
             <th class="noi_o">Nơi ở hiện tại</th>
@@ -154,6 +163,7 @@
             <tr>
                 <td></td>
                 <td></td>
+                <td><input type='text' name='ma_tnv' size=2 required ></td>
                 <td><input type='text' name='ho_ten' size=15 required ></td>
                 <td><input type='text' name='year' size=2 required></td>
                 <td><textarea rows='3' cols='15' name='address' required></textarea></td>
@@ -183,6 +193,7 @@
                 echo "<input type='checkbox' value='".$rows["so_cmt"]."' checked>";
             else echo "<input type='checkbox' value='".$rows["so_cmt"]."'>";
              echo"</td>
+                <td class='matnv'>".$rows["ma_tnv"]."</td>
                 <td><a href='index.php?page=tnv&search=".$rows["so_cmt"]."'>".$rows["ho_ten"]."</a></td>
                 <td>".$rows["year"]."</td>
                 <td>".$rows["address"]."</td>
@@ -243,6 +254,22 @@
             $.post("ds_ct.php",{check: check, id: <?php echo "'".$ma_nc."'"; ?>, cmt: $(e.target).val()});
 
         });
+
+        $(".matnv").click( function (e) {
+
+            $(this).replaceWith("<input type='text' name='matnv' size=2 required value="+ $(this).html() + ">");
+            $("[name='matnv']").focusout(function (e) {
+                current = $(this).closest("tr");
+                cmt = current.find("td:eq(6)").html();
+                $.post(
+                    "ds_ct.php",
+                    {ma: "1", matnv: $(this).val(), id_nc: <?php echo "'".$ma_nc."'"; ?>, cmt: cmt}
+                )
+                $(this).replaceWith("<td class='matnv'>"+$(this).val()+"</td>");
+            });
+        });
+
+        
     });
   
 

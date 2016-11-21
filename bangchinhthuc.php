@@ -1,6 +1,5 @@
 <?php
-    $sql = "SELECT tinh_nguyen_vien.ho_ten, tinh_nguyen_vien.year, tinh_nguyen_vien.address, tinh_nguyen_vien.phone, tinh_nguyen_vien.so_cmt, 
-            tinh_nguyen_vien.ngay_cap_cmt, tinh_nguyen_vien.noi_cap_cmt FROM tinh_nguyen_vien INNER JOIN tnv_nghien_cuu ON tinh_nguyen_vien.so_cmt=tnv_nghien_cuu.so_cmt AND tnv_nghien_cuu.id='$ma_nc' AND tnv_nghien_cuu.ct='1' ORDER BY tinh_nguyen_vien.ho_ten DESC";
+    $sql = "SELECT tinh_nguyen_vien.ho_ten, tinh_nguyen_vien.year, tinh_nguyen_vien.address, tinh_nguyen_vien.phone, tinh_nguyen_vien.so_cmt, tinh_nguyen_vien.ngay_cap_cmt, tinh_nguyen_vien.noi_cap_cmt, tnv_nghien_cuu.ma_tnv FROM tinh_nguyen_vien INNER JOIN tnv_nghien_cuu ON tinh_nguyen_vien.so_cmt=tnv_nghien_cuu.so_cmt AND tnv_nghien_cuu.id='$ma_nc' AND tnv_nghien_cuu.ct='1' ORDER BY tinh_nguyen_vien.ho_ten DESC";
     $query = mysql_query($sql);
     $sql2 = "SELECT ten_nc FROM nghien_cuu WHERE id='$ma_nc'";
     $query2 = mysql_query($sql2);
@@ -109,15 +108,11 @@
         <?php
 
        $i=1;
-        while ( $rows = mysql_fetch_array($query)){
-            if ($i<10)
-                $ma = "H0".$i;
-            else $ma = "H".$i;
-  
+        while ( $rows = mysql_fetch_array($query)){  
             echo "
             <tr>
                 <td>".$i."</td>
-                <td>".$ma."</td>
+                <td>".$rows["ma_tnv"]."</td>
                 <td>".$rows["ho_ten"]."</a></td>
                 <td>".$rows["year"]."</td>
                 <td>".$rows["address"]."</td>
