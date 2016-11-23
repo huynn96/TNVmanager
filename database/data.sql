@@ -24,5 +24,7 @@ CREATE TABLE IF NOT EXISTS tnv_nghien_cuu(
 	ma_tnv VARCHAR(10),
 	note VARCHAR(500),
 	ct INT(1) NOT NULL,
-	PRIMARY KEY (id, so_cmt)
+	PRIMARY KEY (id, so_cmt),
+    FOREIGN KEY (id) references nghien_cuu (id),
+    FOREIGN KEY (so_cmt) references tinh_nguyen_vien (so_cmt)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
