@@ -69,25 +69,50 @@
             return array($h,$m);
         }
 ?>
+        <div id="dsctdb">
+            <?php
+            include_once("Target_Tables/bang_ct_va_db.php");
+            ?>
+        </div>
         <div id="dsct">
         <?php
-            include_once("bangchinhthuc.php");
+            include_once("Target_Tables/bangchinhthuc.php");
         ?>
         </div>
         <div id="dsdb">
             <?php
-            include_once("bangdubi.php");
+            include_once("Target_Tables/bangdubi.php");
             ?>
         </div>
         <div id="uong_thuoc">
         <?php
-            include_once("bang_uong_thuoc.php");
+            include_once("Target_Tables/bang_uong_thuoc.php");
         ?>
         </div>
         <div id="mau_mau">
         <?php
-            include_once("bang_lay_mau_mau.php");
+            include_once("Target_Tables/bang_lay_mau_mau.php");
         ?>
+        </div>
+        <div id="uong_thuoc_lay_mau">
+            <?php
+            include_once("Target_Tables/bang_thoi_diem_uong_thuoc_va_lay_mau.php");
+            ?>
+        </div>
+        <div id="so_tiep_nhan">
+            <?php
+            include_once("Target_Tables/so_tiep_nhan_NTN.php");
+            ?>
+        </div>
+        <div id="theo_doi_an_sang">
+            <?php
+            include_once("Target_Tables/bang_theo_doi_NTN_an_sang.php");
+            ?>
+        </div>
+        <div id="theo_doi_an_chinh">
+            <?php
+            include_once("Target_Tables/bang_theo_doi_NTN_an_chinh.php");
+            ?>
         </div>
         <select id="select_gd" class="form-control" style="display:inline-block;margin:20px 0 0 20px; width: 150px;">
             <option value="Giai đoạn I">Giai đoạn I</option>
@@ -98,10 +123,15 @@
         <input type="text" class="form-control date" name="end" placeholder="Ngày kết thúc" style="width: 150px;">
         <div style="display: block;"></div>
         <select id="select" class="form-control" style="margin:20px 0 0 20px">
+            <option value="dsctdb">Danh sách chính thức và dự bị</option>
             <option value="dsct">Danh sách chính thức</option>
             <option value="dsdb">Danh sách dự bị</option>
             <option value="mau_mau">Bảng theo dõi mẫu máu</option>
             <option value="uong_thuoc">Bảng theo dõi uống thuốc</option>
+            <option value="uong_thuoc_lay_mau">Bảng thời điểm uống thuốc và lấy mẫu</option>
+            <option value="so_tiep_nhan">Sổ tiếp nhận NTN</option>
+            <option value="theo_doi_an_sang">Bảng theo dõi NTN ăn sáng</option>
+            <option value="theo_doi_an_chinh">Bảng theo dõi NTN dùng bữa ăn chính</option>
         </select>
 
         <button class="btn btn-default btn-md" style="display: inline-block" onclick="print_table()"><i class="glyphicon glyphicon-print"></i></button>
