@@ -16,6 +16,7 @@
 		$address = $_POST["address"];
 		$phone = $_POST["phone"];
     	$date = $_POST["ngay_cap_cmt"];
+        $note = $_POST["note"];
         if ($date != null)
     	   $date=date('Y-m-d',strtotime($date));
     	$noi_cap_cmt = $_POST["noi_cap_cmt"];
@@ -27,7 +28,7 @@
         }
 
         if ($so_cmt!=null && $phone!=null){
-        	$sql = "INSERT INTO tinh_nguyen_vien(so_cmt, ho_ten, year, address, phone, ngay_cap_cmt, noi_cap_cmt) VALUES ('$so_cmt', '$ho_ten', '$year', '$address', '$phone', '$date', '$noi_cap_cmt')";
+        	$sql = "INSERT INTO tinh_nguyen_vien(so_cmt, ho_ten, year, address, phone, ngay_cap_cmt, noi_cap_cmt, ghi_chu) VALUES ('$so_cmt', '$ho_ten', '$year', '$address', '$phone', '$date', '$noi_cap_cmt', '$note')";
         	$query = mysql_query($sql);
         }
     	header("location: index.php?page=tnv&tnv=$so_cmt");
@@ -93,6 +94,13 @@
                                                 <td>Nơi cấp CMT:</td>
                                                 <td>
                                                     <input type='text' name='noi_cap_cmt' class='txt'>
+                                                </td>
+
+                                            </tr>
+                                            <tr>
+                                                <td>Ghi chú:</td>
+                                                <td>
+                                                    <input type='text' name='note' class='txt'>
                                                 </td>
 
                                             </tr>

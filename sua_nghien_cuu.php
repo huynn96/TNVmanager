@@ -69,6 +69,30 @@
             return array($h,$m);
         }
 ?>
+        <h1>Mã nghiên cứu: <?php echo $ma_nc; ?></h1>
+        <select id="select_gd" class="form-control" style="display:inline-block;margin:20px 0 0 20px; width: 150px;">
+            <option value="Giai đoạn I">Giai đoạn I</option>
+            <option value="Giai đoạn II">Giai đoạn II</option>
+            <option value="Giai đoạn III">Giai đoạn III</option>
+        </select>
+        <input type="text" class="form-control date" name="begin" placeholder="Ngày bắt đầu" style="width: 150px;">
+        <input type="text" class="form-control date" name="end" placeholder="Ngày kết thúc" style="width: 150px;">
+        <div style="display: block;"></div>
+        <select id="select" class="form-control" style="margin:20px 0 0 20px">
+            <option value="dsctdb">Danh sách chính thức và dự bị</option>
+            <option value="dsct">Danh sách chính thức</option>
+            <option value="dsdb">Danh sách dự bị</option>
+            <option value="mau_mau">Bảng theo dõi mẫu máu</option>
+            <option value="uong_thuoc">Bảng theo dõi uống thuốc</option>
+            <option value="uong_thuoc_lay_mau">Bảng thời điểm uống thuốc và lấy mẫu</option>
+            <option value="so_tiep_nhan">Sổ tiếp nhận NTN</option>
+            <option value="theo_doi_an_sang">Bảng theo dõi NTN ăn sáng</option>
+            <option value="theo_doi_an_chinh">Bảng theo dõi NTN dùng bữa ăn chính</option>
+        </select>
+
+        <button class="btn btn-default btn-md" style="display: inline-block" onclick="print_table()"><i class="glyphicon glyphicon-print"></i></button>
+
+        <button class="btn btn-default btn-md" style="display: inline-block" onclick="word_table()"><i class="glyphicon glyphicon-download-alt"></i></button>
         <div id="dsctdb">
             <?php
             include_once("Target_Tables/bang_ct_va_db.php");
@@ -114,30 +138,7 @@
             include_once("Target_Tables/bang_theo_doi_NTN_an_chinh.php");
             ?>
         </div>
-        <h1>Mã nghiên cứu: <?php echo $ma_nc; ?></h1>
-        <select id="select_gd" class="form-control" style="display:inline-block;margin:20px 0 0 20px; width: 150px;">
-            <option value="Giai đoạn I">Giai đoạn I</option>
-            <option value="Giai đoạn II">Giai đoạn II</option>
-            <option value="Giai đoạn III">Giai đoạn III</option>
-        </select>
-        <input type="text" class="form-control date" name="begin" placeholder="Ngày bắt đầu" style="width: 150px;">
-        <input type="text" class="form-control date" name="end" placeholder="Ngày kết thúc" style="width: 150px;">
-        <div style="display: block;"></div>
-        <select id="select" class="form-control" style="margin:20px 0 0 20px">
-            <option value="dsctdb">Danh sách chính thức và dự bị</option>
-            <option value="dsct">Danh sách chính thức</option>
-            <option value="dsdb">Danh sách dự bị</option>
-            <option value="mau_mau">Bảng theo dõi mẫu máu</option>
-            <option value="uong_thuoc">Bảng theo dõi uống thuốc</option>
-            <option value="uong_thuoc_lay_mau">Bảng thời điểm uống thuốc và lấy mẫu</option>
-            <option value="so_tiep_nhan">Sổ tiếp nhận NTN</option>
-            <option value="theo_doi_an_sang">Bảng theo dõi NTN ăn sáng</option>
-            <option value="theo_doi_an_chinh">Bảng theo dõi NTN dùng bữa ăn chính</option>
-        </select>
-
-        <button class="btn btn-default btn-md" style="display: inline-block" onclick="print_table()"><i class="glyphicon glyphicon-print"></i></button>
-
-        <button class="btn btn-default btn-md" style="display: inline-block" onclick="word_table()"><i class="glyphicon glyphicon-download-alt"></i></button>
+        
 
         <div style="display: block"></div>
         <button name="sua" type="button" class="btn btn-primary" style="display: inline;margin:20px 0 0 20px;">Chỉnh sửa thông tin nghiên cứu</button>
@@ -216,6 +217,12 @@
         $('.date').datepicker({
             dateFormat: 'd/m/yy'
         }); 
+
+        $('#select').click(function () {
+            if ($('#select').val() == "uong_thuoc_lay_mau"){
+                $('#uong_thuoc_lay_mau').toggle();
+            }
+        })
 </script>
 <?php
 }

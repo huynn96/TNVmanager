@@ -78,6 +78,9 @@ $ten_nc = mysql_fetch_array($query2);
         span {
             font-weight: normal;
         }
+        .time{
+            width: 5%;
+        }
     </style>
 </head>
 <p id="p1">BE Center-NIDQC</p>
@@ -97,22 +100,23 @@ $ten_nc = mysql_fetch_array($query2);
 
         <th class="ho_ten">Họ và tên</th>
 
-        <th>Oh</th>
-        <th>10p</th>
-        <th>20p</th>
-        <th>30p</th>
-        <th>40p</th>
-        <th>50p</th>
-        <th>6Op</th>
-        <th>70p</th>
-        <th>1,5h</th>
-        <th>2h</th>
-        <th>3h</th>
-        <th>6h</th>
-        <th>12h</th>
-        <th>24h</th>
-        <th>48h</th>
-        <th>72h</th>
+
+        <th><div>0h</div></th>
+        <th class="time"><div></div></th>
+        <th class="time"><div></div></th>
+        <th class="time"><div></div></th>
+        <th class="time"><div></div></th>
+        <th class="time"><div></div></th>
+        <th class="time"><div></div></th>
+        <th class="time"><div></div></th>
+        <th class="time"><div></div></th>
+        <th class="time"><div></div></th>
+        <th class="time"><div></div></th>
+        <th class="time"><div></div></th>
+        <th class="time"><div></div></th>
+        <th class="time"><div></div></th>
+        <th class="time"><div></div></th>
+        <th class="time"><div></div></th>
     </tr>
 
     <?php
@@ -120,7 +124,7 @@ $ten_nc = mysql_fetch_array($query2);
     $i=1;
     while ( $rows = mysql_fetch_array($query)){
         echo "
-            <tr>
+            <tr class='hang'>
                 <td>".$i."</td>
                 <td>".$rows["ma_tnv"]."</td>
                 <td>".$rows["ho_ten"]."</a></td>
@@ -147,8 +151,52 @@ $ten_nc = mysql_fetch_array($query2);
     ?>
 
 </table>
-<p style="text-align:right;margin-right: 14%;font-weight: normal;margin-top: 5%">Ngày&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; tháng &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;năm&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</p>
-<p id="p1">Phụ trách lâm sàng
-    <br><span>(Ký, ghi rõ họ tên)</span></p>
-<p id="p2" style="font-style: normal;margin-right:19%">Người lập bảng
-    <br><span>(Ký, ghi rõ họ tên)</span></p>
+<script type="text/javascript">
+    function convert(h,m)
+    {
+        while (m >= 60) {
+            h++;
+            m = m - 60;
+        }
+        while (h>=24){
+            h-=24;
+        }
+        return [h,m];
+    }
+
+    function timetominute(t) {
+        l = t.charAt(t.length-1);
+        n = parseFloat(t.substring(0,t.length-1));
+        if (l=='h')
+            n=n*60;
+        return n;
+    }
+    i=0;
+    $('.hang').each(function () {
+        $(this).find("td:eq(" + 3 + ")").html("<b>"+7+"<sup>"+(30+i)+"</b>");
+        i++;
+    });
+
+    $('th.time').on('click',function (e) {
+        index = $(e.target).index();
+        console.log(index);
+        $(e.target).children().replaceWith("<input type='text' name='time' size=2>");
+        $("[name='time']").focus();
+        $("[name='time']").focusout(function (e1) {
+            h=7;m=30;i=30;
+            minutes = timetominute($("[name='time']").val());
+            $(e1.target).replaceWith("<div style='display: inline-block'>"+$("[name='time']").val()+"</div>");
+            
+            $('.hang').each(function () {
+                a = convert(h,minutes+i);
+                if (a[1]<10){
+                    a[1] = "0"+a[1];
+                }
+                $(this).find("td:eq(" + index + ")").html("<b>"+a[0]+"<sup>"+a[1]+"</b>");
+                i++;
+            })
+    
+        });
+    })
+
+</script> 
