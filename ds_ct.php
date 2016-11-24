@@ -255,9 +255,11 @@
 
         });
 
-        $(".matnv").click( function (e) {
-
-            $(this).replaceWith("<input type='text' name='matnv' size=2 required value="+ $(this).html() + ">");
+        $(".matnv").click(function (e) {
+            $(this).replaceWith("<input type='text' name='matnv' size=2 required value='"+ $(this).html() + "'>");
+            $("[name='matnv']").focus();
+            var $thisVal = $("[name='matnv']").val();
+            $("[name='matnv']").val('').val($thisVal);
             $("[name='matnv']").focusout(function (e) {
                 current = $(this).closest("tr");
                 cmt = current.find("td:eq(6)").html();

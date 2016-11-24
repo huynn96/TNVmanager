@@ -114,6 +114,7 @@
             include_once("Target_Tables/bang_theo_doi_NTN_an_chinh.php");
             ?>
         </div>
+        <h1>Mã nghiên cứu: <?php echo $ma_nc; ?></h1>
         <select id="select_gd" class="form-control" style="display:inline-block;margin:20px 0 0 20px; width: 150px;">
             <option value="Giai đoạn I">Giai đoạn I</option>
             <option value="Giai đoạn II">Giai đoạn II</option>
@@ -184,7 +185,7 @@
 
             window.print();
 
-            window.location = "index.php";
+            window.location = "index.php?id_nc=<?php echo $ma_nc; ?>";
         }
 
         function word_table() {

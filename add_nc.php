@@ -93,3 +93,12 @@
             <input type="submit" id="submitbtn" name="submitbtn" tabindex="5" value="Submit">
         </div>
     </form>
+
+<script type="text/javascript">
+    $("[name='ma_nc']").focusout(function () {
+        ma = $(this).val();
+        if (ma.search(" ") != -1)
+            alert("MÃ NGHIÊN CỨU KHÔNG ĐƯỢC CÓ DẤU CÁCH!!!");
+    })
+
+</script>

@@ -92,12 +92,12 @@
                                                     "<ul>".
                                                         "<li><a href='sua_nghien_cuu.php?id_nc=".$row["id"]."'>".
                                                             $row["id"].
-                                                            "</a><ul> <li> <a href='ds_ct.php?id_nc=".$row["id"]."'>Ds chính thức</a></li></ul>".
+                                                            "</a><ul> <li> <a href='ds_ct.php?id_nc=".$row["id"]."'>Danh sách CT và DB</a></li></ul>".
                                                         "</li>";
                                     $year = $year1;
                                 }
                                 else{
-                                    echo "<li><a href='sua_nghien_cuu.php?id_nc=".$row["id"]."'>".$row["id"]."</a><ul> <li> <a href='ds_ct.php?id_nc=".$row["id"]."'>Ds chính thức</a></li></ul></li>";
+                                    echo "<li><a href='sua_nghien_cuu.php?id_nc=".$row["id"]."'>".$row["id"]."</a><ul> <li> <a href='ds_ct.php?id_nc=".$row["id"]."'>Danh sách CT và DB</a></li></ul></li>";
                                 }
                                 
                             }
@@ -203,9 +203,7 @@
             var icon = p.parent().parent().children('i:first');
             icon.toggleClass("glyphicon-folder-open" + " " + "glyphicon-folder-close");
 
-            p.children().children().toggle();
-            var icon = p.children('i:first');
-            icon.toggleClass("glyphicon-folder-open" + " " + "glyphicon-folder-close");
+            var q = $("[href='sua_nghien_cuu.php?id_nc=<?php echo $ma_nc; ?>']").click();
         </script>
 
     </body>
