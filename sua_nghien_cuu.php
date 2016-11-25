@@ -39,11 +39,44 @@
         $ten_nc = $_POST["message"];
         $date = $_POST["date"];
         $date=date('Y-m-d',strtotime($date));
-        $date2 = $_POST["date2"];
+         $date2 = $_POST["date2"];
         $date2=date('Y-m-d',strtotime($date2));
+        
+        $gd2_b = $_POST["gd2_b"];
+        $gd2_b=date('Y-m-d',strtotime($gd2_b));
+        
+        $gd2_e = $_POST["gd2_e"];
+        $gd2_e=date('Y-m-d',strtotime($gd2_e));
+        
+        $gd3_b = $_POST["gd3_b"];
+        $gd3_b=date('Y-m-d',strtotime($gd3_b));
+        
+        $gd3_e = $_POST["gd3_e"];
+        $gd3_e=date('Y-m-d',strtotime($gd3_e));
 
-        $sql = "UPDATE nghien_cuu SET id='$id', ten_nc='$ten_nc', date_year='$date', date_year_end='$date2' WHERE id='$ma_nc'";
+        $sql = "UPDATE nghien_cuu SET id='$id', ten_nc='$ten_nc', date_year='$date', date_year_end='$date2', gd2_begin='$gd2_b', gd2_end='$gd2_e', gd3_begin='$gd3_b', gd3_end='$gd3_e' WHERE id='$ma_nc'";
         $query = mysql_query($sql);
+
+        if ($_POST["date2"] == NULL){
+            $sql = "UPDATE nghien_cuu SET date_year_end=NULL WHERE id='$ma_nc'";
+            $query = mysql_query($sql);
+        }
+        if ($_POST["gd2_b"] == NULL){
+            $sql = "UPDATE nghien_cuu SET gd2_begin=NULL WHERE id='$ma_nc'";
+            $query = mysql_query($sql);
+        }
+        if ($_POST["gd2_e"] == NULL){
+            $sql = "UPDATE nghien_cuu SET gd2_end=NULL WHERE id='$ma_nc'";
+            $query = mysql_query($sql);
+        }
+        if ($_POST["gd3_b"] == NULL){
+            $sql = "UPDATE nghien_cuu SET gd3_begin=NULL WHERE id='$ma_nc'";
+            $query = mysql_query($sql);
+        }
+        if ($_POST["gd3_e"] == NULL){
+            $sql = "UPDATE nghien_cuu SET gd3_end=NULL WHERE id='$ma_nc'";
+            $query = mysql_query($sql);
+        }        
 
         if($id != $ma_nc){
             $sql = "UPDATE tnv_nghien_cuu SET id='$id' WHERE id='$ma_nc'";
@@ -57,9 +90,38 @@
         $query = mysql_query($sql);
         $row = mysql_fetch_array($query);
         $date = $row["date_year"];
-        $date=date('d-m-Y',strtotime($date));  
-        $date2 = $row["date_year_end"];
-        $date2=date('d-m-Y',strtotime($date2));
+        $date=date('d-m-Y',strtotime($date));
+    
+        if ($row["date_year_end"] == NULL){
+            $date2=null;
+        }else{
+            $date2 = $row["date_year_end"];
+            $date2=date('d-m-Y',strtotime($date2));
+        }
+        if ($row["gd2_begin"] == NULL){
+            $gd2_b=null;
+        }else{
+            $gd2_b = $row["gd2_begin"];
+            $gd2_b=date('d-m-Y',strtotime($gd2_b));
+        }
+        if ($row["gd2_end"] == NULL){
+            $gd2_e=null;
+        }else{
+            $gd2_e = $row["gd2_end"];
+            $gd2_e=date('d-m-Y',strtotime($gd2_e));
+        }
+        if ($row["gd3_begin"] == NULL){
+            $gd3_b=null;
+        }else{
+            $gd3_b = $row["gd3_begin"];
+            $gd3_b=date('d-m-Y',strtotime($gd3_b));
+        }
+        if ($row["gd3_end"] == NULL){
+            $gd3_e=null;
+        }else{
+            $gd3_e = $row["gd3_end"];
+            $gd3_e=date('d-m-Y',strtotime($gd3_e));
+        }
         function convert($h,$m)
         {
             while ($m >= 60) {
@@ -71,12 +133,10 @@
 ?>
         <h1>Mã nghiên cứu: <?php echo $ma_nc; ?></h1>
         <select id="select_gd" class="form-control" style="display:inline-block;margin:20px 0 0 20px; width: 150px;">
-            <option value="Giai đoạn I">Giai đoạn I</option>
-            <option value="Giai đoạn II">Giai đoạn II</option>
-            <option value="Giai đoạn III">Giai đoạn III</option>
+            <option value="I">Giai đoạn I</option>
+            <option value="II">Giai đoạn II</option>
+            <option value="III">Giai đoạn III</option>
         </select>
-        <input type="text" class="form-control date" name="begin" placeholder="Ngày bắt đầu" style="width: 150px;">
-        <input type="text" class="form-control date" name="end" placeholder="Ngày kết thúc" style="width: 150px;">
         <div style="display: block;"></div>
         <select id="select" class="form-control" style="margin:20px 0 0 20px">
             <option value="dsctdb">Danh sách chính thức và dự bị</option>
@@ -152,7 +212,7 @@
 
                 <div class="row">
                     <label for="ma_nc">Mã nghiên cứu <span class="req">*</span></label>
-                    <input type="text" name="ma_nc" id="name" class="txt" value="<?php echo $row["id"]; ?>" tabindex="1" placeholder="Mã nghiên cứu" required>
+                    <input type="text" name="ma_nc" id="name" class="txt" value="<?php echo $row["id"]; ?>" tabindex="1" required>
                 </div>
 
                 <div class="row">
@@ -161,9 +221,17 @@
                 </div>
 
                 <div class="row">
-                    <label for="date">Ngày nghiên cứu <span class="req">*</span></label>
-                    <input type="text" name="date" class="txt date" value="<?php echo $date; ?>" tabindex="3" placeholder="" required>
-                    <input type="text" name="date2" class="txt date" value="<?php echo $date2; ?>" tabindex="3" placeholder="" required>
+                    <label for="date">Giai đoạn 1:<span class="req">*</span></label>
+                    <input type="text" name="date" class="txt date" tabindex="3" value="<?php echo $date; ?>" required>
+                    <input type="text" name="date2" class="txt date" tabindex="3" value="<?php echo $date2; ?>">
+                    <div></div>
+                    <label for="gd1">Giai đoạn 2:</label>
+                    <input type="text" name="gd2_b" class="txt date gd1" tabindex="3" value="<?php echo $gd2_b; ?>">
+                    <input type="text" name="gd2_e" class="txt date gd1" tabindex="3" value="<?php echo $gd2_e; ?>">
+                    <div></div>
+                    <label for="date">Giai đoạn 3:</label>
+                    <input type="text" name="gd3_b" class="txt date" tabindex="3" value="<?php echo $gd3_b; ?>">
+                    <input type="text" name="gd3_e" class="txt date" tabindex="3" value="<?php echo $gd3_e; ?>">
                 </div>
 
                 <div class="center">
@@ -177,7 +245,18 @@
 
 <script type="text/javascript"> 
         function print_table() {
-            $('.gd').text($('#select_gd').val() + ", " + $("[name='begin']").val() + " - " + $("[name='end']").val());
+            $('.gd').css("font-weight","bold");
+            if ($('#select_gd').val() == "I"){
+                $('.gd').text("Giai đoạn "+$('#select_gd').val() + ", <?php echo $date; ?> - <?php echo $date2; ?>");
+            }
+            else 
+                if ($('#select_gd').val() == "II"){
+                    $('.gd').text("Giai đoạn "+$('#select_gd').val() + ", <?php echo $gd2_b; ?> - <?php echo $gd2_e; ?>");
+                }
+            else 
+                if ($('#select_gd').val() == "III"){
+                    $('.gd').text("Giai đoạn "+$('#select_gd').val() + ", <?php echo $gd3_b; ?> - <?php echo $gd3_e; ?>");
+                }
             var table = document.getElementById('select').value;
 
             var printContents = document.getElementById(table).innerHTML;
@@ -190,7 +269,18 @@
         }
 
         function word_table() {
-            $('.gd').text($('#select_gd').val() + ", " + $("[name='begin']").val() + " - " + $("[name='end']").val());
+            $('.gd').css("font-weight","bold");
+            if ($('#select_gd').val() == "I"){
+                $('.gd').text("Giai đoạn "+$('#select_gd').val() + ", <?php echo $date; ?> - <?php echo $date2; ?>");
+            }
+            else 
+                if ($('#select_gd').val() == "II"){
+                    $('.gd').text("Giai đoạn "+$('#select_gd').val() + ", <?php echo $gd2_b; ?> - <?php echo $gd2_e; ?>");
+                }
+            else 
+                if ($('#select_gd').val() == "III"){
+                    $('.gd').text("Giai đoạn "+$('#select_gd').val() + ", <?php echo $gd3_b; ?> - <?php echo $gd3_e; ?>");
+                }
             table = $('#select').val();
             table = "#" + table;
             $(table).wordExport();
@@ -200,7 +290,7 @@
             $('#sua').toggle();
         });
 
-        $('.xoa a').click(function (e) {
+        $('.xoa a').on('click',function (e) {
             e.preventDefault();
             var b=e.target.getAttribute("href");
             if (e.target.type != 'button'){
@@ -208,14 +298,14 @@
                     
                 b=$(b).attr("href");
             }
-            
+            console.log(b);
             if (confirm('Chắc chắn xoá nghiên cứu?')){
                 location.href=b;
             }
         });
 
         $('.date').datepicker({
-            dateFormat: 'd/m/yy'
+            dateFormat: 'd-m-yy'
         }); 
 
         $('#select').click(function () {

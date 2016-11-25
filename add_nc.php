@@ -15,17 +15,47 @@
         $ten_nc = $_POST["message"];
         $date = $_POST["date"];
         $date=date('Y-m-d',strtotime($date));
+        
         $date2 = $_POST["date2"];
         $date2=date('Y-m-d',strtotime($date2));
+        
         $gd2_b = $_POST["gd2_b"];
+        $gd2_b=date('Y-m-d',strtotime($gd2_b));
+        
         $gd2_e = $_POST["gd2_e"];
+        $gd2_e=date('Y-m-d',strtotime($gd2_e));
+        
         $gd3_b = $_POST["gd3_b"];
+        $gd3_b=date('Y-m-d',strtotime($gd3_b));
+        
         $gd3_e = $_POST["gd3_e"];
-
+        $gd3_e=date('Y-m-d',strtotime($gd3_e));
+        
         include("connect_db.php");
 
         $sql = "INSERT INTO nghien_cuu(id, ten_nc, date_year, date_year_end, gd2_begin, gd2_end, gd3_begin, gd3_end) VALUES ('$ma_nc', '$ten_nc', '$date', '$date2', '$gd2_b', '$gd2_e', '$gd3_b', '$gd3_e' )";
         $query = mysql_query($sql);
+
+        if ($_POST["date2"] == NULL){
+            $sql = "UPDATE nghien_cuu SET date_year_end=NULL WHERE id='$ma_nc'";
+            $query = mysql_query($sql);
+        }
+        if ($_POST["gd2_b"] == NULL){
+            $sql = "UPDATE nghien_cuu SET gd2_begin=NULL WHERE id='$ma_nc'";
+            $query = mysql_query($sql);
+        }
+        if ($_POST["gd2_e"] == NULL){
+            $sql = "UPDATE nghien_cuu SET gd2_end=NULL WHERE id='$ma_nc'";
+            $query = mysql_query($sql);
+        }
+        if ($_POST["gd3_b"] == NULL){
+            $sql = "UPDATE nghien_cuu SET gd3_begin=NULL WHERE id='$ma_nc'";
+            $query = mysql_query($sql);
+        }
+        if ($_POST["gd3_e"] == NULL){
+            $sql = "UPDATE nghien_cuu SET gd3_end=NULL WHERE id='$ma_nc'";
+            $query = mysql_query($sql);
+        }        
         
         require_once 'xlsx/simplexlsx.class.php';   
         $filename = $_FILES["file"]["tmp_name"];
@@ -86,16 +116,16 @@
 
         <div class="row">
             <label for="date">Giai đoạn 1:<span class="req">*</span></label>
-            <input type="text" name="date" class="txt date" tabindex="3" placeholder="" required>
-            <input type="text" name="date2" class="txt date" tabindex="3" placeholder="" required>
+            <input type="text" name="date" class="txt date" tabindex="3" required>
+            <input type="text" name="date2" class="txt date" tabindex="3">
             <div></div>
             <label for="gd1">Giai đoạn 2:</label>
-            <input type="text" name="gd2_b" class="txt date gd1" tabindex="3" placeholder="">
-            <input type="text" name="gd2_e" class="txt date gd1" tabindex="3" placeholder="">
+            <input type="text" name="gd2_b" class="txt date gd1" tabindex="3">
+            <input type="text" name="gd2_e" class="txt date gd1" tabindex="3">
             <div></div>
             <label for="date">Giai đoạn 3:</label>
-            <input type="text" name="gd3_b" class="txt date" tabindex="3" placeholder="">
-            <input type="text" name="gd3_e" class="txt date" tabindex="3" placeholder="">
+            <input type="text" name="gd3_b" class="txt date" tabindex="3">
+            <input type="text" name="gd3_e" class="txt date" tabindex="3">
         </div>
 
         <label for="ExampleInputFile">Upload ds <span class="req">*</span></label>
