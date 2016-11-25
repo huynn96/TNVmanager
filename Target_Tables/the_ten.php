@@ -1,5 +1,5 @@
 <?php
-	$sql = "SELECT tnv.ho_ten, nc.ma_tnv FROM tinh_nguyen_vien tnv INNER JOIN tnv_nghien_cuu nc ON nc.id='$ma_nc' AND nc.so_cmt=tnv.so_cmt ORDER BY tnv.ho_ten DESC";
+	$sql = "SELECT tnv.ho_ten, nc.ma_tnv FROM tinh_nguyen_vien tnv INNER JOIN tnv_nghien_cuu nc ON nc.ct=1 AND nc.id='$ma_nc' AND nc.so_cmt=tnv.so_cmt ORDER BY tnv.ho_ten DESC";
 	$query = mysql_query($sql); 
 ?>
 <head>
@@ -54,10 +54,7 @@ while ($rows = mysql_fetch_array($query)) {
 					<p><strong>&nbsp;</strong></p>
 					<p style='font-size:20px;margin:10px 0 10px 0;'><strong>".$rows["ho_ten"]."</strong></p>
 					<p><strong><em>&nbsp;</em></strong></p>
-					<p style='font-size:50px;margin:10px 0 10px 0;'><strong>".$rows["ma_tnv"]."</strong></p>
-					<p>&nbsp;</p>
-					<p>&nbsp;</p>
-					<p>&nbsp;</p>
+					<p style='font-size:100px;margin:10px 0 10px 0;'><strong>".$rows["ma_tnv"]."</strong></p>
 					<p style='font-size:50px;margin:10px 0 10px 0;'><strong>".$ma_nc."</strong></p>
 					<p><strong>&nbsp;</strong></p>
 				</td>
@@ -68,10 +65,7 @@ while ($rows = mysql_fetch_array($query)) {
 					<p><strong>&nbsp;</strong></p>
 					<p style='font-size:20px;margin:10px 0 10px 0;'><strong>".$rows["ho_ten"]."</strong></p>
 					<p><strong><em>&nbsp;</em></strong></p>
-					<p style='font-size:50px;margin:10px 0 10px 0;'><strong>".$rows["ma_tnv"]."</strong></p>
-					<p>&nbsp;</p>
-					<p>&nbsp;</p>
-					<p>&nbsp;</p> 	
+					<p style='font-size:100px;margin:10px 0 10px 0;'><strong>".$rows["ma_tnv"]."</strong></p>
 					<p style='font-size:50px;margin:10px 0 10px 0;'><strong>".$ma_nc."</strong></p>
 					<p><strong>&nbsp;</strong></p>
 				</td>
