@@ -20,6 +20,12 @@
 </head>
 <?php
   include_once("connect_db.php");
+    if (isset($_POST["check"])){
+        $cmt = $_POST["cmt"];
+        $check = $_POST["check"];
+        $sql = "UPDATE tinh_nguyen_vien SET ds_den='$check' WHERE so_cmt='$cmt'";
+        $query = mysql_query($sql);
+    }
   if (isset($_GET["search"])){
      $search = $_GET["search"];
   }
@@ -70,10 +76,7 @@
                 <div class='' col-md-9 col-lg-9 ''> 
                   <table class='table table-user-information'>
                     <tbody>
-                      <tr>
-                        <td>Số CMT:</td>
-                        <td>".$row["so_cmt"]."</td>
-                      </tr>
+                      
                       <tr>
                         <td>Họ tên:</td>
                         <td>".$row["ho_ten"]."</td>
@@ -93,6 +96,10 @@
                         <td>".$row["phone"]."</td>
                       </tr>
                       <tr>
+                        <td>Số CMT:</td>
+                        <td>".$row["so_cmt"]."</td>
+                      </tr>
+                      <tr>
                         <td>Ngày cấp CMT:</td>
                         <td>".$row["ngay_cap_cmt"]."</td>
                       </tr>
@@ -103,14 +110,22 @@
                       </tr>
                         <td>Ghi chú:</td>
                         <td>".$row["ghi_chu"]."</td>
-                           
                       </tr>
+                      
                       <tr>
                         <td>Các nghiên cứu:</td>
                         <td>";
                         while ($row2 = mysql_fetch_array($query2)) 
                           echo "<button id='".$row2["id"]."' class='test btn btn-primary' data-toggle='tooltip' name='".$cmtnd."'>".$row2["id"];
                         echo "</td>
+                      </tr>
+                      <tr>
+                        <td>Danh sách đen:</td>
+                        <td>";
+                            if ($row["ds_den"] == 1)
+                                echo "<input type='checkbox' value='".$row["so_cmt"]."' checked>";
+                            else echo "<input type='checkbox' value='".$row["so_cmt"]."'>";
+                        echo"</td>
                       </tr>
                        </tbody>
                   </table>
@@ -151,5 +166,13 @@ $(document).ready(function(){
         })
         
     });
+});
+$("[type='checkbox']").click(function (e) {
+    console.log($(e.target).val());
+    check=0
+    if ($(e.target).is(":checked"))
+        check=1;
+    $.post("tnv.php",{check: check, cmt: $(e.target).val()});
+
 });
 </script>

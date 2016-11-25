@@ -7,6 +7,7 @@
         $sql = "UPDATE tnv_nghien_cuu SET ct='$check' WHERE so_cmt='$cmt' AND id='$ma_nc'";
         $query = mysql_query($sql);
     }
+
     if (isset($_POST["ma"])){
         $cmt = $_POST["cmt"];
         $ma_nc = $_POST["id_nc"];

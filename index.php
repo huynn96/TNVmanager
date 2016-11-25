@@ -61,6 +61,8 @@
                         break;
                         case "tnv": include_once("tnv.php");
                         break;
+                        case "danh_sach_den": include_once ("danh_sach_den.php");
+                        break;
                         default: include_once("tnv_search.php");
                         break;
                     }
@@ -70,7 +72,7 @@
                 <div id="sidebar">
                     <ul id="tree1">
                         <li><a href="index.php?page=tnv_search">Quản lý tình nguyện viên</a></li>
-
+                        <li><a href="index.php?page=danh_sach_den">Danh sách đen</a> </li>
                         <li id="loadjQuery"><a href="search_nc.php">Quản lý nghiên cứu</a>
                             <ul>
                                 <ul>

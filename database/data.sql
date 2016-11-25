@@ -16,6 +16,7 @@ CREATE TABLE IF NOT EXISTS tinh_nguyen_vien(
 	ngay_cap_cmt DATE,
 	noi_cap_cmt VARCHAR(100),
 	ghi_chu VARCHAR(500),
+    ds_den INT(1) NOT NULL,
 	PRIMARY KEY (so_cmt)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 CREATE TABLE IF NOT EXISTS tnv_nghien_cuu(
