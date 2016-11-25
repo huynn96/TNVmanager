@@ -15,6 +15,9 @@
     <link rel='stylesheet' type='text/css' href='css/add_nc.css'/>
 
     <style type="text/css">
+        table {
+            font-family: "Times New Roman";
+        }
         .form-control {
             display: inline;
             width: 30%;
@@ -27,6 +30,9 @@
             display: none;
         }
         #mau_mau{
+            display: none;
+        }
+        #the_ten{
             display: none;
         }
     </style>
@@ -148,11 +154,17 @@
             <option value="so_tiep_nhan">Sổ tiếp nhận NTN</option>
             <option value="theo_doi_an_sang">Bảng theo dõi NTN ăn sáng</option>
             <option value="theo_doi_an_chinh">Bảng theo dõi NTN dùng bữa ăn chính</option>
+            <option value="the_ten">Thẻ tên cho tình nguyện viên</option>
         </select>
 
         <button class="btn btn-default btn-md" style="display: inline-block" onclick="print_table()"><i class="glyphicon glyphicon-print"></i></button>
 
         <button class="btn btn-default btn-md" style="display: inline-block" onclick="word_table()"><i class="glyphicon glyphicon-download-alt"></i></button>
+        <div id="the_ten">
+            <?php
+            include_once("Target_Tables/the_ten.php");
+            ?>
+        </div>
         <div id="dsctdb">
             <?php
             include_once("Target_Tables/bang_ct_va_db.php");
@@ -298,7 +310,7 @@
                     
                 b=$(b).attr("href");
             }
-            console.log(b);
+
             if (confirm('Chắc chắn xoá nghiên cứu?')){
                 location.href=b;
             }

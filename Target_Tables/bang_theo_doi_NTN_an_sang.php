@@ -10,7 +10,6 @@ $ten_nc = mysql_fetch_array($query2);
     <style>
         table {
             font-size: 13px;
-            font-family: arial, sans-serif;
             border-collapse: collapse;
             width: 100%;
             line-height: 20px;

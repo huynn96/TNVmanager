@@ -164,15 +164,15 @@
             <tr>
                 <td></td>
                 <td></td>
-                <td><input type='text' name='ma_tnv' size=2 required ></td>
-                <td><input type='text' name='ho_ten' size=15 required ></td>
-                <td><input type='text' name='year' size=2 required></td>
-                <td><textarea rows='3' cols='15' name='address' required></textarea></td>
-                <td><input type='text' name='phone' size=8 required></td>
+                <td><input type='text' name='ma_tnv' size=2></td>
+                <td><input type='text' name='ho_ten' size=15></td>
+                <td><input type='text' name='year' size=2></td>
+                <td><textarea rows='3' cols='15' name='address'></textarea></td>
+                <td><input type='text' name='phone' size=8></td>
                 <td><input type='text' name='cmt' size=8 required></td>
-                <td><input type='text' name='ngay_cap_cmt' id='date' size=8 required></td>
-                <td><input type='text' name='noi_cap_cmt' size=8 required></td>
-                <td colspan=2><input type='submit' name='submit' value='Cập nhật' id='submit' required></td>
+                <td><input type='text' name='ngay_cap_cmt' id='date' size=8></td>
+                <td><input type='text' name='noi_cap_cmt' size=8></td>
+                <td colspan=2><input type='submit' name='submit' value='Cập nhật' id='submit'></td>
 
             </tr>
             </form>
