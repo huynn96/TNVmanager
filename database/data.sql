@@ -5,6 +5,10 @@ CREATE TABLE IF NOT EXISTS nghien_cuu(
 	ten_nc VARCHAR(400),
 	date_year DATE NOT NULL,
 	date_year_end DATE,
+    gd2_begin DATE,
+    gd2_end DATE,
+    gd3_begin DATE,
+    gd3_end DATE,
 	PRIMARY KEY (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 CREATE TABLE IF NOT EXISTS tinh_nguyen_vien(

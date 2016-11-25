@@ -17,10 +17,14 @@
         $date=date('Y-m-d',strtotime($date));
         $date2 = $_POST["date2"];
         $date2=date('Y-m-d',strtotime($date2));
-        
+        $gd2_b = $_POST["gd2_b"];
+        $gd2_e = $_POST["gd2_e"];
+        $gd3_b = $_POST["gd3_b"];
+        $gd3_e = $_POST["gd3_e"];
+
         include("connect_db.php");
 
-        $sql = "INSERT INTO nghien_cuu(id, ten_nc, date_year, date_year_end) VALUES ('$ma_nc', '$ten_nc', '$date', '$date2')";
+        $sql = "INSERT INTO nghien_cuu(id, ten_nc, date_year, date_year_end, gd2_begin, gd2_end, gd3_begin, gd3_end) VALUES ('$ma_nc', '$ten_nc', '$date', '$date2', '$gd2_b', '$gd2_e', '$gd3_b', '$gd3_e' )";
         $query = mysql_query($sql);
         
         require_once 'xlsx/simplexlsx.class.php';   
@@ -81,9 +85,17 @@
         </div>
 
         <div class="row">
-            <label for="date">Ngày nghiên cứu <span class="req">*</span></label>
+            <label for="date">Giai đoạn 1:<span class="req">*</span></label>
             <input type="text" name="date" class="txt date" tabindex="3" placeholder="" required>
             <input type="text" name="date2" class="txt date" tabindex="3" placeholder="" required>
+            <div></div>
+            <label for="gd1">Giai đoạn 2:</label>
+            <input type="text" name="gd2_b" class="txt date gd1" tabindex="3" placeholder="">
+            <input type="text" name="gd2_e" class="txt date gd1" tabindex="3" placeholder="">
+            <div></div>
+            <label for="date">Giai đoạn 3:</label>
+            <input type="text" name="gd3_b" class="txt date" tabindex="3" placeholder="">
+            <input type="text" name="gd3_e" class="txt date" tabindex="3" placeholder="">
         </div>
 
         <label for="ExampleInputFile">Upload ds <span class="req">*</span></label>

@@ -74,7 +74,7 @@ $query = mysql_query($sql);
         }
     </style>
 </head>
-<p id="p1">BE Center-NIDQC</p>
+
 <h3>DANH SÁCH ĐEN</h3>
 
 <table style="width:100%">

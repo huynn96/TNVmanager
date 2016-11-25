@@ -52,12 +52,7 @@
                                 <form method='post' action="add_tnv.php">
                                     <table class='table table-user-information'>
                                         <tbody>
-                                            <tr>
-                                                <td>Số CMT:</td>
-                                                <td>
-                                                    <input type='text' name='so_cmt' class='txt'>
-                                                </td>
-                                            </tr>
+
                                             <tr>
                                                 <td>Họ tên:</td>
                                                 <td>
@@ -84,6 +79,14 @@
                                                     <input type='text' name='phone' class='txt'>
                                                 </td>
                                             </tr>
+
+                                            <tr>
+                                                <td>Số CMT:</td>
+                                                <td>
+                                                    <input type='text' name='so_cmt' class='txt'>
+                                                </td>
+                                            </tr>
+
                                             <tr>
                                                 <td>Ngày cấp CMT:</td>
                                                 <td>
