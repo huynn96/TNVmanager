@@ -67,6 +67,7 @@ $ten_nc = mysql_fetch_array($query2);
 
         h3 {
             text-align: center;
+           
         }
 
         p {
@@ -77,37 +78,51 @@ $ten_nc = mysql_fetch_array($query2);
         span {
             font-weight: normal;
         }
+        .page{
+            position: absolute;
+            bottom: 0;
+            margin: 0 50% 0 50%;
+        }
+        .bang{
+            position: relative;
+            height: 185mm;
+        }
     </style>
 </head>
-<p id="p1">BE Center-NIDQC</p>
+<?php
+$num = mysql_num_rows($query);
+$k=2;$i=1;
+if ($num < 12)
+    $k=1;
+for ($j=0; $j < $k; $j++) { 
+echo"
+<div class='bang'>
+<p id='p1'>BE Center-NIDQC</p>
 <h3>DANH SÁCH NGƯỜI TÌNH NGUYỆN CHÍNH THỨC</h3>
 <p>Tên nghiên cứu:
-    <?php echo $ten_nc["ten_nc"]; ?>
+    ".$ten_nc["ten_nc"]."
 </p>
 <p>Nghiên cứu số:
-    <?php echo $ma_nc; ?>
+     ".$ma_nc."
 </p>
-<p class="gd" style="font-weight: normal;"></p>
-<table style="width:100%">
+<p class='gd' style='font-weight: normal;''></p>
+<table style='width:100%'>
     <tr>
 
-        <th class="stt">STT</th>
-        <th class="ma_tnv">Mã TNV</th>
+        <th class='stt'>STT</th>
+        <th class='ma_tnv'>Mã TNV</th>
 
-        <th class="ho_ten">Họ và tên</th>
+        <th class='ho_ten'>Họ và tên</th>
 
-        <th class="year">Năm sinh</th>
-        <th class="noi_o">Nơi ở hiện tại</th>
-        <th class="phone">Điện thoại</th>
-        <th class="cmt">Số CMT</th>
-        <th class="date">Ngày cấp CMT</th>
-        <th class="noi_cap">Nơi cấp CMT</th>
-    </tr>
+        <th class='year'>Năm sinh</th>
+        <th class='noi_o'>Nơi ở hiện tại</th>
+        <th class='phone'>Điện thoại</th>
+        <th class='cmt'>Số CMT</th>
+        <th class='date'>Ngày cấp CMT</th>
+        <th class='noi_cap'>Nơi cấp CMT</th>
+    </tr>";
 
-    <?php
-
-    $i=1;
-    while ( $rows = mysql_fetch_array($query)){
+    while ( ($i<=12*($j+1)) && ($rows = mysql_fetch_array($query))){
         echo "
             <tr>
                 <td>".$i."</td>
@@ -123,11 +138,14 @@ $ten_nc = mysql_fetch_array($query2);
         $i++;
     }
 
-    ?>
-
+echo"
 </table>
-<p style="text-align:right;margin-right: 14%;font-weight: normal;margin-top: 5%">Ngày&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; tháng &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;năm&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</p>
-<p id="p1">Phụ trách lâm sàng
+<p style='text-align:right;margin-right: 14%;font-weight: normal;margin-top: 5%'>Ngày&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; tháng &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;năm&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</p>
+<p id='p1'>Phụ trách lâm sàng
     <br><span>(Ký, ghi rõ họ tên)</span></p>
-<p id="p2" style="font-style: normal;margin-right:19%">Người lập bảng
+<p id='p2' style='font-style: normal;margin-right:19%'>Người lập bảng
     <br><span>(Ký, ghi rõ họ tên)</span></p>
+    <br>
+    <div class='page'><p style='font-size: 10px;font-weight: normal;text-align:center;margin-left: 0; '>".($j+1)."/".$k."</p></div></div>
+    ";
+}
