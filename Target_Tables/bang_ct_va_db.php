@@ -51,18 +51,24 @@ $ten_nc = mysql_fetch_array($query2);
             display: none;
         }
 
-        #p1 {
+        .p1 {
             display: inline-block;
-            margin-left: 14%;
+            margin-left: 10px;
             font-weight: bold;
         }
 
-        #p2 {
+        .p2 {
             display: inline;
             float: right;
-            margin-right: 14%;
             font-weight: bold;
-            font-style: italic;
+
+        }
+
+        .p3 {
+            display: inline-block;
+            float: left;
+            margin-left: 100px;
+            font-weight: bold;
         }
 
         h3 {
@@ -99,7 +105,8 @@ if ($num %12 < 6)
 for ($j=0; $j < $k; $j++) { 
 echo"
 <div class='bang'>
-<p id='p1'>BE Center-NIDQC</p>
+<div class='p1'>BE Center-NIDQC</div>
+<div class='p2'><i>DANH SÁCH NGƯỜI TÌNH NGUYỆN CHÍNH THỨC VÀ DỰ BỊ</i></div>
 <h3>DANH SÁCH NGƯỜI TÌNH NGUYỆN CHÍNH THỨC VÀ DỰ BỊ</h3>
 <p>Tên nghiên cứu:
     ".$ten_nc["ten_nc"]."
@@ -142,12 +149,12 @@ echo"
 
 echo"
 </table>
-<p style='text-align:right;margin-right: 14%;font-weight: normal;margin-top: 5%'>Ngày&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; tháng &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;năm&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</p>
-<p id='p1'>Phụ trách lâm sàng
+<p style='text-align:right;margin-right: 12%;font-weight: normal;margin-top: 3%'>Ngày&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; tháng &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;năm&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</p>
+<p class='p3'>Phụ trách lâm sàng
     <br><span>(Ký, ghi rõ họ tên)</span></p>
-<p id='p2' style='font-style: normal;margin-right:19%'>Người lập bảng
+<p class='p2' style='font-style: normal;margin-right:19%'>Người lập bảng
     <br><span>(Ký, ghi rõ họ tên)</span></p>
     <br>
-    <div class='page'><p style='font-size: 10px;font-weight: normal;text-align:center;margin-left: 0; '>".($j+1)."/".$k."</p></div></div>
+<div class='page'><p style='font-size: 10px;font-weight: normal;text-align:center;margin-left: 0; '>".($j+1)."/".$k."</p></div></div>
     ";
 }
