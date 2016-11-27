@@ -1,5 +1,5 @@
 <?php
-$sql = "SELECT tinh_nguyen_vien.ho_ten, tinh_nguyen_vien.so_cmt, tnv_nghien_cuu.ma_tnv FROM tinh_nguyen_vien INNER JOIN tnv_nghien_cuu ON tinh_nguyen_vien.so_cmt=tnv_nghien_cuu.so_cmt AND tnv_nghien_cuu.id='$ma_nc' ORDER BY tinh_nguyen_vien.ho_ten DESC";
+$sql = "SELECT tinh_nguyen_vien.ho_ten, tinh_nguyen_vien.so_cmt, tnv_nghien_cuu.ma_tnv FROM tinh_nguyen_vien INNER JOIN tnv_nghien_cuu ON tinh_nguyen_vien.so_cmt=tnv_nghien_cuu.so_cmt AND tnv_nghien_cuu.id='$ma_nc' AND tnv_nghien_cuu.ct=1 ORDER BY tinh_nguyen_vien.ho_ten DESC";
 $query = mysql_query($sql);
 $sql2 = "SELECT ten_nc FROM nghien_cuu WHERE id='$ma_nc'";
 $query2 = mysql_query($sql2);
@@ -18,9 +18,6 @@ $ten_nc = mysql_fetch_array($query2);
         h3{
             text-align: center;
             font-weight: bold;
-        }
-        #mau_mau{
-            display: none;
         }
         .p1 {
             display: inline-block;
@@ -42,25 +39,47 @@ $ten_nc = mysql_fetch_array($query2);
         .stt{
             width: 5%;
         }
+        .bang{
+            position: relative;
+            height: 185mm;
+        }
+        .page{
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+        }
+        
+        .footer{
+            position: absolute;
+            width: 100%;
+            bottom: 0;
+        }
+        .ma_nc{
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 250px;
+        }
     </style>
 </head>
-<body>
+
 <?php
 $num = mysql_num_rows($query);
 $k=2;$i=1;$k=round($num/12);
 
-if ($num %12 < 6)
+if (($num %12 < 6) && ($num %12 >0))
     $k++;
 
 for ($j=0; $j < $k; $j++) {
     echo "
+<div class='bang'>
 <p class='p1'>BE Center-NIDQC</p>
-<p class='p2'>BẢNG THEO DÕI LẤY MÁU NTN</p>
-<h3>BẢNG THEO DÕI LẤY MÁU NTN</h3>
-<p>Tên nghiên cứu:
+<p class='p2'>BẢNG THEO DÕI LẤY MẪU MÁU NTN</p>
+<h3>BẢNG THEO DÕI LẤY MẪU MÁU NTN</h3>
+<p><b>Tên nghiên cứu:</b>
     " . $ten_nc["ten_nc"] . "
 </p>
-<p>Nghiên cứu số:
+<p><b>Nghiên cứu số:</b>
     " . $ma_nc . "
 </p>
 <p class='gd'></p>
@@ -155,46 +174,49 @@ for ($j=0; $j < $k; $j++) {
             </tr>";
         $i++;
     }
-    //$i++;
-    ?>
+    echo"
     <tr>
-        <td style="font-weight:bold" colspan="3">Người lấy mẫu</td>
-        <td colspan="2"></td>
-        <td colspan="2"></td>
-        <td colspan="2"></td>
-        <td colspan="2"></td>
-        <td colspan="2"></td>
-        <td colspan="2"></td>
-        <td colspan="2"></td>
-        <td colspan="2"></td>
+        <td style='font-weight:bold' colspan='3'>Người lấy mẫu</td>
+        <td colspan='2'></td>
+        <td colspan='2'></td>
+        <td colspan='2'></td>
+        <td colspan='2'></td>
+        <td colspan='2'></td>
+        <td colspan='2'></td>
+        <td colspan='2'></td>
+        <td colspan='2'></td>
     </tr>
     <tr>
-        <td style="font-weight:bold" colspan="3">Người giám sát</td>
-        <td colspan="2"></td>
-        <td colspan="2"></td>
-        <td colspan="2"></td>
-        <td colspan="2"></td>
-        <td colspan="2"></td>
-        <td colspan="2"></td>
-        <td colspan="2"></td>
-        <td colspan="2"></td>
+        <td style='font-weight:bold' colspan='3'>Người giám sát</td>
+        <td colspan='2'></td>
+        <td colspan='2'></td>
+        <td colspan='2'></td>
+        <td colspan='2'></td>
+        <td colspan='2'></td>
+        <td colspan='2'></td>
+        <td colspan='2'></td>
+        <td colspan='2'></td>
     </tr>
     <tr>
-        <td style="font-weight:bold" colspan="3">Ghi chú</td>
-        <td colspan="2"></td>
-        <td colspan="2"></td>
-        <td colspan="2"></td>
-        <td colspan="2"></td>
-        <td colspan="2"></td>
-        <td colspan="2"></td>
-        <td colspan="2"></td>
-        <td colspan="2"></td>
+        <td style='font-weight:bold' colspan='3'>Ghi chú</td>
+        <td colspan='2'></td>
+        <td colspan='2'></td>
+        <td colspan='2'></td>
+        <td colspan='2'></td>
+        <td colspan='2'></td>
+        <td colspan='2'></td>
+        <td colspan='2'></td>
+        <td colspan='2'></td>
     </tr>
-<?php
-echo "
+
 </table>
 <br>
 <p><i>Đánh dấu √ vào ô Tr (nếu thời gian lấy mẫu đúng theo dự kiến). Ghi thời gian lấy mẫu thực.<b> Các mẫu máu trong khoảng 10 – 70 phút được phép lấy lệch trong vòng 30 giây, điểm 1,5-2 giờ được phép lấy lệch 1 phút, điểm 3 giờ phép lệch 3 phút; điểm 6 giờ được phép lấy lệch 9 phút ; điểm 12 giờ được phép lệch 15 phút ; điểm 24 giờ được phép lấy lệch trong vòng 30 phút và điểm 48 giờ, 72 giờ được phép lấy lệch trong vòng 1 giờ so với thời gian qui định.</b> Ghi chú cụ thể nếu có gì đặc biệt tại từng thời điểm: NTN khó lấy mẫu, NTN lấy mẫu trực tiếp, NTN phải đổi tay người lấy mẫu (ghi người lấy mẫu).</i></p>
-<div class='page'><p style='font-size: 10px;font-weight: normal;text-align:center;margin-left: 0; '>" . ($j + 1) . "/" . $k . "</p></div></div>
-</body>";
+<div class='footer'> 
+<div><p style='font-weight:normal;margin-left:10px;'><i>BE/FM/CLI.12.01</i></p></div>
+<div class='page'><p style='font-size: 10px;font-weight: normal;text-align:center;margin-left: 0; '>".($j+1)."/".$k."</p></div>
+<div class='ma_nc'><p style='font-weight:normal;'><i>Nghiên cứu số:".$ma_nc."</i></p></div>
+</div>
+</div>
+";
 }

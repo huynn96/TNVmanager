@@ -80,8 +80,30 @@ $ten_nc = mysql_fetch_array($query2);
         .time{
             width: 5%;
         }
+        .bang{
+            position: relative;
+            height: 185mm;
+        }
+        .page{
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+        }
+        
+        .footer{
+            position: absolute;
+            width: 100%;
+            bottom: 0;
+        }
+        .ma_nc{
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 250px;
+        }
     </style>
 </head>
+<div class="bang">
 <p id="p1">BE Center-NIDQC</p>
 <h3>BẢNG THỜI ĐIỂM UỐNG THUỐC VÀ LẤY MẪU</h3>
 <p>Tên nghiên cứu:
@@ -150,6 +172,11 @@ $ten_nc = mysql_fetch_array($query2);
     ?>
 
 </table>
+<div class='footer'> 
+<div><p style='font-weight:normal;margin-left:10px;'><i>BE/FM/CLI.07.06b</i></p></div>
+<div class='page'><p style='font-size: 10px;font-weight: normal;text-align:center;margin-left: 0; '>".($j+1)."/".$k."</p></div>
+<div class='ma_nc'><p style='font-weight:normal;'><i>Nghiên cứu số: <?php echo $ma_nc; ?></i></p></div>
+</div>
 <script type="text/javascript">
     function convert(h,m)
     {

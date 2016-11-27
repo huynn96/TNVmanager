@@ -7,23 +7,31 @@
 ?>
 <head>
     <style>
+        #uong_thuoc{
+            display: none;
+            line-height: 16px;
+        }
         table, th, td {
             border: 1px solid black;
             border-collapse: collapse;
+            line-height: 16px;
         }
 
         th, td {
             padding: 5px;
             text-align: center;
+            line-height: 16px;
         }
         h3{
             text-align: center;
             font-weight: bold;
+            margin: 0 auto;
         }
         #p1 {
                 display: inline-block;
-                margin-left: 14%;
+                margin-left: 10px;
                 font-weight: bold;
+                
             }
         p {
                 margin-left: 14%;
@@ -32,19 +40,33 @@
         .note{
             width: 30%;
         }
+        .bang{
+            position: relative;
+            height: 185mm;
+        }
+        .page{
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+        }
+        
+        .footer{
+            position: absolute;
+            width: 100%;
+            bottom: 0;
+        }
     </style>
 </head>
+<div id="bang">
 <p id="p1">BE Center-NIDQC</p>
 <h3>BẢNG THEO DÕI NTN UỐNG THUỐC</h3>
 <?php
 $sql2 = "SELECT * FROM nghien_cuu WHERE id='$ma_nc'";
 $query2 = mysql_query($sql2);
 $row2 = mysql_fetch_array($query2);
-echo "<p style='font-weight: bold'>Tên nghiên cứu: " . $row2["ten_nc"] . "</p><p style='font-weight: bold'>Mã nghiên cứu: " . $ma_nc . "</p>";
+echo "<p><b>Tên nghiên cứu:</b> " . $row2["ten_nc"] . "</p><p><b>Mã nghiên cứu:</b> " . $ma_nc . "</p>";
 ?>
 <p class="gd"></p>
-<div id="wrapbox">
-    <!--    <h2>Bảng theo dõi TNV uống thuốc</h2>-->
     <table id="table1" style="width:100%" class="table-striped table-hover">
         <tr>
             <th class="stt" rowspan="2">STT</th>
@@ -77,11 +99,13 @@ echo "<p style='font-weight: bold'>Tên nghiên cứu: " . $row2["ten_nc"] . "</
         }
         ?>
     </table>
-    <br>
     <p><span><b><u>Ghi chú: </u></b></span><i>Đánh dấu √ vào ô “Thực tế” nếu thời gian uống thuốc đúng theo dự kiến.
 Ghi thời gian uống thuốc thực nếu thời gian uống thuốc khác so với dự kiến.</i></p>
     
     <p style="display: inline;"><b>Người thực hiện</b></p>
     <p style="float: right;margin-right: 14%"><b>Người giám sát</b></p>
-
+    <div class='footer'> 
+    <div><p style="font-weight:normal;margin-left:10px;"><i>BE/FM/CLI.10.02</i></p></div>
+    <div class='page'><p style='font-size: 10px;font-weight: normal;text-align:center;margin-left: 0; '>1/1</p></div>
+    </div>
 </div>

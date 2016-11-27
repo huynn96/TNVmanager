@@ -26,9 +26,6 @@
         #sua{
             display: none;
         }
-        #uong_thuoc{
-            display: none;
-        }
         #mau_mau{
             display: none;
         }
@@ -93,8 +90,8 @@
             $sql = "UPDATE nghien_cuu SET id='$id' WHERE id='$ma_nc'";
             $query = mysql_query($sql);
         }
-
-        header("location: index.php");
+        echo $id;
+        header("location: index.php?id_nc=$id");
     }
     else{
         $sql = "SELECT * FROM nghien_cuu WHERE id = '$ma_nc'";
@@ -148,7 +145,7 @@
             <option value="II">Giai đoạn II</option>
             <option value="III">Giai đoạn III</option>
         </select>
-        <div style="display: block;"></div>
+        <div style="display: inline-block;"></div>
         <select id="select" class="form-control" style="margin:20px 0 0 20px">
             <option value="dsctdb">Danh sách chính thức và dự bị</option>
             <option value="dsct">Danh sách chính thức</option>
@@ -178,7 +175,7 @@
 
                 <div class="row">
                     <label for="ma_nc">Mã nghiên cứu <span class="req">*</span></label>
-                    <input type="text" name="ma_nc" id="name" class="txt" value="<?php echo $ma_nc; ?>" tabindex="1" required>
+                    <input type="text" name="ma_nc" id="ma_nc" class="txt" value="<?php echo $ma_nc; ?>" tabindex="1" required>
                 </div>
 
                 <div class="row">

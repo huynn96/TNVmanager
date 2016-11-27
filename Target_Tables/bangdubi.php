@@ -77,27 +77,39 @@ $ten_nc = mysql_fetch_array($query2);
 
         p {
             margin-left: 14%;
-            font-weight: bold;
         }
 
         span {
             font-weight: normal;
         }
-   .page{
-            position: absolute;
-            bottom: 0;
-            margin: 0 50% 0 50%;
-        }
+
         .bang{
             position: relative;
             height: 185mm;
+        }
+        .page{
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+        }
+        
+        .footer{
+            position: absolute;
+            width: 100%;
+            bottom: 0;
+        }
+        .ma_nc{
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 250px;
         }
     </style>
 </head>
 <?php
 $num = mysql_num_rows($query);
 $k=2;$i=1;$k=round($num/12);
-if ($num %12 < 6)
+if (($num %12 < 6) && ($num %12 >0))
     $k++;
 
 for ($j=0; $j < $k; $j++) { 
@@ -106,13 +118,12 @@ echo"
 <div class='p1'>BE Center-NIDQC</div>
 <div class='p2'><i>DANH SÁCH NGƯỜI TÌNH NGUYỆN DỰ BỊ</i></div>
 <h3>DANH SÁCH NGƯỜI TÌNH NGUYỆN DỰ BỊ</h3>
-<p>Tên nghiên cứu:
+<p><b>Tên nghiên cứu:</b>
     ".$ten_nc["ten_nc"]."
 </p>
-<p>Nghiên cứu số:
+<p><b>Nghiên cứu số:</b>
      ".$ma_nc."
 </p>
-<p class='gd' style='font-weight: normal;''></p>
 <table style='width:100%'>
     <tr>
 
@@ -133,7 +144,7 @@ echo"
         echo "
             <tr>
                 <td>".$i."</td>
-                <td>".$rows["ma_tnv"]."</td>
+                <td><b>".$rows["ma_tnv"]."</b></td>
                 <td>".$rows["ho_ten"]."</a></td>
                 <td>".$rows["year"]."</td>
                 <td>".$rows["address"]."</td>
@@ -153,6 +164,11 @@ echo"
 <p class='p2' style='font-style: normal;margin-right:19%'>Người lập bảng
     <br><span>(Ký, ghi rõ họ tên)</span></p>
     <br>
-<div class='page'><p style='font-size: 10px;font-weight: normal;text-align:center;margin-left: 0; '>".($j+1)."/".$k."</p></div></div>
+<div class='footer'> 
+<div><p style='font-weight:normal;margin-left:10px;'><i>BE/FM/CLI.07.06b</i></p></div>
+<div class='page'><p style='font-size: 10px;font-weight: normal;text-align:center;margin-left: 0; '>".($j+1)."/".$k."</p></div>
+<div class='ma_nc'><p style='font-weight:normal;'><i>Nghiên cứu số:".$ma_nc."</i></p></div>
+</div>
+</div>
     ";
 }
