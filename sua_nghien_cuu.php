@@ -160,13 +160,13 @@
             <option value="huyet_tuong">Nhận ống huyết tương</option>
         </select>
 
-        <button class="btn btn-default btn-md" style="display: inline-block" onclick="print_table()"><i class="glyphicon glyphicon-print"></i></button>
+        <button class="btn btn-default btn-md" style="display: inline-block; margin: 0 10px 0 10px" onclick="print_table()"><i class="glyphicon glyphicon-print"></i></button>
 
         <button class="btn btn-default btn-md" style="display: inline-block" onclick="word_table()"><i class="glyphicon glyphicon-download-alt"></i></button>
          <div style="display: block"></div>
-        <button name="sua" type="button" class="btn btn-primary" style="display: inline;margin:20px 0 0 20px;">Chỉnh sửa thông tin nghiên cứu</button>
+        <button name="sua" type="button" class="btn btn-primary" style="display: inline;margin:10px 0 0 20px;">Chỉnh sửa thông tin nghiên cứu</button>
 
-        <?php echo "<div class='xoa' style='display: inline;margin:20px 0 0 20px;''>
+        <?php echo "<div class='xoa' style='display: inline; margin: 0 0 0 20px'>
                     <a href='sua_nghien_cuu.php?del=".$ma_nc."' type='button' class='btn btn-sm btn-danger' data-toggle='tooltip' title='Xoá nghiên cứu'><i class='glyphicon glyphicon-remove'></i></a>
                 </div>" ?>
 
