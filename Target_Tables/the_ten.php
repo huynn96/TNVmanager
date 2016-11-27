@@ -9,10 +9,10 @@
             border-collapse: collapse;
             width: 100%;
             line-height: 20px;
-            border: 3px double black !important;
+            border: 3px double black;
         }
 		td, th, tr{
-            border: 3px double black !important;
+            border: 3px double black;
             text-align: center;
             padding: 3px;
         }
@@ -25,6 +25,28 @@
 			line-height: 30px !important;
 			font-size: 15px !important;
 		}
+		.p1 {
+            display: inline-block;
+            margin-left: 10px;
+            font-weight: bold;
+        }
+
+        .p2 {
+            display: inline;
+            float: right;
+            font-weight: bold;
+
+        }
+        .bang{
+            position: relative;
+            height: 275mm;
+        }
+       
+        .footer{
+            position: absolute;
+            width: 100%;
+            bottom: 0;
+        }
 	</style>
 
 </head>
@@ -32,6 +54,8 @@
 <?php 
 while ($rows = mysql_fetch_array($query)) {
 	$i=0;
+	echo "<div class='bang'><div class='p1'>BE Center-NIDQC</div>
+<div class='p2'><i>Thẻ tên của NTN</i></div><br>";
 	while ($i<2){
 		echo "
 			<table width='612'>
@@ -87,22 +111,11 @@ while ($rows = mysql_fetch_array($query)) {
 		";
 		$i++;
 	}
-	echo "<br><br>";
+	echo "<br><br>
+<div class='footer'> 
+<div><p style='font-weight:normal;margin-left:10px;'><i>BE/FM/CLI.16.04</i></p></div>
+</div>
+	</div>";
 }
 ?>
 </div>
-<!-- 
-<table class='table'>
-			<tr>
-				<th class='he'>VIỆN KIỂM NGHIỆM THUỐC TW<br>TT ĐÁNH GIÁ TĐSH</th>
-				<th style='width: 50px;'></th>
-				<th class='he'>VIỆN KIỂM NGHIỆM THUỐC TW<br>TT ĐÁNH GIÁ TĐSH</th>
-			</tr>
-			<tr>
-				<td>
-					<p style='font-weight:bold;font-size:20px;margin:10px 0 10px 0;'>'.$rows['ho_ten'].'</p>
-				</td>
-			</tr>
-
-		</table>
- -->

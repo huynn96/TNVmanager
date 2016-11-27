@@ -12,7 +12,7 @@ $ten_nc = mysql_fetch_array($query2);
             font-size: 13px;
             border-collapse: collapse;
             width: 100%;
-            line-height: 20px;
+            line-height: 17px;
             border: 1px solid black;
         }
 
@@ -41,14 +41,16 @@ $ten_nc = mysql_fetch_array($query2);
             border: 1px solid black;
             text-align: center;
             padding: 3px;
+            line-height: 17px;
         }
 
         tr:nth-child(even) {
             background-color: #dddddd;
+            line-height: 17px;
         }
 
         #theo_doi_an_sang {
-            /*display: none;*/
+            display: none;
         }
 
         .p1 {
@@ -65,31 +67,46 @@ $ten_nc = mysql_fetch_array($query2);
         }
         h3 {
             text-align: center;
+            margin: 0 auto;
         }
 
         p {
             margin-left: 14%;
-            font-weight: bold;
         }
 
         span {
             font-weight: normal;
         }
+        .bang{
+            position: relative;
+            height: 275mm;
+        }
+        .page{
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+        }
+        
+        .footer{
+            position: absolute;
+            width: 100%;
+            bottom: 0;
+        }
     </style>
 </head>
-<p id="p1">BE Center-NIDQC</p>
-<div class='p2'><i>Bảng theo dõi NTN ăn sáng</i></div>
+<div class="bang">
+<div class='p1'>BE Center-NIDQC</div>
+<div class='p2'><i>Bảng theo dõi NTN ăn sáng</i></div>
 <h3>BẢNG THEO DÕI NTN ĂN SÁNG</h3>
-<p>Tên nghiên cứu:
+<p><b>Tên nghiên cứu:</b>
     <?php echo $ten_nc["ten_nc"]; ?>
 </p>
-<p>Nghiên cứu số:
+<p><b>Nghiên cứu số:</b>
     <?php echo $ma_nc; ?>
 </p>
 <p class="gd" style="font-weight: normal;"></p>
 <table style="width:100%">
     <tr>
-
         <th class="stt" rowspan="2">STT</th>
         <th class="ma_tnv" rowspan="2">Mã TNV</th>
 
@@ -132,5 +149,10 @@ $ten_nc = mysql_fetch_array($query2);
 </p>
 <p style="text-align:right;margin-right: 14%;font-weight: normal;margin-top: 5%">Ngày&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; tháng &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;năm&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</p>
 
-<p id="p2" style="font-style: normal;margin-right:19%">Cán bộ theo dõi
+<p class="p2" style="font-style: normal;margin-right:19%">Cán bộ theo dõi
     <br><span>(Ký, ghi rõ họ tên)</span></p>
+<div class='footer'> 
+<div><p style='font-weight:normal;margin-left:10px;'><i>BE/FM/CLI.19.02</i></p></div>
+<div class='page'><p style='font-size: 10px;font-weight: normal;text-align:center;margin-left: 0; '>1/1</p></div>
+</div>
+</div>
