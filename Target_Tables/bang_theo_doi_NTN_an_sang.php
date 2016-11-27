@@ -126,6 +126,11 @@ $ten_nc = mysql_fetch_array($query2);
     ?>
 
 </table>
+<p style="margin: 30px 0 0 0"><u><i>Ghi chú:</i></u><br>
+    <span style="margin-left: 30px">- Đánh dấu √ vào ô "Thực tế" nếu NTN ăn đúng giờ dự kiến. Ghi thời gian ăn thực tế nếu thời điểm NTN ăn khác dự kiến.</span><br>
+    <span style="margin-left: 30px">- Ghi rõ phần thức ăn còn thừa. Nếu NTN ăn hết bữa sáng thì ghi "ăn hết"</span><br>
+    <span style="margin-left: 30px">- Thực đơn bữa sáng: ….</span>
+</p>
 <p style="text-align:right;margin-right: 14%;font-weight: normal;margin-top: 5%">Ngày&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; tháng &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;năm&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</p>
 
 <p id="p2" style="font-style: normal;margin-right:19%">Cán bộ theo dõi

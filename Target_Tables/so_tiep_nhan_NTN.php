@@ -60,7 +60,7 @@ $ten_nc = mysql_fetch_array($query2);
         #p2 {
             display: inline;
             float: right;
-            margin-right: 14%;
+            margin-right: 74%;
             font-weight: bold;
             font-style: italic;
         }
@@ -129,8 +129,12 @@ $ten_nc = mysql_fetch_array($query2);
     ?>
 
 </table>
-<p style="text-align:right;margin-right: 14%;font-weight: normal;margin-top: 5%">Ngày&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; tháng &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;năm&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</p>
-<p id="p1">Phụ trách lâm sàng
+<p style="text-align:right;margin-right: 9%;font-weight: normal;margin-top: 5%">Ngày&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; tháng &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;năm&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</p>
+<p style="text-align:right;margin-right: 14%;font-weight: bold">Phụ trách lâm sàng
     <br><span>(Ký, ghi rõ họ tên)</span></p>
-<p id="p2" style="font-style: normal;margin-right:19%">Người lập bảng
-    <br><span>(Ký, ghi rõ họ tên)</span></p>
+<p style="margin: 30px 0 0 0"><u><i>Ghi chú:</i></u><br>
+    <span>-	Cột “Ghi chú” trong bảng danh sách NTN ghi các thông tin:</span><br>
+    <span style="margin-left: 30px">+	“Dự bị” nếu NTN ở vị trí dự bị</span><br>
+    <span style="margin-left: 30px">+	Các thông tin cần lưu ý khác tạo điều kiện liên lạc với NTN được thuận tiện.</span><br>
+    <span>-	Bảng ghi danh sách NTN chính thức và dự bị có thể viết tay, hoặc đánh máy. Trong trường hợp bảng được đánh máy, dán vào sổ cần có chữ ký giáp lai của phụ trách lâm sàng.</span><br>
+</p>
