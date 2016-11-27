@@ -1,7 +1,7 @@
 <head>
 	<link rel='stylesheet' type='text/css' href='css/tnv_search.css'/>
 	<style type="text/css">
-		#add{
+		#added{
 			display: none;
 		}
 	</style>	
@@ -33,13 +33,13 @@
 </form>
 
 <button id="button" name="add" type="button" class="btn btn-primary" style="display: block;margin:130px 0 0 20px;">Thêm nghiên cứu mới</button>
-<div id="add">
+<div id="added">
 
 </div>
 <script type="text/javascript">
-	$('#add').load("add_nc.php");
+	$('#added').load("add_nc.php");
 	$('#button').click(function () {
-		$('#add').toggle();
+		$('#added').toggle();
 	})
 
 </script>

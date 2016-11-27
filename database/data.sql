@@ -5,10 +5,10 @@ CREATE TABLE IF NOT EXISTS nghien_cuu(
 	ten_nc VARCHAR(400),
 	date_year DATE NOT NULL,
 	date_year_end DATE,
-    gd2_begin DATE,
-    gd2_end DATE,
-    gd3_begin DATE,
-    gd3_end DATE,
+    	gd2_begin DATE,
+    	gd2_end DATE,
+    	gd3_begin DATE,
+    	gd3_end DATE,
 	PRIMARY KEY (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 CREATE TABLE IF NOT EXISTS tinh_nguyen_vien(
@@ -20,7 +20,7 @@ CREATE TABLE IF NOT EXISTS tinh_nguyen_vien(
 	ngay_cap_cmt DATE,
 	noi_cap_cmt VARCHAR(100),
 	ghi_chu VARCHAR(500),
-    ds_den INT(1) NOT NULL,
+    	ds_den INT(1) NOT NULL,
 	PRIMARY KEY (so_cmt)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 CREATE TABLE IF NOT EXISTS tnv_nghien_cuu(
@@ -29,7 +29,5 @@ CREATE TABLE IF NOT EXISTS tnv_nghien_cuu(
 	ma_tnv VARCHAR(10),
 	note VARCHAR(500),
 	ct INT(1) NOT NULL,
-	PRIMARY KEY (id, so_cmt),
-    FOREIGN KEY (id) references nghien_cuu (id),
-    FOREIGN KEY (so_cmt) references tinh_nguyen_vien (so_cmt)
+	PRIMARY KEY (id, so_cmt)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

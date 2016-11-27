@@ -10,7 +10,8 @@
     $phone = $_POST["phone"];
     $date = $_POST["ngay_cap_cmt"];
     $ghi_chu = $_POST["ghi_chu"];
-    $date=date('Y-m-d',strtotime($date));
+    if ($date!=null)
+      $date=date('Y-m-d',strtotime($date));
     $noi_cap_cmt = $_POST["noi_cap_cmt"];
 
     $nghien_cuu = $_POST["nghien_cuu"];
@@ -24,7 +25,10 @@
 
     $sql = "UPDATE tinh_nguyen_vien SET so_cmt='$so_cmt', ho_ten='$ho_ten', year='$year', address='$address', phone='$phone', ngay_cap_cmt='$date', noi_cap_cmt='$noi_cap_cmt',ghi_chu='$ghi_chu' WHERE so_cmt = '$cmt'";
     $query = mysql_query($sql);
-
+    if ($date==null){
+      $sql = "UPDATE tinh_nguyen_vien SET ngay_cap_cmt=NULL WHERE so_cmt='$cmt'";
+      $query = mysql_query($sql);
+    }
     if ($so_cmt != $cmt){
       $sql = "UPDATE tnv_nghien_cuu SET so_cmt='$so_cmt' WHERE so_cmt='$cmt'";
       $query = mysql_query($sql);

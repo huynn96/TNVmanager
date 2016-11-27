@@ -31,6 +31,10 @@
         	$sql = "INSERT INTO tinh_nguyen_vien(so_cmt, ho_ten, year, address, phone, ngay_cap_cmt, noi_cap_cmt, ghi_chu) VALUES ('$so_cmt', '$ho_ten', '$year', '$address', '$phone', '$date', '$noi_cap_cmt', '$note')";
         	$query = mysql_query($sql);
         }
+        if ($date==null){
+            $sql = "UPDATE tinh_nguyen_vien SET ngay_cap_cmt=NULL WHERE so_cmt='$so_cmt'";
+            $query = mysql_query($sql);
+        }
     	header("location: index.php?page=tnv&tnv=$so_cmt");
 	}
 ?>
@@ -56,7 +60,7 @@
                                             <tr>
                                                 <td>Họ tên:</td>
                                                 <td>
-                                                    <input type='text' name='ho_ten' class='txt'>
+                                                    <input type='text' name='ho_ten' class='txt' required>
                                                 </td>
                                             </tr>
                                             <tr>
@@ -76,7 +80,7 @@
                                             <tr>
                                                 <td>Điện thoại:</td>
                                                 <td>
-                                                    <input type='text' name='phone' class='txt'>
+                                                    <input type='text' name='phone' class='txt' required>
                                                 </td>
                                             </tr>
 

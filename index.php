@@ -204,9 +204,14 @@
             p.parent().parent().children().children().toggle();
             var icon = p.parent().parent().children('i:first');
             icon.toggleClass("glyphicon-folder-open" + " " + "glyphicon-folder-close");
-            p = <?php echo "'".$_GET["page"]."1'"; ?>;
-            if ( p != "ds_ct1" )
+            q = <?php echo "'".$_GET["page"]."1'"; ?>;
+            if ( q != "ds_ct1" )
                 $("[href='sua_nghien_cuu.php?id_nc=<?php echo $ma_nc; ?>']").click();
+            else{
+                p.children().children().toggle();
+                var icon = p.children('i:first');
+                icon.toggleClass("glyphicon-folder-open" + " " + "glyphicon-folder-close");
+            }
             
         </script>
 

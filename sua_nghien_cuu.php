@@ -4,8 +4,8 @@
         $ma_nc = $_GET["del"];
         $sql = "DELETE FROM nghien_cuu WHERE id='$ma_nc'";
         $query = mysql_query($sql);
-        $sql = "DELETE FROM tnv_nghien_cuu WHERE id='$ma_nc'";
-        $query = mysql_query($sql);
+        $sql2 = "DELETE FROM tnv_nghien_cuu WHERE id='$ma_nc'";
+        $query2 = mysql_query($sql2);
 
         header("location: index.php");
     }
@@ -48,7 +48,7 @@
         $ten_nc = $_POST["message"];
         $date = $_POST["date"];
         $date=date('Y-m-d',strtotime($date));
-         $date2 = $_POST["date2"];
+        $date2 = $_POST["date2"];
         $date2=date('Y-m-d',strtotime($date2));
         
         $gd2_b = $_POST["gd2_b"];
@@ -89,6 +89,8 @@
 
         if($id != $ma_nc){
             $sql = "UPDATE tnv_nghien_cuu SET id='$id' WHERE id='$ma_nc'";
+            $query = mysql_query($sql);
+            $sql = "UPDATE nghien_cuu SET id='$id' WHERE id='$ma_nc'";
             $query = mysql_query($sql);
         }
 
@@ -164,6 +166,46 @@
         <button class="btn btn-default btn-md" style="display: inline-block" onclick="print_table()"><i class="glyphicon glyphicon-print"></i></button>
 
         <button class="btn btn-default btn-md" style="display: inline-block" onclick="word_table()"><i class="glyphicon glyphicon-download-alt"></i></button>
+         <div style="display: block"></div>
+        <button name="sua" type="button" class="btn btn-primary" style="display: inline;margin:20px 0 0 20px;">Chỉnh sửa thông tin nghiên cứu</button>
+
+        <?php echo "<div class='xoa' style='display: inline;margin:20px 0 0 20px;''>
+                    <a href='sua_nghien_cuu.php?del=".$ma_nc."' type='button' class='btn btn-sm btn-danger' data-toggle='tooltip' title='Xoá nghiên cứu'><i class='glyphicon glyphicon-remove'></i></a>
+                </div>" ?>
+
+        <div id="sua">
+            <form id="contactform" name="contact" method="post" <?php echo "action='sua_nghien_cuu.php?id_nc=".$ma_nc."'"; ?> >
+
+                <div class="row">
+                    <label for="ma_nc">Mã nghiên cứu <span class="req">*</span></label>
+                    <input type="text" name="ma_nc" id="name" class="txt" value="<?php echo $ma_nc; ?>" tabindex="1" required>
+                </div>
+
+                <div class="row">
+                    <label for="message">Tên nghiên cứu <span class="req">*</span></label> 
+                    <textarea name="message" id="message" class="txtarea" tabindex="4" required><?php echo $row["ten_nc"]; ?></textarea>
+                </div>
+
+                <div class="row">
+                    <label for="date">Giai đoạn 1:<span class="req">*</span></label>
+                    <input type="text" name="date" class="txt date" tabindex="3" value="<?php echo $date; ?>" required>
+                    <input type="text" name="date2" class="txt date" tabindex="3" value="<?php echo $date2; ?>">
+                    <div></div>
+                    <label for="gd1">Giai đoạn 2:</label>
+                    <input type="text" name="gd2_b" class="txt date gd1" tabindex="3" value="<?php echo $gd2_b; ?>">
+                    <input type="text" name="gd2_e" class="txt date gd1" tabindex="3" value="<?php echo $gd2_e; ?>">
+                    <div></div>
+                    <label for="date">Giai đoạn 3:</label>
+                    <input type="text" name="gd3_b" class="txt date" tabindex="3" value="<?php echo $gd3_b; ?>">
+                    <input type="text" name="gd3_e" class="txt date" tabindex="3" value="<?php echo $gd3_e; ?>">
+                </div>
+
+                <div class="center">
+                    <input type="submit" id="submitbtn" name="submitbt" tabindex="5" value="Cập nhật">
+                </div>
+            </form>
+        </div>
+
         <div id="huyet_tuong">
             <?php
             include_once("Target_Tables/nhan_ong_huyet_tuong.php");
@@ -220,47 +262,7 @@
             ?>
         </div>
         
-
-        <div style="display: block"></div>
-        <button name="sua" type="button" class="btn btn-primary" style="display: inline;margin:20px 0 0 20px;">Chỉnh sửa thông tin nghiên cứu</button>
-
-        <?php echo "<div class='xoa' style='display: inline;margin:20px 0 0 20px;''>
-                    <a href='sua_nghien_cuu.php?del=".$ma_nc."' type='button' class='btn btn-sm btn-danger' data-toggle='tooltip' title='Xoá nghiên cứu'><i class='glyphicon glyphicon-remove'></i></a>
-                </div>" ?>
-
-        <div id="sua">
-            <form id="contactform" name="contact" method="post" <?php echo "action='sua_nghien_cuu.php?id_nc=".$ma_nc."'"; ?> >
-
-                <div class="row">
-                    <label for="ma_nc">Mã nghiên cứu <span class="req">*</span></label>
-                    <input type="text" name="ma_nc" id="name" class="txt" value="<?php echo $row["id"]; ?>" tabindex="1" required>
-                </div>
-
-                <div class="row">
-                    <label for="message">Tên nghiên cứu <span class="req">*</span></label> 
-                    <textarea name="message" id="message" class="txtarea" tabindex="4" required><?php echo $row["ten_nc"]; ?></textarea>
-                </div>
-
-                <div class="row">
-                    <label for="date">Giai đoạn 1:<span class="req">*</span></label>
-                    <input type="text" name="date" class="txt date" tabindex="3" value="<?php echo $date; ?>" required>
-                    <input type="text" name="date2" class="txt date" tabindex="3" value="<?php echo $date2; ?>">
-                    <div></div>
-                    <label for="gd1">Giai đoạn 2:</label>
-                    <input type="text" name="gd2_b" class="txt date gd1" tabindex="3" value="<?php echo $gd2_b; ?>">
-                    <input type="text" name="gd2_e" class="txt date gd1" tabindex="3" value="<?php echo $gd2_e; ?>">
-                    <div></div>
-                    <label for="date">Giai đoạn 3:</label>
-                    <input type="text" name="gd3_b" class="txt date" tabindex="3" value="<?php echo $gd3_b; ?>">
-                    <input type="text" name="gd3_e" class="txt date" tabindex="3" value="<?php echo $gd3_e; ?>">
-                </div>
-
-                <div class="center">
-                    <input type="submit" id="submitbtn" name="submitbt" tabindex="5" value="Cập nhật">
-                </div>
-            </form>
-        </div>
-
+       
 <script src="library/word/FileSaver.js"></script>
 <script src="library/word/jquery.wordexport.js"></script>
 
