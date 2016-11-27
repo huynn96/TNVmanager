@@ -95,8 +95,8 @@ $ten_nc = mysql_fetch_array($query2);
         <th class="ho_ten" rowspan="2">Họ và tên</th>
         <th class="noi_o" rowspan="2">Địa chỉ</th>
         <th class="phone" rowspan="2">Điện thoại</th>
-        <th colspan="2">Giai đoạn 1<br>Cán bộ trực:<br>Thời gian:</th>
-        <th colspan="2">Giai đoạn 2<br>Cán bộ trực:<br>Thời gian:</th>
+        <th colspan="2">Giai đoạn 1<br><p style="text-align: left; margin-left: 0">Cán bộ trực:<br>Thời gian:</p></th>
+        <th colspan="2">Giai đoạn 2<br><p style="text-align: left; margin-left: 0">Cán bộ trực:<br>Thời gian:</p></th>
         <th rowspan="2">Ghi chú</th>
     </tr>
     <tr>
