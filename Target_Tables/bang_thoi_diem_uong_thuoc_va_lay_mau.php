@@ -14,6 +14,7 @@ $ten_nc = mysql_fetch_array($query2);
             width: 100%;
             line-height: 20px;
             border: 1px solid black;
+            line-height: 15px;
         }
 
         .noi_o {
@@ -41,41 +42,47 @@ $ten_nc = mysql_fetch_array($query2);
             border: 1px solid black;
             text-align: center;
             padding: 3px;
+            line-height: 14px;
         }
 
         tr:nth-child(even) {
             background-color: #dddddd;
+            line-height: 14px;
         }
 
         #uong_thuoc_lay_mau {
             display: none;
+            line-height: 15px;
         }
 
         #p1 {
             display: inline-block;
-            margin-left: 14%;
+            margin-left: 10px;
             font-weight: bold;
+            line-height: 15px;
         }
 
         #p2 {
             display: inline;
             float: right;
-            margin-right: 14%;
             font-weight: bold;
             font-style: italic;
+            line-height: 15px;
         }
 
         h3 {
             text-align: center;
+            margin: 0 auto;
         }
 
         p {
             margin-left: 14%;
-            font-weight: bold;
+            line-height: 15px;
         }
 
         span {
             font-weight: normal;
+            line-height: 15px;
         }
         .time{
             width: 5%;
@@ -105,11 +112,12 @@ $ten_nc = mysql_fetch_array($query2);
 </head>
 <div class="bang">
 <p id="p1">BE Center-NIDQC</p>
+<p id="p2">Bảng thời điểm uống thuốc và lấy mẫu</p>
 <h3>BẢNG THỜI ĐIỂM UỐNG THUỐC VÀ LẤY MẪU</h3>
-<p>Tên nghiên cứu:
+<p><b>Tên nghiên cứu:</b>
     <?php echo $ten_nc["ten_nc"]; ?>
 </p>
-<p>Nghiên cứu số:
+<p><b>Nghiên cứu số:</b>
     <?php echo $ma_nc; ?>
 </p>
 <p class="gd" style="font-weight: normal;"></p>
@@ -147,7 +155,7 @@ $ten_nc = mysql_fetch_array($query2);
         echo "
             <tr class='hang'>
                 <td>".$i."</td>
-                <td>".$rows["ma_tnv"]."</td>
+                <td><b>".$rows["ma_tnv"]."</b></td>
                 <td>".$rows["ho_ten"]."</a></td>
                 <td></td>
                 <td></td>
@@ -174,7 +182,7 @@ $ten_nc = mysql_fetch_array($query2);
 </table>
 <div class='footer'> 
 <div><p style='font-weight:normal;margin-left:10px;'><i>BE/FM/CLI.07.06b</i></p></div>
-<div class='page'><p style='font-size: 10px;font-weight: normal;text-align:center;margin-left: 0; '>".($j+1)."/".$k."</p></div>
+<div class='page'><p style='font-size: 10px;font-weight: normal;text-align:center;margin-left: 0; '>1/1</p></div>
 <div class='ma_nc'><p style='font-weight:normal;'><i>Nghiên cứu số: <?php echo $ma_nc; ?></i></p></div>
 </div>
 <script type="text/javascript">

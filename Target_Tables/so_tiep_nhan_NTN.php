@@ -12,19 +12,12 @@ $ten_nc = mysql_fetch_array($query2);
             font-size: 13px;
             border-collapse: collapse;
             width: 100%;
-            line-height: 20px;
+            line-height: 15px;
             border: 1px solid black;
         }
 
         .noi_o {
-            width: 20%;
-        }
-
-        .phone,
-        .so_cmt,
-        .date,
-        .noi_cap {
-            width: 10%;
+            width: 25%;
         }
 
         .ma_tnv,
@@ -41,10 +34,12 @@ $ten_nc = mysql_fetch_array($query2);
             border: 1px solid black;
             text-align: center;
             padding: 3px;
+            line-height: 15px;
         }
 
         tr:nth-child(even) {
             background-color: #dddddd;
+            line-height: 15px;
         }
 
         #so_tiep_nhan {
@@ -53,62 +48,85 @@ $ten_nc = mysql_fetch_array($query2);
 
         #p1 {
             display: inline-block;
-            margin-left: 14%;
-            font-weight: bold;
+            margin-left: 10px;
+            margin-bottom: 0;
         }
 
         #p2 {
             display: inline;
             float: right;
-            margin-right: 74%;
             font-weight: bold;
             font-style: italic;
         }
 
-        h3 {
-            text-align: center;
-        }
-
         p {
             margin-left: 14%;
-            font-weight: bold;
         }
 
         span {
             font-weight: normal;
         }
+        .bang{
+            position: relative;
+            height: 185mm;
+        }
+        .page{
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+        }
+        
+        .footer{
+            position: absolute;
+            width: 100%;
+            bottom: 0;
+        }
+        .can_bo{
+            margin-left: 0;
+            margin-bottom: 0;
+            text-align: left;
+        }
+        .sign{
+            font-weight: bold;
+            width: 80px;
+        }
     </style>
 </head>
-<p id="p1">BE Center-NIDQC</p>
-<h3>SỔ TIẾP NHẬN NGƯỜI TÌNH NGUYỆN</h3>
-<p>Tên nghiên cứu:
-    <?php echo $ten_nc["ten_nc"]; ?>
-</p>
-<p>Nghiên cứu số:
-    <?php echo $ma_nc; ?>
-</p>
-<p class="gd" style="font-weight: normal;"></p>
-<table style="width:100%">
-    <tr>
-        <th class="stt" rowspan="2">STT</th>
-        <th class="ma_tnv" rowspan="2">Mã TNV</th>
-        <th class="ho_ten" rowspan="2">Họ và tên</th>
-        <th class="noi_o" rowspan="2">Địa chỉ</th>
-        <th class="phone" rowspan="2">Điện thoại</th>
-        <th colspan="2">Giai đoạn 1<br><p style="text-align: left; margin-left: 0">Cán bộ trực:<br>Thời gian:</p></th>
-        <th colspan="2">Giai đoạn 2<br><p style="text-align: left;  margin-left: 0">Cán bộ trực:<br>Thời gian:</p></th>
-        <th rowspan="2">Ghi chú</th>
-    </tr>
-    <tr>
-        <td>Giờ đến</td>
-        <td>Chữ ký NTN</td>
-        <td>Giờ đến</td>
-        <td>Chữ ký NTN</td>
-    </tr>
-    <?php
+<?php
+$num = mysql_num_rows($query);
+$k=2;$i=1;$k=round($num/12);
 
-    $i=1;
-    while ( $rows = mysql_fetch_array($query)){
+if (($num %12 < 6) && ($num %12 >0))
+    $k++;
+
+for ($j=0; $j < $k; $j++) { 
+echo"
+<div class='bang'>
+<p id='p1'>BE Center-NIDQC</p>
+<p><b>Tên nghiên cứu:</b>".$ten_nc['ten_nc']."
+</p>
+<p><b>Nghiên cứu số:</b>".$ma_nc."
+</p>
+<p><b>Danh sách NTN chính thức và dự bị</b></p>
+<table style='width:100%'>
+    <tr>
+        <th class='stt' rowspan='2'>STT</th>
+        <th class='ma_tnv' rowspan='2'>Mã TNV</th>
+        <th class='ho_ten' rowspan='2'>Họ và tên</th>
+        <th class='noi_o' rowspan='2'>Địa chỉ</th>
+        <th class='phone' rowspan='2'>Điện thoại</th>
+        <th colspan='2'>Giai đoạn 1<p class='can_bo'>Cán bộ trực:</p><p class='can_bo'>Thời gian:</p></th>
+        <th colspan='2'>Giai đoạn 2<p class='can_bo'>Cán bộ trực:</p><p class='can_bo'>Thời gian:</p></th>
+        <th rowspan='2'>Ghi chú</th>
+    </tr>
+    <tr>
+        <td style=' font-weight: bold;'>Giờ đến</td>
+        <td class='sign'>Chữ ký NTN</td>
+        <td style=' font-weight: bold;'>Giờ đến</td>
+        <td class='sign'>Chữ ký NTN</td>
+    </tr>";
+
+    while ( ($i<=12*($j+1)) && ($rows = mysql_fetch_array($query))){
         echo "
             <tr>
                 <td>".$i."</td>
@@ -126,15 +144,23 @@ $ten_nc = mysql_fetch_array($query2);
         $i++;
     }
 
-    ?>
-
+echo "
 </table>
-<p style="text-align:right;margin-right: 9%;font-weight: normal;margin-top: 5%">Ngày&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; tháng &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;năm&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</p>
-<p style="text-align:right;margin-right: 14%;font-weight: bold">Phụ trách lâm sàng
-    <br><span style="margin-right: 2%">(Ký, ghi rõ họ tên)</span></p>
-<p style="margin: 30px 0 0 0"><u><i>Ghi chú:</i></u><br>
-    <span>-	Cột “Ghi chú” trong bảng danh sách NTN ghi các thông tin:</span><br>
-    <span style="margin-left: 30px">+	“Dự bị” nếu NTN ở vị trí dự bị</span><br>
-    <span style="margin-left: 30px">+	Các thông tin cần lưu ý khác tạo điều kiện liên lạc với NTN được thuận tiện.</span><br>
-    <span>-	Bảng ghi danh sách NTN chính thức và dự bị có thể viết tay, hoặc đánh máy. Trong trường hợp bảng được đánh máy, dán vào sổ cần có chữ ký giáp lai của phụ trách lâm sàng.</span><br>
+<p style='text-align:right;margin-right: 9%;font-weight: normal;margin-top: 0'>Ngày&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; tháng &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;năm&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</p>
+<p style='text-align:right;margin-right: 14%;font-weight: bold'>Phụ trách lâm sàng
+    <br><span>(Ký, ghi rõ họ tên)</span></p>
+<div style='position:absolute; bottom:30px;'>
+<p style='margin: 30px 0 0 50px'><u><i>Ghi chú:</i></u><br>
+    <span>- Cột “Ghi chú” trong bảng danh sách NTN ghi các thông tin:</span><br>
+    <span style='margin-left: 30px'>+   “Dự bị” nếu NTN ở vị trí dự bị</span><br>
+    <span style='margin-left: 30px'>+   Các thông tin cần lưu ý khác tạo điều kiện liên lạc với NTN được thuận tiện.</span><br>
+    <span>- Bảng ghi danh sách NTN chính thức và dự bị có thể viết tay, hoặc đánh máy. Trong trường hợp bảng được đánh máy, dán vào sổ cần có chữ ký giáp lai của phụ trách lâm sàng.</span><br>
 </p>
+</div>
+<div class='footer'> 
+<div><p style='font-weight:normal;margin-left:10px;'><i>BE/FM/CLI.16.01</i></p></div>
+<div class='page'><p style='font-size: 10px;font-weight: normal;text-align:center;margin-left: 0; '>".($j+1)."/".$k."</p></div>
+</div>
+</div>
+";
+}?>

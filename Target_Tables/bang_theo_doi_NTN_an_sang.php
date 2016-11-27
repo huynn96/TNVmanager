@@ -48,23 +48,21 @@ $ten_nc = mysql_fetch_array($query2);
         }
 
         #theo_doi_an_sang {
-            display: none;
+            /*display: none;*/
         }
 
-        #p1 {
+        .p1 {
             display: inline-block;
-            margin-left: 14%;
+            margin-left: 10px;
             font-weight: bold;
         }
 
-        #p2 {
+        .p2 {
             display: inline;
             float: right;
-            margin-right: 14%;
             font-weight: bold;
-            font-style: italic;
-        }
 
+        }
         h3 {
             text-align: center;
         }
@@ -80,6 +78,7 @@ $ten_nc = mysql_fetch_array($query2);
     </style>
 </head>
 <p id="p1">BE Center-NIDQC</p>
+<div class='p2'><i>Bảng theo dõi NTN ăn sáng</i></div>
 <h3>BẢNG THEO DÕI NTN ĂN SÁNG</h3>
 <p>Tên nghiên cứu:
     <?php echo $ten_nc["ten_nc"]; ?>
