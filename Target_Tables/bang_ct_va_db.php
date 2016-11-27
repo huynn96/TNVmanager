@@ -17,7 +17,7 @@ $ten_nc = mysql_fetch_array($query2);
         }
 
         .noi_o {
-            width: 20%;
+            width: 25%;
         }
 
         .phone,
@@ -91,14 +91,16 @@ $ten_nc = mysql_fetch_array($query2);
 </head>
 <?php
 $num = mysql_num_rows($query);
-$k=2;$i=1;
-if ($num < 12)
-    $k=1;
+$k=2;$i=1;$k=round($num/12);
+
+if ($num %12 < 6)
+    $k++;
+
 for ($j=0; $j < $k; $j++) { 
 echo"
 <div class='bang'>
 <p id='p1'>BE Center-NIDQC</p>
-<h3>DANH SÁCH NGƯỜI TÌNH NGUYỆN CHÍNH THỨC</h3>
+<h3>DANH SÁCH NGƯỜI TÌNH NGUYỆN CHÍNH THỨC VÀ DỰ BỊ</h3>
 <p>Tên nghiên cứu:
     ".$ten_nc["ten_nc"]."
 </p>
