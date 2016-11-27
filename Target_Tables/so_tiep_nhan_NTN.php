@@ -96,7 +96,7 @@ $ten_nc = mysql_fetch_array($query2);
         <th class="noi_o" rowspan="2">Địa chỉ</th>
         <th class="phone" rowspan="2">Điện thoại</th>
         <th colspan="2">Giai đoạn 1<br><p style="text-align: left; margin-left: 0">Cán bộ trực:<br>Thời gian:</p></th>
-        <th colspan="2">Giai đoạn 2<br><p style="text-align: left; margin-left: 0">Cán bộ trực:<br>Thời gian:</p></th>
+        <th colspan="2">Giai đoạn 2<br><p style="text-align: left;  margin-left: 0">Cán bộ trực:<br>Thời gian:</p></th>
         <th rowspan="2">Ghi chú</th>
     </tr>
     <tr>
@@ -131,7 +131,7 @@ $ten_nc = mysql_fetch_array($query2);
 </table>
 <p style="text-align:right;margin-right: 9%;font-weight: normal;margin-top: 5%">Ngày&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; tháng &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;năm&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</p>
 <p style="text-align:right;margin-right: 14%;font-weight: bold">Phụ trách lâm sàng
-    <br><span>(Ký, ghi rõ họ tên)</span></p>
+    <br><span style="margin-right: 2%">(Ký, ghi rõ họ tên)</span></p>
 <p style="margin: 30px 0 0 0"><u><i>Ghi chú:</i></u><br>
     <span>-	Cột “Ghi chú” trong bảng danh sách NTN ghi các thông tin:</span><br>
     <span style="margin-left: 30px">+	“Dự bị” nếu NTN ở vị trí dự bị</span><br>
