@@ -35,6 +35,9 @@
         #the_ten{
             display: none;
         }
+        #huyet_tuong{
+            display: none;
+        }
     </style>
 </head>
 
@@ -155,11 +158,17 @@
             <option value="theo_doi_an_sang">Bảng theo dõi NTN ăn sáng</option>
             <option value="theo_doi_an_chinh">Bảng theo dõi NTN dùng bữa ăn chính</option>
             <option value="the_ten">Thẻ tên cho tình nguyện viên</option>
+            <option value="huyet_tuong">Nhận ống huyết tương</option>
         </select>
 
         <button class="btn btn-default btn-md" style="display: inline-block" onclick="print_table()"><i class="glyphicon glyphicon-print"></i></button>
 
         <button class="btn btn-default btn-md" style="display: inline-block" onclick="word_table()"><i class="glyphicon glyphicon-download-alt"></i></button>
+        <div id="huyet_tuong">
+            <?php
+            include_once("Target_Tables/nhan_ong_huyet_tuong.php");
+            ?>
+        </div>
         <div id="the_ten">
             <?php
             include_once("Target_Tables/the_ten.php");
@@ -257,6 +266,7 @@
 
 <script type="text/javascript"> 
         function print_table() {
+            $('.giai_doan').text($('#select_gd').val());
             $('.gd').css("font-weight","bold");
             if ($('#select_gd').val() == "I"){
                 $('.gd').text("Giai đoạn "+$('#select_gd').val() + ", <?php echo $date; ?> - <?php echo $date2; ?>");
@@ -281,6 +291,7 @@
         }
 
         function word_table() {
+            $('.giai_doan').text($('#select_gd').val());
             $('.gd').css("font-weight","bold");
             if ($('#select_gd').val() == "I"){
                 $('.gd').text("Giai đoạn "+$('#select_gd').val() + ", <?php echo $date; ?> - <?php echo $date2; ?>");
