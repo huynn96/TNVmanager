@@ -163,13 +163,13 @@
         <button class="btn btn-default btn-md" style="display: inline-block" onclick="print_table()"><i class="glyphicon glyphicon-print"></i></button>
 
         <button class="btn btn-default btn-md" style="display: inline-block" onclick="word_table()"><i class="glyphicon glyphicon-download-alt"></i></button>
-        <div style="display: block"></div>
+        <div style="display: block">
         <button name="sua" type="button" class="btn btn-primary" style="display: inline;margin:6px 0 0 20px;">Chỉnh sửa thông tin nghiên cứu</button>
 
         <?php echo "<div class='xoa' style='display: inline;margin:20px 0 0 20px;''>
                     <a href='sua_nghien_cuu.php?del=".$ma_nc."' type='button' class='btn btn-sm btn-danger' data-toggle='tooltip' title='Xoá nghiên cứu'><i class='glyphicon glyphicon-remove'></i></a>
                 </div>" ?>
-
+        </div>
         <div id="sua">
             <form id="contactform" name="contact" method="post" <?php echo "action='sua_nghien_cuu.php?id_nc=".$ma_nc."'"; ?> >
 
