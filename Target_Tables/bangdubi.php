@@ -8,7 +8,7 @@ $ten_nc = mysql_fetch_array($query2);
 
 <head>
     <style>
-        table {
+        #dsdb table {
             font-size: 13px;
             border-collapse: collapse;
             width: 100%;
@@ -36,14 +36,14 @@ $ten_nc = mysql_fetch_array($query2);
             width: 4px;
         }
 
-        td,
+        #dsdb td,
         th {
             border: 1px solid black;
             text-align: center;
             padding: 3px;
         }
 
-        tr:nth-child(even) {
+        #dsdb tr:nth-child(even) {
             background-color: #dddddd;
         }
 
@@ -71,15 +71,15 @@ $ten_nc = mysql_fetch_array($query2);
             font-weight: bold;
         }
 
-        h3 {
+        #dsdb h3 {
             text-align: center;
         }
 
-        p {
+        #dsdb p {
             margin-left: 14%;
         }
 
-        span {
+        #dsdb span {
             font-weight: normal;
         }
 

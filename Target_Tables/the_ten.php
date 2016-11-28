@@ -4,14 +4,17 @@
 ?>
 <head>
 	<style type='text/css'>
-		.table {
+		#the_ten{
+            display: none;
+        }
+		#the_ten table {
             font-size: 13px;
             border-collapse: collapse;
             width: 100%;
             line-height: 20px;
             border: 3px double black;
         }
-		td, th, tr{
+		#the_ten td, th, tr{
             border: 3px double black;
             text-align: center;
             padding: 3px;

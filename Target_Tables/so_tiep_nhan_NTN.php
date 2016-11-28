@@ -8,7 +8,7 @@ $ten_nc = mysql_fetch_array($query2);
 
 <head>
     <style>
-        table {
+        #so_tiep_nhan table {
             font-size: 13px;
             border-collapse: collapse;
             width: 100%;
@@ -29,7 +29,7 @@ $ten_nc = mysql_fetch_array($query2);
             width: 4px;
         }
 
-        td,
+        #so_tiep_nhan td,
         th {
             border: 1px solid black;
             text-align: center;
@@ -37,7 +37,7 @@ $ten_nc = mysql_fetch_array($query2);
             line-height: 15px;
         }
 
-        tr:nth-child(even) {
+        #so_tiep_nhan tr:nth-child(even) {
             background-color: #dddddd;
             line-height: 15px;
         }
@@ -59,11 +59,11 @@ $ten_nc = mysql_fetch_array($query2);
             font-style: italic;
         }
 
-        p {
+        #so_tiep_nhan p {
             margin-left: 14%;
         }
 
-        span {
+        #so_tiep_nhan span {
             font-weight: normal;
         }
         .bang{

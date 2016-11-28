@@ -8,7 +8,7 @@
 
 <head>
     <style>
-        table {
+        #dsct table {
             font-size: 13px;
             border-collapse: collapse;
             width: 100%;
@@ -36,14 +36,14 @@
             width: 4px;
         }
 
-        td,
+        #dsct td,
         th {
             border: 1px solid black;
             text-align: center;
             padding: 3px;
         }
 
-        tr:nth-child(even) {
+        #dsct tr:nth-child(even) {
             background-color: #dddddd;
         }
 
@@ -71,16 +71,16 @@
             font-weight: bold;
         }
 
-        h3 {
+        #dsct h3 {
             text-align: center;
            
         }
 
-        p {
+        #dsct p {
             margin-left: 14%;
         }
 
-        span {
+        #dsct span {
             font-weight: normal;
         }
         .bang{

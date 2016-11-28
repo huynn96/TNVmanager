@@ -8,7 +8,7 @@ $ten_nc = mysql_fetch_array($query2);
 
 <head>
     <style>
-        table {
+        #theo_doi_an_chinh table {
             font-size: 13px;
             border-collapse: collapse;
             width: 100%;
@@ -36,7 +36,7 @@ $ten_nc = mysql_fetch_array($query2);
             width: 4px;
         }
 
-        td,
+        #theo_doi_an_chinh td,
         th {
             border: 1px solid black;
             text-align: center;
@@ -44,7 +44,7 @@ $ten_nc = mysql_fetch_array($query2);
             line-height: 17px;
         }
 
-        tr:nth-child(even) {
+        #theo_doi_an_chinh tr:nth-child(even) {
             background-color: #dddddd;
             line-height: 17px;
         }
@@ -65,16 +65,16 @@ $ten_nc = mysql_fetch_array($query2);
             font-weight: bold;
 
         }
-        h3 {
+        #theo_doi_an_chinh h3 {
             text-align: center;
             margin: 0 auto;
         }
 
-        p {
+        #theo_doi_an_chinh p {
             margin-left: 14%;
         }
 
-        span {
+        #theo_doi_an_chinh span {
             font-weight: normal;
         }
         .bang{

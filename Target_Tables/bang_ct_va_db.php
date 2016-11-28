@@ -8,7 +8,7 @@ $ten_nc = mysql_fetch_array($query2);
 
 <head>
     <style>
-        table {
+        #dsctdb table {
             font-size: 13px;
             border-collapse: collapse;
             width: 100%;
@@ -36,14 +36,14 @@ $ten_nc = mysql_fetch_array($query2);
             width: 4px;
         }
 
-        td,
+        #dsctdb td,
         th {
             border: 1px solid black;
             text-align: center;
             padding: 3px;
         }
 
-        tr:nth-child(even) {
+        #dsctdb tr:nth-child(even) {
             background-color: #dddddd;
         }
 
@@ -71,16 +71,16 @@ $ten_nc = mysql_fetch_array($query2);
             font-weight: bold;
         }
 
-        h3 {
+        #dsctdb h3 {
             text-align: center;
            
         }
 
-        p {
+        #dsctdb p {
             margin-left: 14%;
         }
 
-        span {
+        #dsctdb span {
             font-weight: normal;
         }
 

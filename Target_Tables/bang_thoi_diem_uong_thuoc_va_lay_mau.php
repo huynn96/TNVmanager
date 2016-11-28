@@ -8,7 +8,7 @@ $ten_nc = mysql_fetch_array($query2);
 
 <head>
     <style>
-        table {
+        #uong_thuoc_lay_mau table {
             font-size: 13px;
             border-collapse: collapse;
             width: 100%;
@@ -37,7 +37,7 @@ $ten_nc = mysql_fetch_array($query2);
             width: 4px;
         }
 
-        td,
+        #uong_thuoc_lay_mau td,
         th {
             border: 1px solid black;
             text-align: center;
@@ -45,7 +45,7 @@ $ten_nc = mysql_fetch_array($query2);
             line-height: 13px;
         }
 
-        tr:nth-child(even) {
+        #uong_thuoc_lay_mau tr:nth-child(even) {
             background-color: #dddddd;
             line-height: 13px;
         }
@@ -70,17 +70,17 @@ $ten_nc = mysql_fetch_array($query2);
             line-height: 15px;
         }
 
-        h3 {
+        #uong_thuoc_lay_mau h3 {
             text-align: center;
             margin: 0 auto;
         }
 
-        p {
+        #uong_thuoc_lay_mau p {
             margin-left: 14%;
             line-height: 15px;
         }
 
-        span {
+        #uong_thuoc_lay_mau span {
             font-weight: normal;
             line-height: 15px;
         }

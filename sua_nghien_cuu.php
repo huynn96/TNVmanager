@@ -26,14 +26,13 @@
         #sua{
             display: none;
         }
-        #mau_mau{
-            display: none;
+        
+        .hour{
+            margin: 30px 0 30px 0;
         }
-        #the_ten{
-            display: none;
-        }
-        #huyet_tuong{
-            display: none;
+        .hours{
+            width: 40px;
+            margin-left: 20px; 
         }
     </style>
 </head>
@@ -163,13 +162,13 @@
         <button class="btn btn-default btn-md" style="display: inline-block" onclick="print_table()"><i class="glyphicon glyphicon-print"></i></button>
 
         <button class="btn btn-default btn-md" style="display: inline-block" onclick="word_table()"><i class="glyphicon glyphicon-download-alt"></i></button>
-        <div style="display: block">
-        <button name="sua" type="button" class="btn btn-primary" style="display: inline;margin:6px 0 0 20px;">Chỉnh sửa thông tin nghiên cứu</button>
+         <div class="hour" style="display: block"></div>
+        <button name="sua" type="button" class="btn btn-primary" style="display: inline;margin:20px 0 0 20px;">Chỉnh sửa thông tin nghiên cứu</button>
 
         <?php echo "<div class='xoa' style='display: inline;margin:20px 0 0 20px;''>
                     <a href='sua_nghien_cuu.php?del=".$ma_nc."' type='button' class='btn btn-sm btn-danger' data-toggle='tooltip' title='Xoá nghiên cứu'><i class='glyphicon glyphicon-remove'></i></a>
                 </div>" ?>
-        </div>
+
         <div id="sua">
             <form id="contactform" name="contact" method="post" <?php echo "action='sua_nghien_cuu.php?id_nc=".$ma_nc."'"; ?> >
 
@@ -203,16 +202,6 @@
             </form>
         </div>
 
-        <div id="huyet_tuong">
-            <?php
-            include_once("Target_Tables/nhan_ong_huyet_tuong.php");
-            ?>
-        </div>
-        <div id="the_ten">
-            <?php
-            include_once("Target_Tables/the_ten.php");
-            ?>
-        </div>
         <div id="dsctdb">
             <?php
             include_once("Target_Tables/bang_ct_va_db.php");
@@ -258,6 +247,16 @@
             include_once("Target_Tables/bang_theo_doi_NTN_an_chinh.php");
             ?>
         </div>
+        <div id="huyet_tuong">
+            <?php
+            include_once("Target_Tables/nhan_ong_huyet_tuong.php");
+            ?>
+        </div>
+        <div id="the_ten">
+            <?php
+            include_once("Target_Tables/the_ten.php");
+            ?>
+        </div>
         
        
 <script src="library/word/FileSaver.js"></script>
@@ -265,6 +264,10 @@
 
 <script type="text/javascript"> 
         function print_table() {
+
+            for (var i = 0; i < 16; i++) {
+                $('.'+i).html("<b>" + $('.hour'+i).val() + "</b>");
+            }
             $('.giai_doan').text($('#select_gd').val());
             $('.gd').css("font-weight","bold");
             if ($('#select_gd').val() == "I"){
@@ -333,6 +336,12 @@
         $('#select').click(function () {
             if ($('#select').val() == "uong_thuoc_lay_mau"){
                 $('#uong_thuoc_lay_mau').toggle();
+            }
+            if ($('#select').val() == "huyet_tuong"){
+                $('.hour').append("<p style='margin-left:30px;font-weight:bold'>Nhập thời gian: </p>");
+                for (var i = 0; i < 16; i++) {
+                    $('.hour').append("<input class='hours hour" + i + "'>");
+                }
             }
         })
 </script>

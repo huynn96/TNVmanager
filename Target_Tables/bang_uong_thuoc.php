@@ -11,18 +11,18 @@
             display: none;
             line-height: 16px;
         }
-        table, th, td {
+        #uong_thuoc table, th, td {
             border: 1px solid black;
             border-collapse: collapse;
             line-height: 16px;
         }
 
-        th, td {
+        #uong_thuoc th, td {
             padding: 5px;
             text-align: center;
             line-height: 16px;
         }
-        h3{
+        #uong_thuoc h3{
             text-align: center;
             font-weight: bold;
             margin: 0 auto;
@@ -33,7 +33,7 @@
                 font-weight: bold;
                 
             }
-        p {
+        #uong_thuoc p {
                 margin-left: 14%;
             }
 

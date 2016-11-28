@@ -7,15 +7,18 @@ $ten_nc = mysql_fetch_array($query2);
 ?>
 <head>
     <style>
-        table, th, td {
+        #mau_mau{
+            display: none;
+        }
+        #mau_mau table, th, td {
             border: 1px solid black;
             border-collapse: collapse;
         }
-        th, td {
+        #mau_mau th, td {
             padding: 1px;
             text-align: center;
         }
-        h3{
+        #mau_mau h3{
             text-align: center;
             font-weight: bold;
         }
@@ -31,7 +34,7 @@ $ten_nc = mysql_fetch_array($query2);
             float: right;
         }
 
-        p {
+        #mau_mau p {
             margin-bottom: 0;
             margin-left: 12%;
         }
