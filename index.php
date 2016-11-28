@@ -43,7 +43,6 @@
         <div id="wrapper">
             <div id="header">
                 <div class="head_top">
-
                     <a title="Viện Kiểm nghiệm thuốc Trung ương">
                         <img src="./img/New Bitmap Image.bmp" width=100% height=100%>
                     </a>
