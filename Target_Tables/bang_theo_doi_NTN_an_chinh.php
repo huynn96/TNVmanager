@@ -8,7 +8,7 @@ $ten_nc = mysql_fetch_array($query2);
 
 <head>
     <style>
-        #theo_doi_an_chinh table {
+        table {
             font-size: 13px;
             border-collapse: collapse;
             width: 100%;
@@ -36,7 +36,7 @@ $ten_nc = mysql_fetch_array($query2);
             width: 4px;
         }
 
-        #theo_doi_an_chinh td,
+        td,
         th {
             border: 1px solid black;
             text-align: center;
@@ -44,7 +44,8 @@ $ten_nc = mysql_fetch_array($query2);
             line-height: 17px;
         }
 
-        #theo_doi_an_chinh tr:nth-child(even) {
+
+        tr:nth-child(even) {
             background-color: #dddddd;
             line-height: 17px;
         }
@@ -65,16 +66,16 @@ $ten_nc = mysql_fetch_array($query2);
             font-weight: bold;
 
         }
-        #theo_doi_an_chinh h3 {
+        h3 {
             text-align: center;
             margin: 0 auto;
         }
 
-        #theo_doi_an_chinh p {
-            margin-left: 14%;
+        p {
+            margin-left: 10%;
         }
 
-        #theo_doi_an_chinh span {
+        span {
             font-weight: normal;
         }
         .bang{
@@ -98,10 +99,10 @@ $ten_nc = mysql_fetch_array($query2);
 <div class='p1'>BE Center-NIDQC</div>
 <div class='p2'><i>Bảng theo dõi NTN dùng bữa ăn chính</i></div>
 <h3>BẢNG THEO DÕI NTN DÙNG BỮA ĂN CHÍNH</h3>
-<p><b>Tên nghiên cứu:</b>
+<p style='margin-bottom:0;'><b>Tên nghiên cứu:</b>
     <?php echo $ten_nc["ten_nc"]; ?>
 </p>
-<p><b>Nghiên cứu số:</b>
+<p style='margin-bottom:0;'><b>Nghiên cứu số:</b>
     <?php echo $ma_nc; ?>
 </p>
 <p class="gd" style="font-weight: normal;"></p>
@@ -129,7 +130,7 @@ $ten_nc = mysql_fetch_array($query2);
         echo "
             <tr>
                 <td>".$i."</td>
-                <td>".$rows["ma_tnv"]."</td>
+                <td><b>".$rows["ma_tnv"]."</b></td>
                 <td>".$rows["ho_ten"]."</a></td>
                 <td style='font-weight:bold'>".$h."<sup>".$m."</sup></td>
                 <td></td>

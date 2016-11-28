@@ -14,20 +14,16 @@
             line-height: 20px;
             border: 3px double black;
         }
-		#the_ten td, th, tr{
+		td,tr,th{
             border: 3px double black;
             text-align: center;
             padding: 3px;
         }
+
 		#name{
 			margin: 0 50px 0 50px !important;
 		}
-		.he{
-			width: 300px !important;
-			font-weight: normal;
-			line-height: 30px !important;
-			font-size: 15px !important;
-		}
+		
 		.p1 {
             display: inline-block;
             margin-left: 10px;
@@ -79,10 +75,10 @@ while ($rows = mysql_fetch_array($query)) {
 			<tr>
 				<td style='text-align: center;' width='287'>
 					<p><strong>&nbsp;</strong></p>
-					<p style='font-size:20px;margin:10px 0 10px 0;'><strong>".$rows["ho_ten"]."</strong></p>
+					<div class='hovaten'><p style='font-size:20px;margin:10px 0 10px 0;font-weight:bold'>".$rows["ho_ten"]."</p></div>
 					<p><strong><em>&nbsp;</em></strong></p>
-					<p style='font-size:100px;margin:10px 0 10px 0;'><strong>".$rows["ma_tnv"]."</strong></p>
-					<p style='font-size:50px;margin:10px 0 10px 0;'><strong>".$ma_nc."</strong></p>
+					<div class='ma_tinh'><p style='font-size:100px;margin:10px 0 10px 0;font-weight:bold'>".$rows["ma_tnv"]."</p><div>
+					<div class='ma_nghien_cuu'><p style='font-size:50px;margin:10px 0 10px 0;font-weight:bold'>".$ma_nc."</p></div>
 					<p><strong>&nbsp;</strong></p>
 				</td>
 				<td style='text-align: center;' width='38'>
@@ -90,10 +86,10 @@ while ($rows = mysql_fetch_array($query)) {
 				</td>
 				<td style='text-align: center;' width='287'>
 					<p><strong>&nbsp;</strong></p>
-					<p style='font-size:20px;margin:10px 0 10px 0;'><strong>".$rows["ho_ten"]."</strong></p>
+					<div class='hovaten'><p style='font-size:20px;margin:10px 0 10px 0;font-weight:bold'>".$rows["ho_ten"]."</p></div>
 					<p><strong><em>&nbsp;</em></strong></p>
-					<p style='font-size:100px;margin:10px 0 10px 0;'><strong>".$rows["ma_tnv"]."</strong></p>
-					<p style='font-size:50px;margin:10px 0 10px 0;'><strong>".$ma_nc."</strong></p>
+					<div class='ma_tinh'><p style='font-size:100px;margin:10px 0 10px 0;font-weight:bold'>".$rows["ma_tnv"]."</p><div>
+					<div class='ma_nghien_cuu'><p style='font-size:50px;margin:10px 0 10px 0;font-weight:bold'>".$ma_nc."</p></div>
 					<p><strong>&nbsp;</strong></p>
 				</td>
 			</tr>

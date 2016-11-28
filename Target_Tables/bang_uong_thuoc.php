@@ -11,18 +11,18 @@
             display: none;
             line-height: 16px;
         }
-        #uong_thuoc table, th, td {
+        table, th, td {
             border: 1px solid black;
             border-collapse: collapse;
             line-height: 16px;
         }
 
-        #uong_thuoc th, td {
+        th, td {
             padding: 5px;
             text-align: center;
             line-height: 16px;
         }
-        #uong_thuoc h3{
+        h3{
             text-align: center;
             font-weight: bold;
             margin: 0 auto;
@@ -33,8 +33,8 @@
                 font-weight: bold;
                 
             }
-        #uong_thuoc p {
-                margin-left: 14%;
+        p {
+                margin-left: 10%;
             }
 
         .note{
@@ -64,7 +64,7 @@
 $sql2 = "SELECT * FROM nghien_cuu WHERE id='$ma_nc'";
 $query2 = mysql_query($sql2);
 $row2 = mysql_fetch_array($query2);
-echo "<p><b>Tên nghiên cứu:</b> " . $row2["ten_nc"] . "</p><p><b>Mã nghiên cứu:</b> " . $ma_nc . "</p>";
+echo "<p style='margin-bottom:0;'><b>Tên nghiên cứu:</b> " . $row2["ten_nc"] . "</p><p style='margin-bottom:0;'><b>Mã nghiên cứu:</b> " . $ma_nc . "</p>";
 ?>
 <p class="gd"></p>
     <table id="table1" style="width:100%" class="table-striped table-hover">

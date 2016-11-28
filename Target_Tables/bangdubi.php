@@ -8,7 +8,7 @@ $ten_nc = mysql_fetch_array($query2);
 
 <head>
     <style>
-        #dsdb table {
+        table {
             font-size: 13px;
             border-collapse: collapse;
             width: 100%;
@@ -36,14 +36,14 @@ $ten_nc = mysql_fetch_array($query2);
             width: 4px;
         }
 
-        #dsdb td,
+        td,
         th {
             border: 1px solid black;
             text-align: center;
             padding: 3px;
         }
 
-        #dsdb tr:nth-child(even) {
+        tr:nth-child(even) {
             background-color: #dddddd;
         }
 
@@ -71,15 +71,15 @@ $ten_nc = mysql_fetch_array($query2);
             font-weight: bold;
         }
 
-        #dsdb h3 {
+        h3 {
             text-align: center;
         }
 
-        #dsdb p {
-            margin-left: 14%;
+        p {
+            margin-left: 10%;
         }
 
-        #dsdb span {
+        span {
             font-weight: normal;
         }
 
@@ -117,11 +117,11 @@ echo"
 <div class='bang'>
 <div class='p1'>BE Center-NIDQC</div>
 <div class='p2'><i>DANH SÁCH NGƯỜI TÌNH NGUYỆN DỰ BỊ</i></div>
-<h3>DANH SÁCH NGƯỜI TÌNH NGUYỆN DỰ BỊ</h3>
-<p><b>Tên nghiên cứu:</b>
+<h3 style='margin-bottom:0;'>DANH SÁCH NGƯỜI TÌNH NGUYỆN DỰ BỊ</h3>
+<p style='margin-bottom:0;'><b>Tên nghiên cứu:</b>
     ".$ten_nc["ten_nc"]."
 </p>
-<p><b>Nghiên cứu số:</b>
+<p style='margin-bottom:0;'><b>Nghiên cứu số:</b>
      ".$ma_nc."
 </p>
 <table style='width:100%'>

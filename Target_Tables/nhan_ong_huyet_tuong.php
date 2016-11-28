@@ -4,7 +4,7 @@
             display: none;
         }
 
-		#huyet_tuong table {
+		table {
             font-size: 13px;
             border-collapse: collapse;
             font-family: "Times New Roman";

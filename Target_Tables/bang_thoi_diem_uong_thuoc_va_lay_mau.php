@@ -8,13 +8,13 @@ $ten_nc = mysql_fetch_array($query2);
 
 <head>
     <style>
-        #uong_thuoc_lay_mau table {
+        table {
             font-size: 13px;
             border-collapse: collapse;
             width: 100%;
             line-height: 20px;
             border: 1px solid black;
-            line-height: 15px;
+            line-height: 13px;
         }
 
         .noi_o {
@@ -37,7 +37,7 @@ $ten_nc = mysql_fetch_array($query2);
             width: 4px;
         }
 
-        #uong_thuoc_lay_mau td,
+        td,
         th {
             border: 1px solid black;
             text-align: center;
@@ -45,7 +45,7 @@ $ten_nc = mysql_fetch_array($query2);
             line-height: 13px;
         }
 
-        #uong_thuoc_lay_mau tr:nth-child(even) {
+        tr:nth-child(even) {
             background-color: #dddddd;
             line-height: 13px;
         }
@@ -55,34 +55,30 @@ $ten_nc = mysql_fetch_array($query2);
             line-height: 15px;
         }
 
-        #p1 {
+        .p1 {
             display: inline-block;
             margin-left: 10px;
             font-weight: bold;
-            line-height: 15px;
         }
 
-        #p2 {
+        .p2 {
             display: inline;
             float: right;
             font-weight: bold;
-            font-style: italic;
-            line-height: 15px;
+
         }
 
-        #uong_thuoc_lay_mau h3 {
+        h3 {
             text-align: center;
             margin: 0 auto;
         }
 
-        #uong_thuoc_lay_mau p {
-            margin-left: 14%;
-            line-height: 15px;
+        p {
+            margin-left: 10%;
         }
 
-        #uong_thuoc_lay_mau span {
+        span {
             font-weight: normal;
-            line-height: 15px;
         }
         .time{
             width: 5%;
@@ -111,13 +107,13 @@ $ten_nc = mysql_fetch_array($query2);
     </style>
 </head>
 <div class="bang">
-<p id="p1">BE Center-NIDQC</p>
-<p id="p2">Bảng thời điểm uống thuốc và lấy mẫu</p>
+<div class='p1'>BE Center-NIDQC</div>
+<div class='p2'><i>Bảng thời điểm uống thuốc và lấy mẫu</i></div>
 <h3>BẢNG THỜI ĐIỂM UỐNG THUỐC VÀ LẤY MẪU</h3>
-<p><b>Tên nghiên cứu:</b>
+<p style="margin-bottom: 0;"><b>Tên nghiên cứu:</b>
     <?php echo $ten_nc["ten_nc"]; ?>
 </p>
-<p><b>Nghiên cứu số:</b>
+<p style="margin-bottom: 0;"><b>Nghiên cứu số:</b>
     <?php echo $ma_nc; ?>
 </p>
 <p class="gd" style="font-weight: normal;"></p>
@@ -212,14 +208,14 @@ $ten_nc = mysql_fetch_array($query2);
     });
 
     $('th.time').on('click',function (e) {
-        index = $(e.target).index();
-        console.log(index);
-        $(e.target).children().replaceWith("<input type='text' name='time' size=2>");
+        o_hien_tai = $(e.target);
+        index = o_hien_tai.index();
+        o_hien_tai.children().replaceWith("<input type='text' name='time' size=2>");
         $("[name='time']").focus();
         $("[name='time']").focusout(function (e1) {
             h=7;m=30;i=30;
             minutes = timetominute($("[name='time']").val());
-            $(e1.target).replaceWith("<div style='display: inline-block'>"+$("[name='time']").val()+"</div>");
+            o_hien_tai.children().replaceWith("<div style='display: inline-block'>"+$("[name='time']").val()+"</div>");
             
             $('.hang').each(function () {
                 a = convert(h,minutes+i);

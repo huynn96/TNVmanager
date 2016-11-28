@@ -8,7 +8,7 @@ $ten_nc = mysql_fetch_array($query2);
 
 <head>
     <style>
-        #so_tiep_nhan table {
+        table {
             font-size: 13px;
             border-collapse: collapse;
             width: 100%;
@@ -29,7 +29,7 @@ $ten_nc = mysql_fetch_array($query2);
             width: 4px;
         }
 
-        #so_tiep_nhan td,
+        td,
         th {
             border: 1px solid black;
             text-align: center;
@@ -37,7 +37,7 @@ $ten_nc = mysql_fetch_array($query2);
             line-height: 15px;
         }
 
-        #so_tiep_nhan tr:nth-child(even) {
+        tr:nth-child(even) {
             background-color: #dddddd;
             line-height: 15px;
         }
@@ -59,11 +59,11 @@ $ten_nc = mysql_fetch_array($query2);
             font-style: italic;
         }
 
-        #so_tiep_nhan p {
-            margin-left: 14%;
+        p {
+            margin-left: 10%;
         }
 
-        #so_tiep_nhan span {
+        span {
             font-weight: normal;
         }
         .bang{
@@ -103,9 +103,9 @@ for ($j=0; $j < $k; $j++) {
 echo"
 <div class='bang'>
 <p id='p1'>BE Center-NIDQC</p>
-<p><b>Tên nghiên cứu:</b>".$ten_nc['ten_nc']."
+<p style='margin-bottom:0;'><b>Tên nghiên cứu:</b>".$ten_nc['ten_nc']."
 </p>
-<p><b>Nghiên cứu số:</b>".$ma_nc."
+<p style='margin-bottom:0;'><b>Nghiên cứu số:</b>".$ma_nc."
 </p>
 <p><b>Danh sách NTN chính thức và dự bị</b></p>
 <table style='width:100%'>
@@ -130,7 +130,7 @@ echo"
         echo "
             <tr>
                 <td>".$i."</td>
-                <td>".$rows["ma_tnv"]."</td>
+                <td><b>".$rows["ma_tnv"]."</b></td>
                 <td>".$rows["ho_ten"]."</a></td>
                 
                 <td>".$rows["address"]."</td>
