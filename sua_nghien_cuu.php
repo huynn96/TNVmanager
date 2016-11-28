@@ -144,7 +144,7 @@
             <option value="II">Giai đoạn II</option>
             <option value="III">Giai đoạn III</option>
         </select>
-        <div style="display: inline-block;"></div>
+        <div style="display: inline-block"></div>
         <select id="select" class="form-control" style="margin:20px 0 0 20px">
             <option value="dsctdb">Danh sách chính thức và dự bị</option>
             <option value="dsct">Danh sách chính thức</option>
@@ -163,12 +163,12 @@
 
         <button class="btn btn-default btn-md" style="display: inline-block" onclick="word_table()"><i class="glyphicon glyphicon-download-alt"></i></button>
          <div class="hour" style="display: block"></div>
-        <button name="sua" type="button" class="btn btn-primary" style="display: inline;margin:20px 0 0 20px;">Chỉnh sửa thông tin nghiên cứu</button>
-
-        <?php echo "<div class='xoa' style='display: inline;margin:20px 0 0 20px;''>
+        <div style="display: inline-block">
+        <button name="sua" type="button" class="btn btn-primary" style="display: inline;margin:0 0 0 20px;">Chỉnh sửa thông tin nghiên cứu</button>
+        </div>
+        <?php echo "<div class='xoa' style='display: inline-block; margin:0 0 0 20px;''>
                     <a href='sua_nghien_cuu.php?del=".$ma_nc."' type='button' class='btn btn-sm btn-danger' data-toggle='tooltip' title='Xoá nghiên cứu'><i class='glyphicon glyphicon-remove'></i></a>
                 </div>" ?>
-
         <div id="sua">
             <form id="contactform" name="contact" method="post" <?php echo "action='sua_nghien_cuu.php?id_nc=".$ma_nc."'"; ?> >
 
