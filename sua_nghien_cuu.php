@@ -160,13 +160,13 @@
             <option value="huyet_tuong">Nhận ống huyết tương</option>
         </select>
 
-        <button class="btn btn-default btn-md" style="display: inline-block; margin: 0 10px 0 10px" onclick="print_table()"><i class="glyphicon glyphicon-print"></i></button>
+        <button class="btn btn-default btn-md" style="display: inline-block" onclick="print_table()"><i class="glyphicon glyphicon-print"></i></button>
 
         <button class="btn btn-default btn-md" style="display: inline-block" onclick="word_table()"><i class="glyphicon glyphicon-download-alt"></i></button>
          <div style="display: block"></div>
-        <button name="sua" type="button" class="btn btn-primary" style="display: inline;margin:10px 0 0 20px;">Chỉnh sửa thông tin nghiên cứu</button>
+        <button name="sua" type="button" class="btn btn-primary" style="display: inline;margin:20px 0 0 20px;">Chỉnh sửa thông tin nghiên cứu</button>
 
-        <?php echo "<div class='xoa' style='display: inline; margin: 0 0 0 20px'>
+        <?php echo "<div class='xoa' style='display: inline;margin:20px 0 0 20px;''>
                     <a href='sua_nghien_cuu.php?del=".$ma_nc."' type='button' class='btn btn-sm btn-danger' data-toggle='tooltip' title='Xoá nghiên cứu'><i class='glyphicon glyphicon-remove'></i></a>
                 </div>" ?>
 
@@ -219,9 +219,9 @@
             ?>
         </div>
         <div id="dsct">
-        <?php
-            include_once("Target_Tables/bangchinhthuc.php");
-        ?>
+            <?php
+                include_once("Target_Tables/bangchinhthuc.php");
+            ?>
         </div>
         <div id="dsdb">
             <?php
@@ -229,14 +229,14 @@
             ?>
         </div>
         <div id="uong_thuoc">
-        <?php
-            include_once("Target_Tables/bang_uong_thuoc.php");
-        ?>
+            <?php
+                include_once("Target_Tables/bang_uong_thuoc.php");
+            ?>
         </div>
         <div id="mau_mau">
-        <?php
-            include_once("Target_Tables/bang_lay_mau_mau.php");
-        ?>
+            <?php
+                include_once("Target_Tables/bang_lay_mau_mau.php");
+            ?>
         </div>
         <div id="uong_thuoc_lay_mau">
             <?php
@@ -268,15 +268,15 @@
             $('.giai_doan').text($('#select_gd').val());
             $('.gd').css("font-weight","bold");
             if ($('#select_gd').val() == "I"){
-                $('.gd').text("Giai đoạn "+$('#select_gd').val() + ", <?php echo $date; ?> - <?php echo $date2; ?>");
+                $('.gd').text("Giai đoạn "+$('#select_gd').val() + ", <?php echo date('d/m/Y',strtotime($date)); ?> - <?php echo date('d/m/Y',strtotime($date2)); ?>");
             }
             else 
                 if ($('#select_gd').val() == "II"){
-                    $('.gd').text("Giai đoạn "+$('#select_gd').val() + ", <?php echo $gd2_b; ?> - <?php echo $gd2_e; ?>");
+                    $('.gd').text("Giai đoạn "+$('#select_gd').val() + ", <?php echo date('d/m/Y',strtotime($gd2_b)); ?> - <?php echo date('d/m/Y',strtotime($gd2_e)); ?>");
                 }
             else 
                 if ($('#select_gd').val() == "III"){
-                    $('.gd').text("Giai đoạn "+$('#select_gd').val() + ", <?php echo $gd3_b; ?> - <?php echo $gd3_e; ?>");
+                    $('.gd').text("Giai đoạn "+$('#select_gd').val() + ", <?php echo date('d/m/Y',strtotime($gd3_b)); ?> - <?php echo date('d/m/Y',strtotime($gd3_e)); ?>");
                 }
             var table = document.getElementById('select').value;
 

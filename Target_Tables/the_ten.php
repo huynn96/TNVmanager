@@ -1,5 +1,5 @@
 <?php
-	$sql = "SELECT tnv.ho_ten, nc.ma_tnv FROM tinh_nguyen_vien tnv INNER JOIN tnv_nghien_cuu nc ON nc.ct=1 AND nc.id='$ma_nc' AND nc.so_cmt=tnv.so_cmt ORDER BY tnv.ho_ten DESC";
+	$sql = "SELECT tnv.ho_ten, nc.ma_tnv FROM tinh_nguyen_vien tnv INNER JOIN tnv_nghien_cuu nc ON nc.ct=1 AND nc.id='$ma_nc' AND nc.so_cmt=tnv.so_cmt ORDER BY nc.ma_tnv";
 	$query = mysql_query($sql); 
 ?>
 <head>

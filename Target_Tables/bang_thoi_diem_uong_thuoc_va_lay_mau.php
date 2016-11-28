@@ -1,5 +1,5 @@
 <?php
-$sql = "SELECT tinh_nguyen_vien.ho_ten, tnv_nghien_cuu.ma_tnv FROM tinh_nguyen_vien INNER JOIN tnv_nghien_cuu ON tinh_nguyen_vien.so_cmt=tnv_nghien_cuu.so_cmt AND tnv_nghien_cuu.id='$ma_nc' AND tnv_nghien_cuu.ct='1' ORDER BY tinh_nguyen_vien.ho_ten DESC";
+$sql = "SELECT tinh_nguyen_vien.ho_ten, tnv_nghien_cuu.ma_tnv FROM tinh_nguyen_vien INNER JOIN tnv_nghien_cuu ON tinh_nguyen_vien.so_cmt=tnv_nghien_cuu.so_cmt AND tnv_nghien_cuu.id='$ma_nc' AND tnv_nghien_cuu.ct='1' ORDER BY tnv_nghien_cuu.ma_tnv";
 $query = mysql_query($sql);
 $sql2 = "SELECT ten_nc FROM nghien_cuu WHERE id='$ma_nc'";
 $query2 = mysql_query($sql2);
@@ -42,12 +42,12 @@ $ten_nc = mysql_fetch_array($query2);
             border: 1px solid black;
             text-align: center;
             padding: 3px;
-            line-height: 14px;
+            line-height: 13px;
         }
 
         tr:nth-child(even) {
             background-color: #dddddd;
-            line-height: 14px;
+            line-height: 13px;
         }
 
         #uong_thuoc_lay_mau {
@@ -181,10 +181,10 @@ $ten_nc = mysql_fetch_array($query2);
 
 </table>
 <div class='footer'> 
-<div><p style='font-weight:normal;margin-left:10px;'><i>BE/FM/CLI.07.06b</i></p></div>
+<div><p style='font-weight:normal;margin-left:10px;'><i>BE/FM/CLI.11.03</i></p></div>
 <div class='page'><p style='font-size: 10px;font-weight: normal;text-align:center;margin-left: 0; '>1/1</p></div>
 <div class='ma_nc'><p style='font-weight:normal;'><i>Nghiên cứu số: <?php echo $ma_nc; ?></i></p></div>
-</div>
+</div></div></div>
 <script type="text/javascript">
     function convert(h,m)
     {
