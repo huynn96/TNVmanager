@@ -124,7 +124,7 @@ for ($j=0; $j < $k; $j++) {
             <tr class='colu'>
                 <td>" . $i . "</td>
                 <td style='font-weight:bold'>" . $rows["ma_tnv"] . "</td>
-                <td>" . $rows["ho_ten"] . "</td>
+                <td style='text-align: left;padding-left: 10px;'>".$rows["ho_ten"]."</td>
                 <td></td>
                 <td></td>
                 <td></td>

@@ -28,8 +28,8 @@
         }
 	</style>
 </head>
-<?php 
-	$sql = "SELECT * FROM tnv_nghien_cuu WHERE id='$ma_nc' AND ct=1 ORDER BY ma_tnv";
+<?php
+	$sql = "SELECT tnv_nghien_cuu.ma_tnv FROM tinh_nguyen_vien INNER JOIN tnv_nghien_cuu ON tinh_nguyen_vien.so_cmt=tnv_nghien_cuu.so_cmt AND tnv_nghien_cuu.id='$ma_nc' AND tnv_nghien_cuu.ct='1' ORDER BY tnv_nghien_cuu.ma_tnv";
 	$query = mysql_query($sql);
 	$ma_tnv = "nothing";$j=10;
 	echo "<table>";
@@ -40,7 +40,7 @@
 				$j=0;
 				echo "<tr>";
 			}else{
-				echo "<td><b>".$row["ma_tnv"]."</b> ".$ma_nc."<br><div class=giai_doan></div><div class='gio ".$i."'></div></td>";
+				echo "<td><b>".$row["ma_tnv"]."</b> &nbsp;".$ma_nc."<br><div class=giai_doan></div><div class='gio ".$i."'></div></td>";
 				$j++;
 				if ($j == 10)
 					echo "</tr>";

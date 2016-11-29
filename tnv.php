@@ -127,6 +127,15 @@
                             else echo "<input type='checkbox' value='".$row["so_cmt"]."'>";
                         echo"</td>
                       </tr>
+                      <tr>";
+                        $sql3 = "SELECT MAX(nghien_cuu.date_year), MAX(nghien_cuu.date_year_end), MAX(nghien_cuu.gd2_begin), MAX(nghien_cuu.gd2_end), MAX(nghien_cuu.gd3_begin), MAX(nghien_cuu.gd3_end) FROM nghien_cuu INNER JOIN tnv_nghien_cuu ON tnv_nghien_cuu.so_cmt = '$cmtnd' AND tnv_nghien_cuu.ct='1' AND tnv_nghien_cuu.id = nghien_cuu.id GROUP BY tnv_nghien_cuu.so_cmt";
+                        $query3 = mysql_query($sql3);
+                        $row3 = mysql_fetch_array($query3);
+                        $ngay = max($row3);
+                        $ngay = date('d-m-Y',strtotime($ngay));
+                      echo "<td>Ngày tham gia nghiên cứu gần nhất:</td>
+                        <td>".$ngay."</td>
+                      </tr>
                        </tbody>
                   </table>
                 

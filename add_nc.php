@@ -139,8 +139,8 @@
 <script type="text/javascript">
     $("[name='ma_nc']").focusout(function () {
         ma = $(this).val();
-        if (ma.search(" ") != -1)
-            alert("MÃ NGHIÊN CỨU KHÔNG ĐƯỢC CÓ DẤU CÁCH!!!");
+        if (confirm("MÃ NGHIÊN CỨU KHÔNG ĐƯỢC CÓ DẤU CÁCH!!!"))
+            location.href='index.php';
     })
 
 </script>

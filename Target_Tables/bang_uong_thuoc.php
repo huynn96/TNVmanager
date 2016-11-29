@@ -92,7 +92,7 @@ echo "<p style='margin-bottom:0;'><b>Tên nghiên cứu:</b> " . $row2["ten_nc"]
                 <td style='font-weight:bold'>" . $rows["ma_tnv"] . "</td>
                 <td style='font-weight:bold'>".$h."<sup>".$m."</sup></td>
                 <td></td>
-                <td>" . $rows["ho_ten"] . "</td>
+                <td style='text-align: left;padding-left: 10px;'>".$rows["ho_ten"]."</td>
                 <td></td>
             </tr>";
             $i++;

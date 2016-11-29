@@ -130,7 +130,7 @@ $ten_nc = mysql_fetch_array($query2);
             <tr>
                 <td>".$i."</td>
                 <td><b>".$rows["ma_tnv"]."</b></td>
-                <td>".$rows["ho_ten"]."</a></td>
+                <td style='text-align: left;padding-left: 10px;'>".$rows["ho_ten"]."</td>
                 <td style='font-weight:bold'>".$h."<sup>".$m."</sup></td>
                 <td></td>
                 <td></td>

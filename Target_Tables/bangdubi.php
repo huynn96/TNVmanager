@@ -145,7 +145,7 @@ echo"
             <tr>
                 <td>".$i."</td>
                 <td><b>".$rows["ma_tnv"]."</b></td>
-                <td>".$rows["ho_ten"]."</a></td>
+                <td style='text-align: left;padding-left: 10px;'>".$rows["ho_ten"]."</td>
                 <td>".$rows["year"]."</td>
                 <td>".$rows["address"]."</td>
                 <td>".$rows["phone"]."</td>
