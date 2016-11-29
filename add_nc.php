@@ -110,8 +110,8 @@
         </div>
 
         <div class="row">
-            <label for="message">Tên nghiên cứu <span class="req">*</span></label>
-            <textarea name="message" id="message" class="txtarea" tabindex="4" required></textarea>
+            <label for="message">Tên nghiên cứu </label>
+            <textarea name="message" id="message" class="txtarea" tabindex="4"></textarea>
         </div>
 
         <div class="row">
@@ -128,7 +128,7 @@
             <input type="text" name="gd3_e" class="txt date" tabindex="3">
         </div>
 
-        <label for="ExampleInputFile">Upload ds <span class="req">*</span></label>
+        <label for="ExampleInputFile">Upload ds:</label>
         <input type="file" name="file" id="file">
 
         <div class="center">
@@ -139,8 +139,9 @@
 <script type="text/javascript">
     $("[name='ma_nc']").focusout(function () {
         ma = $(this).val();
-        if (confirm("MÃ NGHIÊN CỨU KHÔNG ĐƯỢC CÓ DẤU CÁCH!!!"))
-            location.href='index.php';
+        if (ma.search(" ") != -1)
+            if (confirm("MÃ NGHIÊN CỨU KHÔNG ĐƯỢC CÓ DẤU CÁCH!!!"))
+                location.href='index.php';
     })
 
 </script>
