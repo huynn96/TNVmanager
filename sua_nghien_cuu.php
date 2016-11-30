@@ -1,5 +1,6 @@
 <?php
     include_once("connect_db.php");
+
     if (isset($_GET["del"])){
         $ma_nc = $_GET["del"];
         $sql = "DELETE FROM nghien_cuu WHERE id='$ma_nc'";
@@ -59,7 +60,12 @@
         $gd3_e = $_POST["gd3_e"];
         $gd3_e=date('Y-m-d',strtotime($gd3_e));
 
-        $sql = "UPDATE nghien_cuu SET id='$id', ten_nc='$ten_nc', date_year='$date', date_year_end='$date2', gd2_begin='$gd2_b', gd2_end='$gd2_e', gd3_begin='$gd3_b', gd3_end='$gd3_e' WHERE id='$ma_nc'";
+        $thoi_gian = $_POST["thoi_gian_number"].",".$_POST["thoi_diem_bat_dau"];
+        for ($i=0; $i < $_POST["thoi_gian_number"]; $i++) { 
+            $thoi_gian = $thoi_gian.",".$_POST["thoi_diem".$i];
+        }
+
+        $sql = "UPDATE nghien_cuu SET id='$id', ten_nc='$ten_nc', date_year='$date', date_year_end='$date2', gd2_begin='$gd2_b', gd2_end='$gd2_e', gd3_begin='$gd3_b', gd3_end='$gd3_e', thoi_gian = '$thoi_gian' WHERE id='$ma_nc'";
         $query = mysql_query($sql);
 
         if ($_POST["date2"] == NULL){
@@ -97,8 +103,9 @@
         $query = mysql_query($sql);
         $row = mysql_fetch_array($query);
         $date = $row["date_year"];
+        $thoi_gian = $row["thoi_gian"];
         $date=date('d-m-Y',strtotime($date));
-    
+
         if ($row["date_year_end"] == NULL){
             $date2=null;
         }else{
@@ -128,6 +135,12 @@
         }else{
             $gd3_e = $row["gd3_end"];
             $gd3_e=date('d-m-Y',strtotime($gd3_e));
+        }
+        $thoi_gian_number = strtok($thoi_gian, ", ");
+        $thoi_diem_bat_dau = strtok(", ");
+        $thoi_diem = array();
+        for ($i=0; $i < $thoi_gian_number; $i++) { 
+            $thoi_diem[$i] = strtok(" ,");
         }
         function convert($h,$m)
         {
@@ -195,6 +208,15 @@
                     <label for="date">Giai đoạn 3:</label>
                     <input type="text" name="gd3_b" class="txt date" tabindex="3" value="<?php echo $gd3_b; ?>">
                     <input type="text" name="gd3_e" class="txt date" tabindex="3" value="<?php echo $gd3_e; ?>">
+                </div>
+
+                <div class='row'>
+                    <label for='thoi_gian_number'>Số lượng mốc thời gian: </label>
+                    <input type="text" name="thoi_gian_number" class="txt" tabindex="3" style="width: 30px" value="<?php echo $thoi_gian_number; ?>">
+                    <label for='thoi_gian_number' style="margin-left: 100px">Thời điểm bắt đầu: </label>
+                    <input type="text" name="thoi_diem_bat_dau" class="txt" tabindex="3" style="width: 70px" value="<?php echo $thoi_diem_bat_dau; ?>">
+                    <label for='thoi_gian_number'>VD: 7h30p </label>
+                    <div class='thoi_gian_n'></div>
                 </div>
 
                 <div class="center">
@@ -335,20 +357,59 @@
             dateFormat: 'd-m-yy'
         }); 
 
-        $('#select').click(function () {
-            if ($('#select').val() == "uong_thuoc_lay_mau"){
-                $('#uong_thuoc_lay_mau').toggle();
-            }
-            if ($('#select').val() == "huyet_tuong"){
-                $('.hour').append("<p style='margin-left:30px;font-weight:bold'>Nhập thời gian: </p>");
-                for (var i = 0; i < 16; i++) {
-                    $('.hour').append("<input class='hours hour" + i + "'>");
+        $("[name='ma_nc']").focusout(function () {
+            ma = $(this).val();
+            if (ma.search(" ") != -1)
+                if (confirm("MÃ NGHIÊN CỨU KHÔNG ĐƯỢC CÓ DẤU CÁCH!!!"))
+                    location.href='index.php';
+        })
+
+        // $('#select').click(function () {
+        //     if ($('#select').val() == "uong_thuoc_lay_mau"){
+        //         $('#uong_thuoc_lay_mau').toggle();
+        //     }
+        //     if ($('#select').val() == "huyet_tuong"){
+        //         $('.hour').append("<p style='margin-left:30px;font-weight:bold'>Nhập thời gian: </p>");
+        //         for (var i = 0; i < 16; i++) {
+        //             $('.hour').append("<input class='hours hour" + i + "'>");
+        //         }
+        //     }
+        //     if ($('#select').val() == "mau_mau"){
+        //         $('#mau_mau').toggle();
+        //     }
+        // })
+
+        $("[name='thoi_gian_number']").focusout(function () {
+            number = $("[name='thoi_gian_number']").val();
+            $('.thoi_gian_n').replaceWith("<div class='thoi_gian_n'></div>")
+            $('.thoi_gian_n').append("<div>Nhập vào "+ number +" thời điểm: </div>");
+            thoi_gian = <?php echo "'".$thoi_gian."'"; ?>+",";
+            thoi_diem = thoi_gian.replace(' ',',').split(",");
+            for (var i =0; i < number; i++) {
+                if (i+2 < thoi_diem.length){
+                    $('.thoi_gian_n').append("<input type='text' name='thoi_diem"+i+"' class='txt' tabindex='3' style='width: 50px' value='" + thoi_diem[i+2] + "'>");
+                }
+                else {
+                    $('.thoi_gian_n').append("<input type='text' name='thoi_diem"+i+"' class='txt' tabindex='3' style='width: 50px' >");
                 }
             }
-            if ($('#select').val() == "mau_mau"){
-                $('#mau_mau').toggle();
-            }
+            
         })
+        number = $("[name='thoi_gian_number']").val();
+        if (number!=0){
+            $('.thoi_gian_n').append("<div>Nhập vào "+ number +" thời điểm: </div>");
+            thoi_gian = <?php echo "'".$thoi_gian."'"; ?>+",";
+            thoi_diem = thoi_gian.replace(' ',',').split(",");
+            for (var i =0; i < number; i++) {
+                if (i+2 < thoi_diem.length){
+                    $('.thoi_gian_n').append("<input type='text' name='thoi_diem"+i+"' class='txt' tabindex='3' style='width: 50px' value='" + thoi_diem[i+2] + "'>");
+                }
+                else {
+                    $('.thoi_gian_n').append("<input type='text' name='thoi_diem"+i+"' class='txt' tabindex='3' style='width: 50px' >");
+                }
+            }
+        }
+            
 </script>
 <?php
 }

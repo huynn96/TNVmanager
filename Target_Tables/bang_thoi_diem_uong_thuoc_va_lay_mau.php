@@ -1,7 +1,7 @@
 <?php
 $sql = "SELECT tinh_nguyen_vien.ho_ten, tnv_nghien_cuu.ma_tnv FROM tinh_nguyen_vien INNER JOIN tnv_nghien_cuu ON tinh_nguyen_vien.so_cmt=tnv_nghien_cuu.so_cmt AND tnv_nghien_cuu.id='$ma_nc' AND tnv_nghien_cuu.ct='1' ORDER BY tnv_nghien_cuu.ma_tnv";
 $query = mysql_query($sql);
-$sql2 = "SELECT ten_nc FROM nghien_cuu WHERE id='$ma_nc'";
+$sql2 = "SELECT * FROM nghien_cuu WHERE id='$ma_nc'";
 $query2 = mysql_query($sql2);
 $ten_nc = mysql_fetch_array($query2);
 ?>
@@ -118,30 +118,14 @@ $ten_nc = mysql_fetch_array($query2);
 </p>
 <p class="gd" style="font-weight: normal;"></p>
 <table style="width:100%">
-    <tr>
+    <tr class="hang_dau_bang_1">
 
         <th class="stt">STT</th>
         <th class="ma_tnv">Mã TNV</th>
 
         <th class="ho_ten">Họ và tên</th>
 
-
         <th><div>0h</div></th>
-        <th class="time"><div></div></th>
-        <th class="time"><div></div></th>
-        <th class="time"><div></div></th>
-        <th class="time"><div></div></th>
-        <th class="time"><div></div></th>
-        <th class="time"><div></div></th>
-        <th class="time"><div></div></th>
-        <th class="time"><div></div></th>
-        <th class="time"><div></div></th>
-        <th class="time"><div></div></th>
-        <th class="time"><div></div></th>
-        <th class="time"><div></div></th>
-        <th class="time"><div></div></th>
-        <th class="time"><div></div></th>
-        <th class="time"><div></div></th>
     </tr>
 
     <?php
@@ -149,25 +133,10 @@ $ten_nc = mysql_fetch_array($query2);
     $i=1;
     while ( $rows = mysql_fetch_array($query)){
         echo "
-            <tr class='hang'>
+            <tr class='hang_bang_1'>
                 <td>".$i."</td>
                 <td><b>".$rows["ma_tnv"]."</b></td>
                 <td style='text-align: left;padding-left: 10px;'>".$rows["ho_ten"]."</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
                 <td></td>
             </tr>";
         $i++;
@@ -201,32 +170,33 @@ $ten_nc = mysql_fetch_array($query2);
             n=n*60;
         return n;
     }
+    
+    thoi_gian_bang_1 = <?php echo "'".$ten_nc["thoi_gian"]."'"; ?>+",";
+    thoi_diem_bang_1 = thoi_gian_bang_1.replace(' ',',').split(",");
+    number = parseInt(thoi_diem_bang_1[0]);
+    
     i=0;
-    $('.hang').each(function () {
-        $(this).find("td:eq(" + 3 + ")").html("<b>"+7+"<sup>"+(30+i)+"</b>");
+    for (var i = 0; i < number; i++) {
+        $('.hang_dau_bang_1').append("<th class='moc_bang_1_"+i+"'>"+thoi_diem_bang_1[i+2]+"</th>");
+    }
+    i=0;
+    $('.hang_bang_1').each(function () {
+        h = parseInt(thoi_diem_bang_1[1].replace('p','h').split("h")[0]);
+        minutes = parseInt(thoi_diem_bang_1[1].replace('p','h').split("h")[1]);
+        a = convert(h,minutes+i);
+        if (a[1]<10){
+            a[1] = "0"+a[1];
+        }
+        $(this).find("td:eq(" + 3 + ")").html("<b>"+a[0]+"<sup>"+a[1]+"</b>");
+        for (var j = 0; j < number; j++) {
+            minutes = timetominute(thoi_diem_bang_1[j+2]);
+            b = convert(a[0],minutes+parseInt(a[1]));
+            if (b[1]<10){
+                b[1] = "0"+b[1];
+            }
+            $(this).append("<td><b>"+b[0]+"<sup>"+b[1]+"</b></td>");
+        }
         i++;
     });
-
-    $('th.time').on('click',function (e) {
-        o_hien_tai = $(e.target);
-        index = o_hien_tai.index();
-        o_hien_tai.children().replaceWith("<input type='text' name='time' size=2>");
-        $("[name='time']").focus();
-        $("[name='time']").focusout(function (e1) {
-            h=7;m=30;i=30;
-            minutes = timetominute($("[name='time']").val());
-            o_hien_tai.children().replaceWith("<div style='display: inline-block'>"+$("[name='time']").val()+"</div>");
-            
-            $('.hang').each(function () {
-                a = convert(h,minutes+i);
-                if (a[1]<10){
-                    a[1] = "0"+a[1];
-                }
-                $(this).find("td:eq(" + index + ")").html("<b>"+a[0]+"<sup>"+a[1]+"</b>");
-                i++;
-            })
-    
-        });
-    })
 
 </script> 

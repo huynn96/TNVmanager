@@ -9,6 +9,7 @@ CREATE TABLE IF NOT EXISTS nghien_cuu(
     	gd2_end DATE,
     	gd3_begin DATE,
     	gd3_end DATE,
+	thoi_gian VARCHAR(500),
 	PRIMARY KEY (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 CREATE TABLE IF NOT EXISTS tinh_nguyen_vien(
