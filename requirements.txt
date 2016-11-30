@@ -1,0 +1,32 @@
+                TÀI LIỆU YÊU CẦU CHƯƠNG TRÌNH QUẢN LÝ TÌNH NGUYỆN VIÊN
+1.	Giới thiệu
+1.1.	Mục tiêu của tài liệu yêu cầu
+1.2.	Phạm vi của sản phẩm
+	Dùng độc lập trong hệ thống mạng của cơ quan, không đưa lên môi trường internet
+	Sử dụng một máy tính bất kỳ lưu cơ sở dữ liệu, các máy tính khác trong cơ quan sẽ sử dụng cơ sở dữ liệu từ máy này
+
+1.3.	Các định nghĩa, chữ viết tắt và từ viêt thu gọn
+
+1.4.	Tài liệu tham khảo
+	http://www.w3schools.com
+1.5.	Tổng quan về tài liệu
+2.	Mô tả chung
+2.1.	Các đặc điểm của sản phẩm
+	Phạm vi sử dụng hẹp (trong một cơ quan).
+	Vấn đề bảo mật là thứ yếu vì phần mềm không đưa lên môi trường internet.
+	Phần mềm được làm dưới dạng một web app nên chỉ cần máy tính có trình duyệt là có thể sử dụng.
+	Giao diện phần mềm chỉ cần đơn giản, dễ tiếp cận.
+	Vì lưu cơ sở dữ liệu trên một máy tính của cơ quan nên muốn sử dụng phần mềm thì máy tính đó phải được bật.
+2.2.	Các chức năng của sản phẩm
+	Giúp quản lý người tình nguyện tham gia thử thuốc ở viện kiểm ngiệm thuốc.
+	Người quản lý có thể thêm mới tình nguyện viên, thêm mới nghiên cứu thực hiện, tìm kiếm, chỉnh sửa, xóa các thông tin liên quan.
+	Tự động in ra các bảng biểu theo nhu cầu người quản lý một cách nhanh chóng.
+2.3.	Các đặc trưng người dùng
+	Số lượng người sử dụng phần mềm chỉ ở phạm vi rất nhỏ.
+	Người dùng là những nhân viên văn phòng, trình độ hiểu biết về công nghệ thông tin ở mức cơ bản.
+	Có trình độ ở bậc đại học.
+2.4.	Các ràng buộc chung
+2.5.	Các giả định và các sự phụ thuộc
+3.	Các yêu cầu cụ thể
+4.	Phụ lục
+5.	Các chỉ số chỉ dẫn
