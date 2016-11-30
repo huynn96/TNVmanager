@@ -127,6 +127,7 @@ $ten_nc = mysql_fetch_array($query2);
     $khoang_cach = strtok(", ");
     $hou = strtok($thoi_diem_bat_dau,"p h");
     $min = strtok("p h");
+    echo $min;
     $i=0;
     while ( $rows = mysql_fetch_array($query)){
         list($h,$m) = convert($hou, $i*$khoang_cach+$min-30);
@@ -134,7 +135,7 @@ $ten_nc = mysql_fetch_array($query2);
             $m = "0".$m;
         echo "
             <tr>
-                <td>".$i."</td>
+                <td>".($i+1)."</td>
                 <td><b>".$rows["ma_tnv"]."</b></td>
                 <td style='text-align: left;padding-left: 10px;'>".$rows["ho_ten"]."</td>
                 <td style='font-weight:bold'>".$h."<sup>".$m."</sup></td>

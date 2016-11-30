@@ -94,7 +94,7 @@
                 $m = "0".$m;
             echo "
             <tr>
-                <td>" . $i . "</td>
+                <td>" . ($i+1) . "</td>
                 <td style='font-weight:bold'>" . $rows["ma_tnv"] . "</td>
                 <td style='font-weight:bold'>".$h."<sup>".$m."</sup></td>
                 <td></td>

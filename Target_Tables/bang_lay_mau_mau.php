@@ -110,7 +110,6 @@ for ($l=0; $l < $number_bang; $l++) {
         " . $ma_nc . "
     </p>
     <p class='gd'></p>
-    <div class='p2' style='position:absolute;top:120px;right:100px;'><label for='ban_so' >Bàn số: </label><div name='ban_so' style='display:inline-block;width:70px;border:3px solid black;height:30px;margin-left:10px;'></div></div>
     <table style='width: 100%'>
         <tr>
             <th class='stt' rowspan='2'>STT</th>
