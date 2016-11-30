@@ -49,7 +49,7 @@
             $thoi_gian = $thoi_gian.",".$_POST["thoi_diem".$i];
         }
 
-        $sql = "INSERT INTO nghien_cuu(id, ten_nc, date_year, date_year_end, gd2_begin, gd2_end, gd3_begin, gd3_end) VALUES ('$ma_nc', '$ten_nc', '$date', '$date2', '$gd2_b', '$gd2_e', '$gd3_b', '$gd3_e' )";
+        $sql = "INSERT INTO nghien_cuu(id, ten_nc, date_year, date_year_end, gd2_begin, gd2_end, gd3_begin, gd3_end, thoi_gian) VALUES ('$ma_nc', '$ten_nc', '$date', '$date2', '$gd2_b', '$gd2_e', '$gd3_b', '$gd3_e' ,'$thoi_gian')";
         $query = mysql_query($sql);
 
         if ($_POST["date2"] == NULL){
