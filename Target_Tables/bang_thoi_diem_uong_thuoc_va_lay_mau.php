@@ -125,7 +125,6 @@ $ten_nc = mysql_fetch_array($query2);
 
         <th class="ho_ten">Họ và tên</th>
 
-        <th><div>0h</div></th>
     </tr>
 
     <?php
@@ -137,7 +136,6 @@ $ten_nc = mysql_fetch_array($query2);
                 <td>".$i."</td>
                 <td><b>".$rows["ma_tnv"]."</b></td>
                 <td style='text-align: left;padding-left: 10px;'>".$rows["ho_ten"]."</td>
-                <td></td>
             </tr>";
         $i++;
     }
@@ -173,23 +171,23 @@ $ten_nc = mysql_fetch_array($query2);
     
     thoi_gian_bang_1 = <?php echo "'".$ten_nc["thoi_gian"]."'"; ?>+",";
     thoi_diem_bang_1 = thoi_gian_bang_1.replace(' ',',').split(",");
+    khoang_cach = parseInt(thoi_diem_bang_1[2]);
     number = parseInt(thoi_diem_bang_1[0]);
     
     i=0;
     for (var i = 0; i < number; i++) {
-        $('.hang_dau_bang_1').append("<th class='moc_bang_1_"+i+"'>"+thoi_diem_bang_1[i+2]+"</th>");
+        $('.hang_dau_bang_1').append("<th class='moc_bang_1_"+i+"'>"+thoi_diem_bang_1[i+3]+"</th>");
     }
     i=0;
     $('.hang_bang_1').each(function () {
         h = parseInt(thoi_diem_bang_1[1].replace('p','h').split("h")[0]);
         minutes = parseInt(thoi_diem_bang_1[1].replace('p','h').split("h")[1]);
-        a = convert(h,minutes+i);
+        a = convert(h,minutes+i*khoang_cach);
         if (a[1]<10){
             a[1] = "0"+a[1];
         }
-        $(this).find("td:eq(" + 3 + ")").html("<b>"+a[0]+"<sup>"+a[1]+"</b>");
         for (var j = 0; j < number; j++) {
-            minutes = timetominute(thoi_diem_bang_1[j+2]);
+            minutes = timetominute(thoi_diem_bang_1[j+3]);
             b = convert(a[0],minutes+parseInt(a[1]));
             if (b[1]<10){
                 b[1] = "0"+b[1];

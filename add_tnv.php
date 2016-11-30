@@ -38,7 +38,11 @@
     	header("location: index.php?page=tnv&tnv=$so_cmt");
 	}
 ?>
-
+<div class='clearfix' style='position:relative;float:right;top:15px;'>
+<?php
+    include_once('tnv_search.php');
+?>
+</div>
 <div class="alert alert-danger" role="alert">Không tìm thấy tình nguyện viên!</div>
 <button id="button" name="add" type="button" class="btn btn-primary" style="display: block;margin-bottom: 10px;">Thêm tình nguyện viên mới</button>
 <div id="add">

@@ -61,10 +61,16 @@
 <p id="p1">BE Center-NIDQC</p>
 <h3>BẢNG THEO DÕI NTN UỐNG THUỐC</h3>
 <?php
-$sql2 = "SELECT * FROM nghien_cuu WHERE id='$ma_nc'";
-$query2 = mysql_query($sql2);
-$row2 = mysql_fetch_array($query2);
-echo "<p style='margin-bottom:0;'><b>Tên nghiên cứu:</b> " . $row2["ten_nc"] . "</p><p style='margin-bottom:0;'><b>Mã nghiên cứu:</b> " . $ma_nc . "</p>";
+    $sql2 = "SELECT * FROM nghien_cuu WHERE id='$ma_nc'";
+    $query2 = mysql_query($sql2);
+    $row2 = mysql_fetch_array($query2);
+    $thoi_gian = $row2["thoi_gian"];
+    $thoi_gian_number = strtok($thoi_gian, ", ");
+    $thoi_diem_bat_dau = strtok(", ");
+    $khoang_cach = strtok(", ");
+    $hou = strtok($thoi_diem_bat_dau,"p h");
+    $min = strtok("p h");
+    echo "<p style='margin-bottom:0;'><b>Tên nghiên cứu:</b> " . $row2["ten_nc"] . "</p><p style='margin-bottom:0;'><b>Mã nghiên cứu:</b> " . $ma_nc . "</p>";
 ?>
 <p class="gd"></p>
     <table id="table1" style="width:100%" class="table-striped table-hover">
@@ -81,9 +87,9 @@ echo "<p style='margin-bottom:0;'><b>Tên nghiên cứu:</b> " . $row2["ten_nc"]
         </tr>
 
         <?php
-        $i = 1;
+        $i = 0;
         while ($rows = mysql_fetch_array($query)) {
-            list($h,$m) = convert(7, $i+29);
+            list($h,$m) = convert($hou, $i*$khoang_cach+$min);
             if ($m < 10)
                 $m = "0".$m;
             echo "

@@ -11,7 +11,20 @@
 
 <?php
     if (isset($_POST["submitbtn"])){
+        include("connect_db.php");
         $ma_nc = $_POST["ma_nc"];
+        $sql = "SELECT * FROM nghien_cuu WHERE id='$ma_nc'";
+        $query = mysql_query($sql);
+        if (mysql_num_rows($query) > 0){
+            echo "<script type='text/javascript'>
+                if (confirm('MÃ TÌNH NGUYỆN VIÊN ĐÃ TỒN TẠI!!!')){
+                        location.href= 'index.php';
+                }
+
+            </script>";
+        }
+        else{
+
         $ten_nc = $_POST["message"];
         $date = $_POST["date"];
         $date=date('Y-m-d',strtotime($date));
@@ -30,8 +43,11 @@
         
         $gd3_e = $_POST["gd3_e"];
         $gd3_e=date('Y-m-d',strtotime($gd3_e));
-        
-        include("connect_db.php");
+
+        $thoi_gian = $_POST["thoi_gian_number"].",".$_POST["thoi_diem_bat_dau"].",".$_POST["khoang_cach"];
+        for ($i=0; $i < $_POST["thoi_gian_number"]; $i++) { 
+            $thoi_gian = $thoi_gian.",".$_POST["thoi_diem".$i];
+        }
 
         $sql = "INSERT INTO nghien_cuu(id, ten_nc, date_year, date_year_end, gd2_begin, gd2_end, gd3_begin, gd3_end) VALUES ('$ma_nc', '$ten_nc', '$date', '$date2', '$gd2_b', '$gd2_e', '$gd3_b', '$gd3_e' )";
         $query = mysql_query($sql);
@@ -96,6 +112,7 @@
         }
         
         header("location: index.php?page=ds_ct&id_nc=$ma_nc");
+        }
     }
      
 ?>
@@ -127,9 +144,22 @@
             <input type="text" name="gd3_b" class="txt date" tabindex="3">
             <input type="text" name="gd3_e" class="txt date" tabindex="3">
         </div>
+        
+        <div class='row'>
+            <label for='thoi_gian_number'>Số lượng mốc thời gian: </label>
+            <input type="text" name="thoi_gian_number" class="txt" tabindex="3" style="width: 30px" value=0>
+            <label for='thoi_gian_number' style="margin-left: 100px">Thời điểm bắt đầu: </label>
+            <input type="text" name="thoi_diem_bat_dau" class="txt" tabindex="3" style="width: 70px" value="0">
+            <label for='thoi_gian_number'>VD: 7h30p </label>
+            <label for='khoang_cach'>Khoảng cách (phút): </label>
+            <input type="text" name="khoang_cach" class="txt" tabindex="3" style="width: 50px" value=1>
+            <div class='thoi_gian_n'></div>
+        </div>
 
-        <label for="ExampleInputFile">Upload ds:</label>
-        <input type="file" name="file" id="file">
+        <div class='row'>
+            <label for="ExampleInputFile">Upload ds:</label>
+            <input type="file" name="file" id="file">
+        </div>
 
         <div class="center">
             <input type="submit" id="submitbtn" name="submitbtn" tabindex="5" value="Submit">
@@ -137,11 +167,23 @@
     </form>
 
 <script type="text/javascript">
-    $("[name='ma_nc']").focusout(function () {
-        ma = $(this).val();
-        if (ma.search(" ") != -1)
-            if (confirm("MÃ NGHIÊN CỨU KHÔNG ĐƯỢC CÓ DẤU CÁCH!!!"))
-                location.href='index.php';
-    })
+        $("[name='ma_nc']").focusout(function () {
+            ma = $(this).val();
+            if (ma.search(" ") != -1)
+                if (confirm("MÃ NGHIÊN CỨU KHÔNG ĐƯỢC CÓ DẤU CÁCH!!!"))
+                    location.href='index.php';
+        })  
+
+        $("[name='thoi_gian_number']").focusout(function () {
+            number = $("[name='thoi_gian_number']").val();
+            $('.thoi_gian_n').replaceWith("<div class='thoi_gian_n'></div>")
+            $('.thoi_gian_n').append("<div><b>Nhập vào "+ number +" thời điểm (VD: 1.5h, 1h, 10p): </b></div>");
+            for (var i =0; i < number; i++) {
+                if (i==0)
+                    $('.thoi_gian_n').append("<input type='text' name='thoi_diem"+i+"' class='txt' tabindex='3' style='width: 50px' value='0h'>");
+                else
+                    $('.thoi_gian_n').append("<input type='text' name='thoi_diem"+i+"' class='txt' tabindex='3' style='width: 50px'>");
+            }
+        })
 
 </script>

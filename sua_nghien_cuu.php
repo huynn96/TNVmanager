@@ -60,7 +60,7 @@
         $gd3_e = $_POST["gd3_e"];
         $gd3_e=date('Y-m-d',strtotime($gd3_e));
 
-        $thoi_gian = $_POST["thoi_gian_number"].",".$_POST["thoi_diem_bat_dau"];
+        $thoi_gian = $_POST["thoi_gian_number"].",".$_POST["thoi_diem_bat_dau"].",".$_POST["khoang_cach"];
         for ($i=0; $i < $_POST["thoi_gian_number"]; $i++) { 
             $thoi_gian = $thoi_gian.",".$_POST["thoi_diem".$i];
         }
@@ -138,15 +138,15 @@
         }
         $thoi_gian_number = strtok($thoi_gian, ", ");
         $thoi_diem_bat_dau = strtok(", ");
-        $thoi_diem = array();
-        for ($i=0; $i < $thoi_gian_number; $i++) { 
-            $thoi_diem[$i] = strtok(" ,");
-        }
+        $khoang_cach = strtok(", ");
         function convert($h,$m)
         {
             while ($m >= 60) {
                 $h++;
                 $m = $m - 60;
+            }
+            while ($h>=24){
+                $h-=24;
             }
             return array($h,$m);
         }
@@ -216,6 +216,8 @@
                     <label for='thoi_gian_number' style="margin-left: 100px">Thời điểm bắt đầu: </label>
                     <input type="text" name="thoi_diem_bat_dau" class="txt" tabindex="3" style="width: 70px" value="<?php echo $thoi_diem_bat_dau; ?>">
                     <label for='thoi_gian_number'>VD: 7h30p </label>
+                    <label for='khoang_cach'>Khoảng cách (phút): </label>
+                    <input type="text" name="khoang_cach" class="txt" tabindex="3" style="width: 50px" value="<?php echo $khoang_cach; ?>">
                     <div class='thoi_gian_n'></div>
                 </div>
 
@@ -288,10 +290,6 @@
 
 <script type="text/javascript"> 
         function print_table() {
-
-            for (var i = 0; i < 16; i++) {
-                $('.'+i).html("<b>" + $('.hour'+i).val() + "</b>");
-            }
             $('.giai_doan').text($('#select_gd').val());
             $('.gd').css("font-weight","bold");
             if ($('#select_gd').val() == "I"){
@@ -320,15 +318,15 @@
             $('.giai_doan').text($('#select_gd').val());
             $('.gd').css("font-weight","bold");
             if ($('#select_gd').val() == "I"){
-                $('.gd').text("Giai đoạn "+$('#select_gd').val() + ", <?php echo $date; ?> - <?php echo $date2; ?>");
+                $('.gd').text("Giai đoạn "+$('#select_gd').val() + ", <?php echo date('d/m/Y',strtotime($date)); ?> - <?php echo date('d/m/Y',strtotime($date2)); ?>");
             }
             else 
                 if ($('#select_gd').val() == "II"){
-                    $('.gd').text("Giai đoạn "+$('#select_gd').val() + ", <?php echo $gd2_b; ?> - <?php echo $gd2_e; ?>");
+                    $('.gd').text("Giai đoạn "+$('#select_gd').val() + ", <?php echo date('d/m/Y',strtotime($gd2_b)); ?> - <?php echo date('d/m/Y',strtotime($gd2_e)); ?>");
                 }
             else 
                 if ($('#select_gd').val() == "III"){
-                    $('.gd').text("Giai đoạn "+$('#select_gd').val() + ", <?php echo $gd3_b; ?> - <?php echo $gd3_e; ?>");
+                    $('.gd').text("Giai đoạn "+$('#select_gd').val() + ", <?php echo date('d/m/Y',strtotime($gd3_b)); ?> - <?php echo date('d/m/Y',strtotime($gd3_e)); ?>");
                 }
             table = $('#select').val();
             table = "#" + table;
@@ -364,30 +362,15 @@
                     location.href='index.php';
         })
 
-        // $('#select').click(function () {
-        //     if ($('#select').val() == "uong_thuoc_lay_mau"){
-        //         $('#uong_thuoc_lay_mau').toggle();
-        //     }
-        //     if ($('#select').val() == "huyet_tuong"){
-        //         $('.hour').append("<p style='margin-left:30px;font-weight:bold'>Nhập thời gian: </p>");
-        //         for (var i = 0; i < 16; i++) {
-        //             $('.hour').append("<input class='hours hour" + i + "'>");
-        //         }
-        //     }
-        //     if ($('#select').val() == "mau_mau"){
-        //         $('#mau_mau').toggle();
-        //     }
-        // })
-
         $("[name='thoi_gian_number']").focusout(function () {
             number = $("[name='thoi_gian_number']").val();
             $('.thoi_gian_n').replaceWith("<div class='thoi_gian_n'></div>")
-            $('.thoi_gian_n').append("<div>Nhập vào "+ number +" thời điểm: </div>");
+            $('.thoi_gian_n').append("<div><b>Nhập vào "+ number +" thời điểm (VD: 1.5h, 1h, 10p): </b></div>");
             thoi_gian = <?php echo "'".$thoi_gian."'"; ?>+",";
             thoi_diem = thoi_gian.replace(' ',',').split(",");
             for (var i =0; i < number; i++) {
-                if (i+2 < thoi_diem.length){
-                    $('.thoi_gian_n').append("<input type='text' name='thoi_diem"+i+"' class='txt' tabindex='3' style='width: 50px' value='" + thoi_diem[i+2] + "'>");
+                if (i+3 < thoi_diem.length){
+                    $('.thoi_gian_n').append("<input type='text' name='thoi_diem"+i+"' class='txt' tabindex='3' style='width: 50px' value='" + thoi_diem[i+3] + "'>");
                 }
                 else {
                     $('.thoi_gian_n').append("<input type='text' name='thoi_diem"+i+"' class='txt' tabindex='3' style='width: 50px' >");
@@ -397,12 +380,12 @@
         })
         number = $("[name='thoi_gian_number']").val();
         if (number!=0){
-            $('.thoi_gian_n').append("<div>Nhập vào "+ number +" thời điểm: </div>");
+            $('.thoi_gian_n').append("<div><b>Nhập vào "+ number +" thời điểm (VD: 1.5h, 1h, 10p): </b></div>");
             thoi_gian = <?php echo "'".$thoi_gian."'"; ?>+",";
             thoi_diem = thoi_gian.replace(' ',',').split(",");
             for (var i =0; i < number; i++) {
-                if (i+2 < thoi_diem.length){
-                    $('.thoi_gian_n').append("<input type='text' name='thoi_diem"+i+"' class='txt' tabindex='3' style='width: 50px' value='" + thoi_diem[i+2] + "'>");
+                if (i+3 < thoi_diem.length){
+                    $('.thoi_gian_n').append("<input type='text' name='thoi_diem"+i+"' class='txt' tabindex='3' style='width: 50px' value='" + thoi_diem[i+3] + "'>");
                 }
                 else {
                     $('.thoi_gian_n').append("<input type='text' name='thoi_diem"+i+"' class='txt' tabindex='3' style='width: 50px' >");

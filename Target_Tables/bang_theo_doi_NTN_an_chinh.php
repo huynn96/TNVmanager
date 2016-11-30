@@ -1,7 +1,7 @@
 <?php
 $sql = "SELECT tinh_nguyen_vien.ho_ten, tnv_nghien_cuu.ma_tnv FROM tinh_nguyen_vien INNER JOIN tnv_nghien_cuu ON tinh_nguyen_vien.so_cmt=tnv_nghien_cuu.so_cmt AND tnv_nghien_cuu.id='$ma_nc' AND tnv_nghien_cuu.ct='1' ORDER BY tnv_nghien_cuu.ma_tnv";
 $query = mysql_query($sql);
-$sql2 = "SELECT ten_nc FROM nghien_cuu WHERE id='$ma_nc'";
+$sql2 = "SELECT * FROM nghien_cuu WHERE id='$ma_nc'";
 $query2 = mysql_query($sql2);
 $ten_nc = mysql_fetch_array($query2);
 ?>
@@ -112,7 +112,7 @@ $ten_nc = mysql_fetch_array($query2);
         <th class="ma_tnv" rowspan="2">Mã TNV</th>
 
         <th class="ho_ten" rowspan="2">Họ và tên</th>
-        <th colspan="2">Giờ ăn sáng</th>
+        <th colspan="2">Giờ ăn chính</th>
         <th rowspan="2">Lượng thức ăn còn lại</th>
         <th rowspan="2">Ghi chú</th>
     </tr>
@@ -121,10 +121,15 @@ $ten_nc = mysql_fetch_array($query2);
         <td>Thực tế</td>
     </tr>
     <?php
-
-    $i=1;
+    $thoi_gian = $ten_nc["thoi_gian"];
+    $thoi_gian_number = strtok($thoi_gian, ", ");
+    $thoi_diem_bat_dau = strtok(", ");
+    $khoang_cach = strtok(", ");
+    $hou = strtok($thoi_diem_bat_dau,"p h");
+    $min = strtok("p h");
+    $i=0;
     while ( $rows = mysql_fetch_array($query)){
-        list($h,$m) = convert(7, $i+29);
+        list($h,$m) = convert($hou, $i*$khoang_cach+$min);
         if ($m < 10)
             $m = "0".$m;
         echo "

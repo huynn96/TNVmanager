@@ -1,4 +1,5 @@
-<head>    
+<head>  
+  <link rel='stylesheet' type='text/css' href='css/tnv_search.css'/>  
     <script type='text/javascript'>
     $(document).ready(function() {
        $('.xoa a').click(function (e) {
@@ -18,7 +19,10 @@
       })
     </script>
 </head>
+<div style="position: relative;z-index: 1;margin: 25px 200px 0 0;float: right;">
+</div>
 <?php
+  
   include_once("connect_db.php");
     if (isset($_POST["check"])){
         $cmt = $_POST["cmt"];
@@ -53,7 +57,10 @@
   
   echo "
     <div class='container'>
-      <div class='row'>
+    <div class='clearfix' style='position:relative;float:right;top:15px;'>";
+    include_once('tnv_search.php');
+  echo"
+      </div><div class='row'>
     
         <div>
    
