@@ -128,7 +128,7 @@ $ten_nc = mysql_fetch_array($query2);
     $min = strtok("p h");
     $i=0;
     while ( $rows = mysql_fetch_array($query)){
-        list($h,$m) = convert($hou, $i*$khoang_cach+$min);
+        list($h,$m) = convert($hou, $i*$khoang_cach+$min-30);
         if ($m < 10)
             $m = "0".$m;
         echo "

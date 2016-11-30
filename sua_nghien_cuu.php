@@ -141,12 +141,16 @@
         $khoang_cach = strtok(", ");
         function convert($h,$m)
         {
+            while ( $m < 0) {
+                $h--;
+                $m+=60;
+            }
             while ($m >= 60) {
                 $h++;
-                $m = $m - 60;
+                $m -= 60;
             }
-            while ($h>=24){
-                $h-=24;
+            while ($h >= 24){
+                $h -= 24;
             }
             return array($h,$m);
         }
