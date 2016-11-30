@@ -127,7 +127,6 @@ $ten_nc = mysql_fetch_array($query2);
     $khoang_cach = strtok(", ");
     $hou = strtok($thoi_diem_bat_dau,"p h");
     $min = strtok("p h");
-    echo $min;
     $i=0;
     while ( $rows = mysql_fetch_array($query)){
         list($h,$m) = convert($hou, $i*$khoang_cach+$min-30);
