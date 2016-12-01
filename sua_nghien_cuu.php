@@ -297,15 +297,24 @@
             $('.giai_doan').text($('#select_gd').val());
             $('.gd').css("font-weight","bold");
             if ($('#select_gd').val() == "I"){
-                $('.gd').text("Giai đoạn "+$('#select_gd').val() + ", <?php echo date('d/m/Y',strtotime($date)); ?> - <?php echo date('d/m/Y',strtotime($date2)); ?>");
+                if (<?php echo date('d/m/Y',strtotime($date)); ?> == <?php echo date('d/m/Y',strtotime($date2)); ?>)
+                    $('.gd').text("Giai đoạn "+$('#select_gd').val() + ", Ngày <?php echo date('d/m/Y',strtotime($date)); ?>");
+                else
+                    $('.gd').text("Giai đoạn "+$('#select_gd').val() + ", Ngày <?php echo date('d/m/Y',strtotime($date)); ?> - <?php echo date('d/m/Y',strtotime($date2)); ?>");
             }
             else 
                 if ($('#select_gd').val() == "II"){
-                    $('.gd').text("Giai đoạn "+$('#select_gd').val() + ", <?php echo date('d/m/Y',strtotime($gd2_b)); ?> - <?php echo date('d/m/Y',strtotime($gd2_e)); ?>");
+                    if (<?php echo date('d/m/Y',strtotime($gd2_b)); ?> == <?php echo date('d/m/Y',strtotime($gd2_e)); ?>)
+                        $('.gd').text("Giai đoạn "+$('#select_gd').val() + ", Ngày <?php echo date('d/m/Y',strtotime($gd2_b)); ?>");
+                    else
+                        $('.gd').text("Giai đoạn "+$('#select_gd').val() + ", Ngày <?php echo date('d/m/Y',strtotime($gd2_b)); ?> - <?php echo date('d/m/Y',strtotime($gd2_e)); ?>");
                 }
-            else 
+            else
                 if ($('#select_gd').val() == "III"){
-                    $('.gd').text("Giai đoạn "+$('#select_gd').val() + ", <?php echo date('d/m/Y',strtotime($gd3_b)); ?> - <?php echo date('d/m/Y',strtotime($gd3_e)); ?>");
+                    if (<?php echo date('d/m/Y',strtotime($gd3_b)); ?> == <?php echo date('d/m/Y',strtotime($gd3_e)); ?>)
+                        $('.gd').text("Giai đoạn "+$('#select_gd').val() + ", Ngày <?php echo date('d/m/Y',strtotime($gd3_b)); ?>");
+                    else
+                        $('.gd').text("Giai đoạn "+$('#select_gd').val() + ", Ngày <?php echo date('d/m/Y',strtotime($gd3_b)); ?> - <?php echo date('d/m/Y',strtotime($gd3_e)); ?>");
                 }
             var table = document.getElementById('select').value;
 
@@ -322,16 +331,25 @@
             $('.giai_doan').text($('#select_gd').val());
             $('.gd').css("font-weight","bold");
             if ($('#select_gd').val() == "I"){
-                $('.gd').text("Giai đoạn "+$('#select_gd').val() + ", <?php echo date('d/m/Y',strtotime($date)); ?> - <?php echo date('d/m/Y',strtotime($date2)); ?>");
+                if (<?php echo date('d/m/Y',strtotime($date)); ?> == <?php echo date('d/m/Y',strtotime($date2)); ?>)
+                    $('.gd').text("Giai đoạn "+$('#select_gd').val() + ", Ngày <?php echo date('d/m/Y',strtotime($date)); ?>");
+                else
+                    $('.gd').text("Giai đoạn "+$('#select_gd').val() + ", Ngày <?php echo date('d/m/Y',strtotime($date)); ?> - <?php echo date('d/m/Y',strtotime($date2)); ?>");
             }
-            else 
-                if ($('#select_gd').val() == "II"){
-                    $('.gd').text("Giai đoạn "+$('#select_gd').val() + ", <?php echo date('d/m/Y',strtotime($gd2_b)); ?> - <?php echo date('d/m/Y',strtotime($gd2_e)); ?>");
-                }
-            else 
-                if ($('#select_gd').val() == "III"){
-                    $('.gd').text("Giai đoạn "+$('#select_gd').val() + ", <?php echo date('d/m/Y',strtotime($gd3_b)); ?> - <?php echo date('d/m/Y',strtotime($gd3_e)); ?>");
-                }
+            else
+            if ($('#select_gd').val() == "II"){
+                if (<?php echo date('d/m/Y',strtotime($gd2_b)); ?> == <?php echo date('d/m/Y',strtotime($gd2_e)); ?>)
+                    $('.gd').text("Giai đoạn "+$('#select_gd').val() + ", Ngày <?php echo date('d/m/Y',strtotime($gd2_b)); ?>");
+                else
+                    $('.gd').text("Giai đoạn "+$('#select_gd').val() + ", Ngày <?php echo date('d/m/Y',strtotime($gd2_b)); ?> - <?php echo date('d/m/Y',strtotime($gd2_e)); ?>");
+            }
+            else
+            if ($('#select_gd').val() == "III"){
+                if (<?php echo date('d/m/Y',strtotime($gd3_b)); ?> == <?php echo date('d/m/Y',strtotime($gd3_e)); ?>)
+                    $('.gd').text("Giai đoạn "+$('#select_gd').val() + ", Ngày <?php echo date('d/m/Y',strtotime($gd3_b)); ?>");
+                else
+                    $('.gd').text("Giai đoạn "+$('#select_gd').val() + ", Ngày <?php echo date('d/m/Y',strtotime($gd3_b)); ?> - <?php echo date('d/m/Y',strtotime($gd3_e)); ?>");
+            }
             table = $('#select').val();
             table = "#" + table;
             $(table).wordExport();

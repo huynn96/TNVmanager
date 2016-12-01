@@ -51,7 +51,7 @@
 				$j=0;
 				echo "<tr>";
 			}else{
-				echo "<td><b>".$row["ma_tnv"]."</b> &nbsp;".$ma_nc."<br><div class=giai_doan></div><div class='gio'><b>".$thoi_diem[$i]."</b></div></td>";
+				echo "<td><b>".$row["ma_tnv"]."</b> &nbsp &nbsp;".$ma_nc."<br><div class=giai_doan></div><div class='gio'><b>".$thoi_diem[$i]."</b></div></td>";
 				$j++;
 				if ($j == 10)
 					echo "</tr>";

@@ -178,11 +178,11 @@ $ten_nc = mysql_fetch_array($query2);
         $('.hang_dau_bang_1').append("<th class='moc_bang_1_"+i+"'>"+thoi_diem_bang_1[i+3]+"</th>");
     }
     i=0;
-    h = parseInt(thoi_diem_bang_1[1].replace('p','h').split("h")[0]);
-    minutes = parseInt(thoi_diem_bang_1[1].replace('p','h').split("h")[1]);
-    if (thoi_diem_bang_1[1].replace('p','h').split("h")[1]=="")
-    	minutes=0;
     $('.hang_bang_1').each(function () {
+        h = parseInt(thoi_diem_bang_1[1].replace('p','h').split("h")[0]);
+        minutes = parseInt(thoi_diem_bang_1[1].replace('p','h').split("h")[1]);
+        if (thoi_diem_bang_1[1].replace('p','h').split("h")[1]=="")
+            minutes=0;
         a = convert(h,minutes+i*khoang_cach);
         if (a[1]<10){
             a[1] = "0"+a[1];

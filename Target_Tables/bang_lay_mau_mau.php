@@ -115,7 +115,7 @@ for ($l=0; $l < $number_bang; $l++) {
             <th class='stt' rowspan='2'>STT</th>
             <th class='stt' rowspan='2'>Mã TNV</th>
             <th rowspan='2'>Tên TNV</th>";
-            if ($thoi_gian_number - $l*8 +1< 8){
+            if ($thoi_gian_number - $l*8 < 8){
                 $so_loop =$thoi_gian_number - $l*8;
             }else {
                 $so_loop = 8;
