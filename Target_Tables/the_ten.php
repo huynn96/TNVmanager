@@ -54,7 +54,7 @@
 while ($rows = mysql_fetch_array($query)) {
 	$i=0;
 	echo "<div class='bang'><div class='p1'>BE Center-NIDQC</div>
-<div class='p2'><i>Thẻ tên của NTN</i></div><br>";
+	<div class='p2'><i>Thẻ tên của NTN</i></div><br>";
 	while ($i<2){
 		echo "
 			<table width='612'>

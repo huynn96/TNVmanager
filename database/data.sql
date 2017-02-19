@@ -2,7 +2,7 @@ CREATE DATABASE IF NOT EXISTS tnv_manager;
 USE tnv_manager;
 CREATE TABLE IF NOT EXISTS nghien_cuu(
 	id VARCHAR(20) NOT NULL,
-	ten_nc VARCHAR(400),
+	ten_nc VARCHAR(300),
 	date_year DATE NOT NULL,
 	date_year_end DATE,
     	gd2_begin DATE,
@@ -10,6 +10,13 @@ CREATE TABLE IF NOT EXISTS nghien_cuu(
     	gd3_begin DATE,
     	gd3_end DATE,
 	thoi_gian VARCHAR(500),
+    ten_hoat_chat VARCHAR(300),
+    ten_thuoc_thu VARCHAR(300),
+    nha_san_xuat VARCHAR(300),
+    nha_dang_ky_thuoc VARCHAR(300),
+    so_lo_sx VARCHAR(300),
+    so_dang_ky_thuoc VARCHAR(300),
+    sample_time_allow VARCHAR(300),
 	PRIMARY KEY (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 CREATE TABLE IF NOT EXISTS tinh_nguyen_vien(

@@ -42,7 +42,22 @@
     $ma_nc = $_GET["id_nc"];
     if (isset($_POST['submitbt'])){
         $id = $_POST["ma_nc"];
+
         $ten_nc = $_POST["message"];
+
+        $ten_hoat_chat = $_POST["ten_hoat_chat"];
+
+        $ten_thuoc_thu = $_POST["ten_thuoc_thu"];
+
+        $nha_san_xuat = $_POST["nha_san_xuat"];
+
+        $nha_dang_ky_thuoc = $_POST["nha_dang_ky_thuoc"];
+
+        $so_lo_sx = $_POST["so_lo_sx"];
+
+        $so_dang_ky_thuoc = $_POST["so_dang_ky_thuoc"];
+
+        $sample_time_allow = $_POST["sample_time_allow"];
         $date = $_POST["date"];
         $date=date('Y-m-d',strtotime($date));
         $date2 = $_POST["date2"];
@@ -65,7 +80,7 @@
             $thoi_gian = $thoi_gian.",".$_POST["thoi_diem".$i];
         }
 
-        $sql = "UPDATE nghien_cuu SET id='$id', ten_nc='$ten_nc', date_year='$date', date_year_end='$date2', gd2_begin='$gd2_b', gd2_end='$gd2_e', gd3_begin='$gd3_b', gd3_end='$gd3_e', thoi_gian = '$thoi_gian' WHERE id='$ma_nc'";
+        $sql = "UPDATE nghien_cuu SET id='$id', ten_nc='$ten_nc', date_year='$date', date_year_end='$date2', gd2_begin='$gd2_b', gd2_end='$gd2_e', gd3_begin='$gd3_b', gd3_end='$gd3_e', thoi_gian = '$thoi_gian', ten_hoat_chat = '$ten_hoat_chat', ten_thuoc_thu = '$ten_thuoc_thu', nha_san_xuat = '$nha_san_xuat', nha_dang_ky_thuoc = '$nha_dang_ky_thuoc', so_lo_sx = '$so_lo_sx', so_dang_ky_thuoc = '$so_dang_ky_thuoc', sample_time_allow = '$sample_time_allow' WHERE id='$ma_nc'";
         $query = mysql_query($sql);
 
         if ($_POST["date2"] == NULL){
@@ -198,6 +213,41 @@
                 <div class="row">
                     <label for="message">Tên nghiên cứu <span class="req">*</span></label> 
                     <textarea name="message" id="message" class="txtarea" tabindex="4" required><?php echo $row["ten_nc"]; ?></textarea>
+                </div>
+
+                <div class="row">
+                    <label for="ten_hoat_chat">Tên hoạt chất </label>
+                    <input name="ten_hoat_chat" id="ten_hoat_chat" class="txt" value="<?php echo $row["ten_hoat_chat"]; ?>" tabindex="1" placeholder="Tên hoạt chất">
+                </div>
+
+                <div class="row">
+                    <label for="ten_thuoc_thu">Tên thuốc thử </label>
+                    <input type="text" name="ten_thuoc_thu" id="ten_thuoc_thu" class="txt" value="<?php echo $row["ten_thuoc_thu"]; ?>" tabindex="1" placeholder="Tên thuốc thử">
+                </div>
+
+                <div class="row">
+                    <label for="nha_san_xuat">Nhà sản xuất</label>
+                    <input type="text" name="nha_san_xuat" id="nha_san_xuat" class="txt" value="<?php echo $row["nha_san_xuat"]; ?>" tabindex="1" placeholder="Nhà sản xuất">
+                </div>
+
+                <div class="row">
+                    <label for="nha_dang_ky_thuoc">Nhà đăng ký thuốc</label>
+                    <input type="text" name="nha_dang_ky_thuoc" id="nha_dang_ky_thuoc" class="txt" value="<?php echo $row["nha_dang_ky_thuoc"]; ?>" tabindex="1" placeholder="Nhà đăng ký thuốc">
+                </div>
+
+                <div class="row">
+                    <label for="so_lo_sx">Số lô sản xuất</label>
+                    <input type="text" name="so_lo_sx" id="so_lo_sx" class="txt" value="<?php echo $row["so_lo_sx"]; ?>" tabindex="1" placeholder="Số lô sản xuất">
+                </div>
+
+                <div class="row">
+                    <label for="so_dang_ky_thuoc">Số đăng ký thuốc</label>
+                    <input type="text" name="so_dang_ky_thuoc" id="so_dang_ky_thuoc" class="txt" value="<?php echo $row["so_dang_ky_thuoc"]; ?>" tabindex="1" placeholder="Số đăng ký thuốc">
+                </div>
+
+                <div class="row">
+                    <label for="sample_time_allow">Thời gian sai lệch cho phép</label>
+                    <input type="text" name="sample_time_allow" id="sample_time_allow" class="txt" value="<?php echo $row["sample_time_allow"]; ?>" tabindex="1" placeholder="Thời gian sai lệch cho phép" required>
                 </div>
 
                 <div class="row">
